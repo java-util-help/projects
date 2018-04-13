@@ -18,7 +18,7 @@ public class Menu {
 		                                                            /*
 		                                                             ┌────────────────────────────── 5    Economic Rooms
 		                                                             │  ┌─────────────────────────── 8    Normal Rooms
-		                                                             │  │  ┌──────────────────────── 1    Royal Rooms
+		                                                             │  │  ┌──────────────────────── 2    Royal Rooms
 		                                                             │  │  │  ┌───────────────────── 30$  for Economic Rooms
 		                                                             │  │  │  │   ┌───────────────── 75$  for Normal Rooms
 		                                                             │  │  │  │   │   ┌───────────── 250$ for Royal Rooms
