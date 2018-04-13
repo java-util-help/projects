@@ -25,6 +25,4 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 
 *Projenin süresi 1 haftadır. **15 Mayıs** tarihine kadar bu klasör altına **IsimSoyisim** şeklinde alt-klasör oluşturarak yüklemeniz beklenmektedir.*
 
-> İsteğe bağlı olarak, hazırlamış olduğunuz proje hakkında kısa bir rapor oluşturabilirsiniz.  
-
-Eğer herhangi bir sorunuz var ise telegram üzerinden iletişime geçebilirsiniz: *java.util.help*
+> İsteğe bağlı olarak, hazırlamış olduğunuz proje hakkında kısa bir rapor oluşturabilirsiniz.
