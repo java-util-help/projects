@@ -38,11 +38,11 @@ public class Hostel {
                 r1++;
             }
             if (percent * 2 <= i && percent * 4 > i) {
-                rooms[i] = new Room("10" + i, 0, 3, Room.Types.BedRoomfor3);
+                rooms[i] = new Room("10" + i, 0, 3, Room.Types.BedRoomFor3);
                 r2++;
             }
             if (percent * 4 <= i && percent * 6 > i) {
-                rooms[i] = new Room("10" + i, 0, 4, Room.Types.BedRoomfor4);
+                rooms[i] = new Room("10" + i, 0, 4, Room.Types.BedRoomFor4);
                 r3++;
             }
             if (percent * 6 <= i && percent * 7 > i) {
@@ -103,16 +103,16 @@ public class Hostel {
         while (Choice == 'Y') {
             System.out.println((RoomMateCount + 1) + ".Person");
 
-            System.out.println("Name:");
+            System.out.print("Name: ");
             String Name = GetString();
 
-            System.out.println("Surname:");
+            System.out.print("Surname: ");
             String Surname = GetString();
 
-            System.out.println("Occupation:");
+            System.out.print("Occupation: ");
             String Occupation = GetString();
 
-            System.out.println("Age:");
+            System.out.print("Age: ");
             int Age = GetInteger(100);
 
             System.out.println("1 -> Male \n2 -> Female");
@@ -159,7 +159,9 @@ public class Hostel {
             list.add(c1);
             RoomMateCount++;
             System.out.println("Would you like to add more person?(Y/N)");
-            Choice = sc.next().charAt(0);
+            String temp=sc.next().toUpperCase();
+            Choice = temp.charAt(0);
+           
             if (RoomMateCount == num) {
                 Choice = 'N';
             }
@@ -168,6 +170,50 @@ public class Hostel {
 
         r.setCustomers(roomMates);
         r.setS(Room.Status.NotAvalible);
+    }
+
+    public void CustomerLeaves() {
+        ArrayList<Customer> list = new ArrayList();
+        System.out.print("Please Enter Your Room Number:");
+        String num = GetString();
+        Customer c2 = new Customer();
+        for (Room room : rooms) {
+            for (int i = 0; i < room.getCustomerCount(); i++) {
+                 list.add(c2);
+            }
+        Customer[] roomMates = list.toArray(new Customer[list.size()]);
+            if (room.getRoomNumber().equals(num)) {
+                room.setS(Room.Status.Avalible);
+                if (null != room.getType()) {
+                    switch (room.getType()) {
+                        case BedRoomFor2:
+                            room.setBill(0);
+                            room.setCustomers(roomMates);
+                            break;
+                        case BedRoomFor3:
+                            room.setCustomers(roomMates);
+                            room.setBill(0);
+                            break;
+                        case BedRoomFor4:
+                            room.setCustomers(roomMates);
+                            room.setBill(0);
+                            break;
+                        case EconomicRoom:
+                            room.setCustomers(roomMates);
+                            room.setBill(-50);
+                            break;
+                        case KingSuite:
+                            room.setCustomers(roomMates);
+                            room.setBill(100);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+        }
+
     }
 
     public void DisplayRooms() {
@@ -186,7 +232,7 @@ public class Hostel {
     }
 
     public void Order() {
-        System.out.println("Please Enter Room Number");
+        System.out.print("Please Enter Room Number: ");
         String num = GetString();
         int Choice;
         for (Room room : rooms) {
@@ -226,24 +272,25 @@ public class Hostel {
         }
 
     }
-/*------------ONLY GETTER I NEED--------------*/
+
+    /*------------ONLY GETTER I NEED--------------*/
     public String getHostelName() {
         return HostelName;
     }
-/*-------------------------------------------*/
-    
-    
-/*---------------INPUT LOOP WITH TRY CATCH--------------*/
+
+    /*-------------------------------------------*/
+
+ /*---------------INPUT LOOP WITH TRY CATCH--------------*/
     public int GetInteger(int Num) {
         int input = 0;
         do {
             try {
-               input = sc.nextInt();
+                input = sc.nextInt();
             } catch (InputMismatchException e) {
-           System.out.println("Please give a number between:1 and " + Num);  
+                System.out.println("Please give a number between 1 and " + Num);
                 sc.next();
             }
-        } while (input==0);
+        } while (input == 0);
         return input;
     }
 
@@ -261,5 +308,5 @@ public class Hostel {
         }
         return s;
     }
-/*-------------------------------------------*/
+    /*-------------------------------------------*/
 }

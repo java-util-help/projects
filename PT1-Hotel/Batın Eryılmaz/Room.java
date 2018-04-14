@@ -1,5 +1,4 @@
 
-
 /**
  *
  * @author BATIN
@@ -10,6 +9,8 @@ public class Room {
     private double Bill;
     private final int CustomerCount;
 
+   
+
     public enum Status {
         Avalible,
         NotAvalible
@@ -19,8 +20,8 @@ public class Room {
     public enum Types {
         KingSuite,
         BedRoomFor2,
-        BedRoomfor3,
-        BedRoomfor4,
+        BedRoomFor3,
+        BedRoomFor4,
         EconomicRoom
 
     };
@@ -39,6 +40,10 @@ public class Room {
         this.S = Status.Avalible;
     }
 
+     public int getCustomerCount() {
+        return CustomerCount;
+    }
+     
     public Status getS() {
         return S;
     }

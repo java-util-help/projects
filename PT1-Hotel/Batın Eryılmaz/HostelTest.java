@@ -22,7 +22,8 @@ public class HostelTest {
             System.out.println("2 to List of Customers");
             System.out.println("3 to See The Rooms");
             System.out.println("4 to Order Something To Your Room");
-            System.out.println("5 to Exit");
+            System.out.println("5 to Leave From Hostel");
+            System.out.println("6 to Exit");
             int Choice = h1.GetInteger(5);
             switch (Choice) {
                 case 1:
@@ -38,6 +39,9 @@ public class HostelTest {
                     h1.Order();
                     break;
                 case 5:
+                    h1.CustomerLeaves();
+                    break;
+                case 6:
                     flag = false;
                     break;
                 default:
