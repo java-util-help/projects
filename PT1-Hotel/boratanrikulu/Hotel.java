@@ -48,9 +48,9 @@ public class Hotel {
 	/* constructor */
 	public Hotel(String hotelName, String hotelOwner, int economicRoomNumbers, int normalRoomNumbers, int royalRoomNumbers, int economicRoomPrice, int normalRoomPrice, int royalRoomPrice) {
 		// control
-		if(hotelName == "")
+		if("".equals(hotelName))
 			throw new IllegalArgumentException("(!) Hotel name not entered.");
-		if(hotelOwner == "")
+		if("".equals(hotelOwner))
 			throw new IllegalArgumentException("(!) Hotel Owner name not entered.");
 		if(economicRoomNumbers<0 || economicRoomPrice<0 || normalRoomNumbers<0 || normalRoomPrice<0 || royalRoomNumbers<0 || royalRoomPrice<0)
 			throw new IllegalArgumentException("(!) Do not enter negative values as room number or price.");
@@ -289,20 +289,11 @@ public class Hotel {
 	public boolean controlInfo(Room.RoomType roomType, int roomNumber) {
 		switch(roomType) {
 			case ECONOMIC:
-				if(economicRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE)
-					return true;
-				else
-					return false;
+                return economicRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
 			case NORMAL:
-				if(normalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE)
-					return true;
-				else
-					return false;
+                return normalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
 			case ROYAL:
-				if(royalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE)
-					return true;
-				else
-					return false;
+                return royalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
 			default:
 				return false;
 		}
@@ -351,10 +342,10 @@ public class Hotel {
 		System.out.println("##########################################################################");
 		System.out.println("# Which Food/Drink Do You Want to Choose ?                               #");
 		System.out.println("#");
-		System.out.println("# 1) "+foodOrDrink.WATER.getFoodOrDrinkName()+" ("+foodOrDrink.WATER.getFoodOrDrinkPrice()+"$)");
-		System.out.println("# 2) "+foodOrDrink.COKE.getFoodOrDrinkName()+" ("+foodOrDrink.COKE.getFoodOrDrinkPrice()+"$)");
-		System.out.println("# 3) "+foodOrDrink.BEER.getFoodOrDrinkName()+" ("+foodOrDrink.BEER.getFoodOrDrinkPrice()+"$)");
-		System.out.println("# 4) "+foodOrDrink.SANDWITCH.getFoodOrDrinkName()+" ("+foodOrDrink.SANDWITCH.getFoodOrDrinkPrice()+"$)");
+		System.out.println("# 1) "+FoodOrDrink.WATER.getFoodOrDrinkName()+" ("+FoodOrDrink.WATER.getFoodOrDrinkPrice()+"$)");
+		System.out.println("# 2) "+FoodOrDrink.COKE.getFoodOrDrinkName()+" ("+FoodOrDrink.COKE.getFoodOrDrinkPrice()+"$)");
+		System.out.println("# 3) "+FoodOrDrink.BEER.getFoodOrDrinkName()+" ("+FoodOrDrink.BEER.getFoodOrDrinkPrice()+"$)");
+		System.out.println("# 4) "+FoodOrDrink.SANDWITCH.getFoodOrDrinkName()+" ("+FoodOrDrink.SANDWITCH.getFoodOrDrinkPrice()+"$)");
 		System.out.println("#");
 		System.out.println("# 9) Return to Main Menu                                                 #");
 		System.out.println("##########################################################################");
@@ -363,22 +354,22 @@ public class Hotel {
 
 		switch(menuOption2) {
 				case 1:
-					addPrice(roomType, roomNumber, foodOrDrink.WATER.getFoodOrDrinkPrice());
+					addPrice(roomType, roomNumber, FoodOrDrink.WATER.getFoodOrDrinkPrice());
 					System.out.print("\n(->) Water has been ordered.");
 					scan.nextLine(); // to see result.
 					break;
 				case 2:
-					addPrice(roomType, roomNumber, foodOrDrink.COKE.getFoodOrDrinkPrice());
+					addPrice(roomType, roomNumber, FoodOrDrink.COKE.getFoodOrDrinkPrice());
 					System.out.print("\n(->) Coke has been ordered.");
 					scan.nextLine(); // to see result.
 					break;
 				case 3:
-					addPrice(roomType, roomNumber, foodOrDrink.BEER.getFoodOrDrinkPrice());
+					addPrice(roomType, roomNumber, FoodOrDrink.BEER.getFoodOrDrinkPrice());
 					System.out.print("\n(->) Beer has been ordered.");
 					scan.nextLine(); // to see result.
 					break;
 				case 4:
-					addPrice(roomType, roomNumber, foodOrDrink.SANDWITCH.getFoodOrDrinkPrice());
+					addPrice(roomType, roomNumber, FoodOrDrink.SANDWITCH.getFoodOrDrinkPrice());
 					System.out.print("\n(->) Sandwitch has been ordered.");
 					scan.nextLine(); // to see result.
 					break;
