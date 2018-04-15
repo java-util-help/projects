@@ -23,6 +23,6 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 
 #### Proje son teslim tarihi: 
 
-*Projenin süresi 1 haftadır. **15 Mayıs** tarihine kadar bu klasör altına **IsimSoyisim** şeklinde alt-klasör oluşturarak yüklemeniz beklenmektedir.*
+*Projenin süresi 1 haftadır. **18 Mayıs** tarihine kadar bu klasör altına **IsimSoyisim** şeklinde alt-klasör oluşturarak yüklemeniz beklenmektedir.*
 
 > İsteğe bağlı olarak, hazırlamış olduğunuz proje hakkında kısa bir rapor oluşturabilirsiniz.
