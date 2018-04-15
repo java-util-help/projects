@@ -122,7 +122,7 @@ public class Hostel {
                     c1 = new Customer(Name, Surname, Occupation, Age, Customer.Sex.Male);
                     break;
                 } else if (Sex == 2) {
-                    c1 = new Customer(Name, Surname, Occupation, Age, Customer.Sex.Male);
+                    c1 = new Customer(Name, Surname, Occupation, Age, Customer.Sex.Female);
                     break;
                 }
             }
