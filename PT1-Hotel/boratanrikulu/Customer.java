@@ -17,11 +17,11 @@ public class Customer {
 			throw new IllegalArgumentException("(!) age must be at least 1.");
 		if(age > 140)
 			throw new IllegalArgumentException("(!) age must be at most 140.");
-		if("".equals(name))
+		if(name.equals(""))
 			throw new IllegalArgumentException("(!) name not entered.");
-		if("".equals(surname))
+		if(surname.equals(""))
 			throw new IllegalArgumentException("(!) surname not entered.");
-		if("".equals(job))
+		if(job.equals(""))
 			throw new IllegalArgumentException("(!) job not entered.");
 
 		this.name = name;

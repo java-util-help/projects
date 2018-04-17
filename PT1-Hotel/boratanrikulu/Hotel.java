@@ -48,9 +48,9 @@ public class Hotel {
 	/* constructor */
 	public Hotel(String hotelName, String hotelOwner, int economicRoomNumbers, int normalRoomNumbers, int royalRoomNumbers, int economicRoomPrice, int normalRoomPrice, int royalRoomPrice) {
 		// control
-		if("".equals(hotelName))
+		if(hotelName.equals(""))
 			throw new IllegalArgumentException("(!) Hotel name not entered.");
-		if("".equals(hotelOwner))
+		if(hotelOwner.equals(""))
 			throw new IllegalArgumentException("(!) Hotel Owner name not entered.");
 		if(economicRoomNumbers<0 || economicRoomPrice<0 || normalRoomNumbers<0 || normalRoomPrice<0 || royalRoomNumbers<0 || royalRoomPrice<0)
 			throw new IllegalArgumentException("(!) Do not enter negative values as room number or price.");
@@ -289,11 +289,11 @@ public class Hotel {
 	public boolean controlInfo(Room.RoomType roomType, int roomNumber) {
 		switch(roomType) {
 			case ECONOMIC:
-                return economicRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
+				return economicRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
 			case NORMAL:
-                return normalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
+				return normalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
 			case ROYAL:
-                return royalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
+				return royalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE;
 			default:
 				return false;
 		}

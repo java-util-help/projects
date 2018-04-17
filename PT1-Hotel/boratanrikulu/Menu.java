@@ -1,4 +1,4 @@
-﻿/*
+/*
 	NOTE: This program is written without using any IDE.
 	Tests were completed manually by using java-9-openjdk.
 	Please read the README.md file that is in the project.
