@@ -201,7 +201,7 @@ public class Hotel {
 					else
 						roomNumber++;
 				}
-				return "(!) Sorry! All "+ Room.RoomType.NORMAL.getRoomName() +"s are booked.";
+				return "";
 
 			case ROYAL:
 				while(roomNumber < (royalRoomNumbers)) {
@@ -212,7 +212,8 @@ public class Hotel {
 					else
 						roomNumber++;
 				}
-				return "(!) Sorry! All "+ Room.RoomType.ROYAL.getRoomName() +"s are booked.";
+				return "";
+				
 			default:
 				return "";
 		}
