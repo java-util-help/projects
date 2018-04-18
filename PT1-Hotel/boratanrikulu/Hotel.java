@@ -83,6 +83,7 @@ public class Hotel {
 
 	/* methods */
 	public void bookingMenu() {
+		int check = 0;
 		boolean infinity = true;
 		while(infinity) {
 			clear();
@@ -102,28 +103,53 @@ public class Hotel {
 			System.out.println("##########################################################################");
 			System.out.print("\t Menu Option: "); int menuOption2 = scan.nextInt();
 			scan.nextLine();
-
+			
 				switch(menuOption2) {
 					case 1:
+						check = 0;
 						System.out.println();
-						if(economicRooms[(economicRoomNumbers-1)].roomStatus == Room.RoomStatus.NONAVAILABLE)
+						for(int roomNumberTemp=0; roomNumberTemp<economicRoomNumbers; roomNumberTemp++) {
+							if(economicRooms[roomNumberTemp].roomStatus == Room.RoomStatus.AVAILABLE) {
+								check++;
+								break;
+							}
+						}
+						if(check == 0) {
 							System.out.print("(!) Sorry! All "+ Room.RoomType.ECONOMIC.getRoomName() +"s are booked.");
+						}
 						else
 							System.out.print(booking(Room.RoomType.ECONOMIC, getInfo()));
 						scan.nextLine(); // to see result.
 						break;
+
 					case 2:
+						check = 0;
 						System.out.println();
-						if(normalRooms[(normalRoomNumbers-1)].roomStatus == Room.RoomStatus.NONAVAILABLE)
+						for(int roomNumberTemp=0; roomNumberTemp<normalRoomNumbers; roomNumberTemp++) {
+							if(normalRooms[roomNumberTemp].roomStatus == Room.RoomStatus.AVAILABLE) {
+								check++;
+								break;
+							}
+						}
+						if(check == 0) {
 							System.out.print("(!) Sorry! All "+ Room.RoomType.NORMAL.getRoomName() +"s are booked.");
+						}
 						else
 							System.out.print(booking(Room.RoomType.NORMAL, getInfo()));
 						scan.nextLine(); // to see result.
 						break;
 					case 3:
+						check = 0;
 						System.out.println();
-						if(royalRooms[(royalRoomNumbers-1)].roomStatus == Room.RoomStatus.NONAVAILABLE)
+						for(int roomNumberTemp=0; roomNumberTemp<royalRoomNumbers; roomNumberTemp++) {
+							if(royalRooms[roomNumberTemp].roomStatus == Room.RoomStatus.AVAILABLE) {
+								check++;
+								break;
+							}
+						}
+						if(check == 0) {
 							System.out.print("(!) Sorry! All "+ Room.RoomType.ROYAL.getRoomName() +"s are booked.");
+						}
 						else
 							System.out.print(booking(Room.RoomType.ROYAL, getInfo()));
 						scan.nextLine(); // to see result.
@@ -153,30 +179,40 @@ public class Hotel {
 	}
 
 	public String booking(Room.RoomType roomType, Customer customer) {
+		int roomNumber = 0;
 		switch(roomType) {
 			case ECONOMIC:
-				for(int roomNumber=0; roomNumber<economicRoomNumbers; roomNumber++) {
-				 	if(economicRooms[roomNumber].roomStatus == Room.RoomStatus.AVAILABLE) {
+				while(roomNumber < (economicRoomNumbers)) {
+					if(economicRooms[roomNumber].roomStatus == Room.RoomStatus.AVAILABLE) {
 						economicRooms[roomNumber].setCustomer(customer);
 						return "(->) The registration was successful.";
 					}
+					else
+						roomNumber++;
 				}
+				return "";
 
 			case NORMAL:
-				for(int roomNumber=0; roomNumber<normalRoomNumbers; roomNumber++) {
+				while(roomNumber < (normalRoomNumbers)) {
 					if(normalRooms[roomNumber].roomStatus == Room.RoomStatus.AVAILABLE) {
 						normalRooms[roomNumber].setCustomer(customer);
 						return "(->) The registration was successful.";
 					}
+					else
+						roomNumber++;
 				}
+				return "(!) Sorry! All "+ Room.RoomType.NORMAL.getRoomName() +"s are booked.";
 
 			case ROYAL:
-				for(int roomNumber=0; roomNumber<royalRoomNumbers; roomNumber++) {
-				 	if(royalRooms[roomNumber].roomStatus == Room.RoomStatus.AVAILABLE) {
+				while(roomNumber < (royalRoomNumbers)) {
+					if(royalRooms[roomNumber].roomStatus == Room.RoomStatus.AVAILABLE) {
 						royalRooms[roomNumber].setCustomer(customer);
 						return "(->) The registration was successful.";
 					}
+					else
+						roomNumber++;
 				}
+				return "(!) Sorry! All "+ Room.RoomType.ROYAL.getRoomName() +"s are booked.";
 			default:
 				return "";
 		}
@@ -413,46 +449,29 @@ public class Hotel {
  	public boolean deleteReservation(Room.RoomType roomType, int roomNumber) {
  		switch(roomType) {
  			case ECONOMIC:
-	 			if(economicRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE) {
-	 				for(int counter=roomNumber; counter<economicRoomNumbers; counter++) {
-					 	if(economicRooms[counter+1].roomStatus == Room.RoomStatus.AVAILABLE)
-							break;
-						else {
-							economicRooms[counter].setCustomer(economicRooms[counter+1].getCustomer());
-						}
-					}
-	 				return true;
-	 			}
-	 			else
-	 				return false;
+ 				if(economicRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE) {
+			 		economicRooms[roomNumber].roomStatus = Room.RoomStatus.AVAILABLE;
+			 		return true;
+			 	}
+			 	else
+			 		return false;
+
  			case NORMAL:
-	 			if(normalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE) {
-	 				for(int counter=roomNumber; counter<normalRoomNumbers; counter++) {
-					 	if(normalRooms[counter+1].roomStatus == Room.RoomStatus.AVAILABLE)
-							break;
-						else {
-							normalRooms[counter].setCustomer(normalRooms[counter+1].getCustomer());
-							normalRooms[counter].roomStatus = Room.RoomStatus.NONAVAILABLE;
-							normalRooms[counter+1].roomStatus = Room.RoomStatus.AVAILABLE;
-						}
-					}
-	 				return true;
-	 			}
-	 			else
-	 				return false;
+ 				if(normalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE) {
+			 		normalRooms[roomNumber].roomStatus = Room.RoomStatus.AVAILABLE;
+			 		return true;
+			 	}
+			 	else
+			 		return false;
+
  			case ROYAL:
-	 			if(royalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE) {
-	 				for(int counter=roomNumber; counter<royalRoomNumbers; counter++) {
-					 	if(royalRooms[counter+1].roomStatus == Room.RoomStatus.AVAILABLE)
-							break;
-						else {
-							royalRooms[counter].setCustomer(royalRooms[counter+1].getCustomer());
-						}
-					}
-	 				return true;
-	 			}
-	 			else
-	 				return false;
+ 				if(royalRooms[roomNumber].roomStatus == Room.RoomStatus.NONAVAILABLE) {
+			 		royalRooms[roomNumber].roomStatus = Room.RoomStatus.AVAILABLE;
+			 		return true;
+			 	}
+			 	else
+			 		return false;
+
  			default:
  				return false;
  		}
