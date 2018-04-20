@@ -21,7 +21,7 @@ Proje kaynağı: *OOP-HW4 / Pamukkale University (2016)*
 
 	**CargoShip class**'ında; geminin maksimum kargo kapasitesi(tonaj) olarak alabileceği toplam kargo ağırlığı alanını içermelidir. Üst sınıftaki toString method'unu override ederek oluşturulan **toString method**'u; geminin adını, geminin inşa edildiği yılı ve **maksimum kargo kapasitesi**ni döndürülmelidir.  
 
-	**ShipTest class**'ında; TouristShip ve CargoShip tipinde gemiler oluşuturup, toString method'larını çağırınız.
+	**ShipTest class**'ında; Ship tipinde üç elemanlı bir array oluşturunuz. Array'in ilk elemanı yine **Ship** tipinde olsun, ikinci elemanı **TouristShip** tipinde ve son elamanı ise **CargoShip** tipinde olsun. Bu üç elemanı array üzerinden ToString metodunu çağrınız.  
 
 #### Proje son teslim tarihi:
 
