@@ -30,9 +30,9 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 
 	**Employee subclass'ları**nda; çalışanların maaş hesaplamaları farklı olması için *override* ederek method'lar oluşturulmalıdır. (SuperVisor 25 saat üstüne 1.8 kat ücret alabilirler.)
 
-	**BookStore class**'ında kitap alma(toptancıdan),kitap satma(müşteriye),kitap görüntüleme,bölüm görüntüleme,çalışan eklememe,çalışan çıkarma,çalışan çıkarma metotları bulunmalıdır.
+	**BookStore class'ı**nda; kitap alma(toptancıdan), kitap satma(müşteriye), kitap görüntüleme, bölüm görüntüleme, çalışan eklememe, çalışan çıkarma, çalışan çıkarma metotları bulunmalıdır.
 
-	**BookStoreTest class**'ında da menü olmalıdır.
+	**BookStoreTest class'ı**; menü içermelidir.
 
 #### Proje son teslim tarihi:
 
