@@ -33,6 +33,8 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 	**BookStoreTest class'ı**, menü içermelidir.
 
 	**Book class'ı**nda kitabın ismi ve fiyatı olmalıdır.
+	
+	**Note**; Hiçbir bölümde kitap sınırlaması olmamalıdır. Gerektiğinde 100000 tane bilim kurgu kitabı girilebilir şekilde bi oluşturulması istenmektedir.(Öneri: ArrayList)
 
 #### Proje son teslim tarihi:
 
