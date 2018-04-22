@@ -36,9 +36,7 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 
 #### Proje son teslim tarihi:
 
-*Projenin son yükleme günü. **1 Mayıs (23:59)**
- Esinlenmenin olmaması adına en erken **28 Nisan** tarihinde yükleyiniz.
-Bu klasör altına **IsimSoyisim** şeklinde alt-klasör oluşturarak yüklemeniz beklenmektedir.*
+*Projenin süresi 1 haftadır. **1 Mayıs (23:59)** tarihine kadar bu klasör altına **IsimSoyisim** şeklinde alt-klasör oluşturarak yüklemeniz beklenmektedir. Esinlenmenin olmaması için lütfen en erken **28 Nisan** tarihinde yükleyiniz.*  
 
 **!** Proje hakkında aklınıza takılan bir yer var ise;  
 &nbsp;&nbsp;&nbsp;&nbsp; Üyeler - [Soru&Cevap](https://github.com/orgs/java-util-help/teams/q-a)  
