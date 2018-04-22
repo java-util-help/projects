@@ -1,38 +1,38 @@
 ## BookStore
-
+---
 Proje fikri: [@btnerylmz](https://github.com/btnerylmz)  
-
+---
 - Projenin 11 class'tan oluşturulması tavsiye edilir.
 	Bunlar;  
 
-	&nbsp;&nbsp;&nbsp;&nbsp; **1)** Section (Abstract)  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **a)** Sci-Fi
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **b)** Fantastic
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **c)** Philosophy
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **b)** Literature  
-
-	&nbsp;&nbsp;&nbsp;&nbsp; **2)** Employee (Abstract)  
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **a)** Staff
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **b)**	SuperVisor
-
-	&nbsp;&nbsp;&nbsp;&nbsp; **4)** BookStore  
-	&nbsp;&nbsp;&nbsp;&nbsp; **5)** BookStoreTest  
-	&nbsp;&nbsp;&nbsp;&nbsp; **6)** Kitap
+ * **Section (Abstract)**  
+ 	*  **Sci-Fi**
+ 	*  **Fantastic**
+ 	*  **Philosophy**
+ 	*  **Literature**  
+ * **Employee (Abstract)**
+	* **Staff**
+	* **SuperVisor**
+ * **BookStore**  
+ * **BookStoreTest**  
+ * **Book**
 
 
 - BookStore uygulamasının aşağıdaki gibi olması istenmektedir.  
 
 	**Section class'ı**; bölümün adını,kitap sayısı, bölüm çalışanlarını vb. içermelidir. *Abstract class* biçiminde yazılmalıdır.
 
-	**Section subclass'ları**nda; her subclass'ta farklı türde bir indirim uygulanması istenmektedir ve her bölümün çalışanı olmalıdır. O bölümden kitap alınacağı zaman *"Merhaba ben Batın. Hangi kitabı almak istersiniz?"* gibi bir mesaj ekrana bastırılmalıdır.
+	**Section subclass'ları** nda; her subclass'ta farklı türde bir indirim uygulanması istenmektedir ve her bölümün çalışanı olmalıdır. O bölümden kitap alınacağı zaman *"Merhaba ben Batın. Hangi kitabı almak istersiniz?"* gibi bir mesaj ekrana bastırılmalıdır.
 
-	**Employee class'ı**nda; çalışanın adı, soyadı, cinsiyeti(enum tipi önerilir), maaşı, haftalık çalıştığı saat ve çalıştığı bölüm bulunmalıdır. *Abstract class* biçiminde yazılmalıdır. Maaşları hesaplama metodu olmalıdır. (Haftalık 40 saati geçen her saat için 1.5 kat ücret alabilirler.)
+	**Employee class'ı** nda; çalışanın adı, soyadı, cinsiyeti(enum tipi önerilir), maaşı, haftalık çalıştığı saat ve çalıştığı bölüm bulunmalıdır. *Abstract class* biçiminde yazılmalıdır. Maaşları hesaplama metodu olmalıdır. (Haftalık 40 saati geçen her saat için 1.5 kat ücret alabilirler.)
 
-	**Employee subclass'ları**nda; çalışanların maaş hesaplamaları farklı olması için *override* ederek method'lar oluşturulmalıdır. (SuperVisor 25 saat üstüne 1.8 kat ücret alabilirler.)
+	**Employee subclass'ları** nda; çalışanların maaş hesaplamaları farklı olması için *override* ederek method'lar oluşturulmalıdır. (SuperVisor 25 saat üstüne 1.8 kat ücret alabilirler.)
 
 	**BookStore class'ı**nda; kitap alma(toptancıdan), kitap satma(müşteriye), kitap görüntüleme, bölüm görüntüleme, çalışan eklememe, çalışan çıkarma, çalışan çıkarma metotları bulunmalıdır.
 
 	**BookStoreTest class'ı**; menü içermelidir.
+
+	**Book class'ı** nda kitabın ismi ve fiyatı olmalıdır.
 
 #### Proje son teslim tarihi:
 
