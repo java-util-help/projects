@@ -1,6 +1,6 @@
 ## Aktif Proje
 
-- Proje 2 : [Bookstore](https://github.com/java-util-help/projects/tree/master/PT2-Bookstore)
+- Proje 2 : [Bookstore](PT2-Bookstore)
 
 ## Tamamlanan Projeler
 
