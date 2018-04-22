@@ -20,7 +20,7 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 
 - BookStore uygulamasının aşağıdaki gibi olması istenmektedir.  
 
-	**Section class'ı**; bölümün adını,kitap sayısı, bölüm çalışanlarını vb. içermelidir. *Abstract class* biçiminde yazılmalıdır.
+	**Section class'ı**; bölümün kitap sayısı, bölüm çalışanlarını vb. içermelidir. *Abstract class* biçiminde yazılmalıdır.
 
 	**Section subclass'ları**nda; her subclass'ta farklı türde bir indirim uygulanması istenmektedir ve her bölümün çalışanı olmalıdır. O bölümden kitap alınacağı zaman *"Merhaba ben Batın. Hangi kitabı almak istersiniz?"* gibi bir mesaj ekrana bastırılmalıdır.
 
