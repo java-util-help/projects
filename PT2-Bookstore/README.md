@@ -6,16 +6,21 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 	Bunlar;  
 
 	&nbsp;&nbsp;&nbsp;&nbsp; **1)** Section(Abstract)
+
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **a)** Sci-Fi
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **b)** Fantastic
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **c)** Philosophy
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **b)** Literature
+
 	&nbsp;&nbsp;&nbsp;&nbsp; **2)** Employee(Abstract)
+
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **a)** Staff
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **b)**	SuperVisor
+
 	&nbsp;&nbsp;&nbsp;&nbsp; **4)** BookStore
 	&nbsp;&nbsp;&nbsp;&nbsp; **5)** BookStoreTest
 	&nbsp;&nbsp;&nbsp;&nbsp; **6)** Kitap
+
 
 - BookStore uygulamasının aşağıdaki gibi olması istenmektedir.  
 
