@@ -2,7 +2,7 @@
 
 Proje fikri: [@btnerylmz](https://github.com/btnerylmz)  
 
-- Projenin 4 class'tan oluşturulması tavsiye edilir. 
+- Projenin 4 class'tan oluşturulması tavsiye edilir.
 	Bunlar;  
 	&nbsp;&nbsp;&nbsp;&nbsp; **1)** Customer  
 	&nbsp;&nbsp;&nbsp;&nbsp; **2)** Room  
@@ -10,9 +10,9 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 	&nbsp;&nbsp;&nbsp;&nbsp; **4)** HotelTest
 
 - Hotel uygulamasının aşağıdaki gibi olması istenmektedir.  
-	
+
 	**Customer class**'ı; müşterinin adını soyadını, yaşını, mesleğini vb. içermelidir.
-	
+
 	**Room class'ı**; odanın tipini, özelliklerini ve fiyatını içermelidir. Fiyata kalacak olan müşteriye göre indirim uygulanabilir olmalıdır (12 yaş altına %50 indirim). Oda tipleri ekonomik, normal ve kral dairesi şeklinde ayrılabilir.  
 
 	**Hotel class'ı**nda; müşteri girişi alınmalıdır (yarım pansiyon, tam pansiyon, her şey dahil, sadece oda, vb.). Kalacak kişi sayısı kullanıcıdan alınıp ona göre oda ayarlayıp fiyatlandırma yapılacak.  
@@ -21,8 +21,8 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 
 	**HotelTest class'ı**nda ise müşteriler oluşturulmalı, kayıtları yapılmalı, odaya içecek ve tost söylenmelidir. Ardından Hotelden çıkışları alınarak toplam ücret ekrana basılmalıdır.
 
-#### Proje son teslim tarihi: 
+#### Proje son teslim tarihi:
 
-*Projenin süresi 1 haftadır. **18 Mayıs** tarihine kadar bu klasör altına **IsimSoyisim** şeklinde alt-klasör oluşturarak yüklemeniz beklenmektedir.*
+*Projenin süresi 1 haftadır. **18 Nisan** tarihine kadar bu klasör altına **IsimSoyisim** şeklinde alt-klasör oluşturarak yüklemeniz beklenmektedir.*
 
 > İsteğe bağlı olarak, hazırlamış olduğunuz proje hakkında kısa bir rapor oluşturabilirsiniz.
