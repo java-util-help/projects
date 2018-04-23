@@ -24,9 +24,9 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 
 	**Section subclass'ları**nda; her subclass'ta farklı türde bir indirim uygulanması istenmektedir ve her bölümün çalışanı olmalıdır. O bölümden kitap alınacağı zaman *"Merhaba ben Batın. Hangi kitabı almak istersiniz?"* gibi bir mesaj ekrana bastırılmalıdır.
 
-	**Employee class'ı**nda; çalışanın adı, soyadı, cinsiyeti(enum tipi önerilir), maaşı, haftalık çalıştığı saat ve çalıştığı bölüm bulunmalıdır. *Abstract class* biçiminde yazılmalıdır. Maaşları hesaplama metodu olmalıdır. (Haftalık 40 saati geçen çalışanlar her saat için 1.5 kat ücret alabilirler.)
+	**Employee class'ı**nda; çalışanın adı, soyadı, cinsiyeti(enum tipi önerilir), saatlik maaşı, haftalık çalıştığı saat ve çalıştığı bölüm bulunmalıdır. *Abstract class* biçiminde yazılmalıdır. Maaşları hesaplama metodu olmalıdır. (Haftalık 40 saati geçen çalışanlar her saat için 1.5 kat ücret alabilirler.)
 
-	**Employee subclass'ları**nda; çalışanların maaş hesaplamaları farklı olması için *override* ederek method'lar oluşturulmalıdır. (SuperVisor 25 saat üstüne 1.8 kat ücret alabilir.)
+	**Employee subclass'ları**nda; çalışanların maaş hesaplamaları farklı olması için *override* ederek method'lar oluşturulmalıdır. (Belli bir maaş sabit maaşı olur üstüne diğer çalısanlar gibi saatlik maaş alır.)
 
 	**BookStore class'ı**nda; Mağaza ismi olmalıdır. Kitap alma(toptancıdan), kitap satma(müşteriye), kitap görüntüleme, bölüm görüntüleme, çalışan ekleme, çalışan çıkarma, çalışan görüntüleme metotları bulunmalıdır.
 
