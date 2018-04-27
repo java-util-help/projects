@@ -136,17 +136,18 @@ public class BookStore {
 				case "2":
 				case "3":
 				case "4":
-					sections.get((Integer.parseInt(menuOption))-1).sellABook((numberTemp = takeBookNumber()));
-					System.out.print("\n(->) \"" + sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp).getTitle().toUpperCase() + " by "  +"\" has been sold.");
-					scan.nextLine(); // to ignore the "residual enter issue"
-					scan.nextLine();
-					/*scan.nextLine();
-					String nameTemp = sections.get((Integer.parseInt(menuOption))-1).getBookTitle(takeBookNumber());
-					sections.get((Integer.parseInt(menuOption))-1).sellABook(takeBookNumber());
-					scan.nextLine(); // to ignore the "residual enter issue"
-					System.out.println("(->) nameTemp has been sold.");
-					//scan.nextLine();
-					//clear();*/
+					numberTemp = takeBookNumber();
+					if(numberTemp < sections.get((Integer.parseInt(menuOption))-1).getBooksNumber()) {
+						sections.get((Integer.parseInt(menuOption))-1).sellABook(numberTemp);
+						System.out.print("\n(->) \"" + sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp).getTitle().toUpperCase() + " by " + sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp).getAuthor() + "\" has been sold.");
+						scan.nextLine(); // to ignore the "residual enter issue"
+						scan.nextLine();
+					}
+					else {
+						System.out.print("\n(!) The Book is not founded.");
+						scan.nextLine(); // to ignore the "residual enter issue"
+						scan.nextLine();
+					}
 					break;
 				case "9":
 					flag = false;
@@ -182,7 +183,7 @@ public class BookStore {
 		System.out.println();
 		System.out.print("# The Number of The Book: "); number = scan.nextInt();
 
-		return number;
+		return (number-1);
 	}
 
 	// clear

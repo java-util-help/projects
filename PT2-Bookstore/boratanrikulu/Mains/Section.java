@@ -38,10 +38,10 @@ public abstract class Section {
 		return this.name;
 	}
 	public Book getBook(int count) {
-		return books.get(count-1);
+		return books.get(count);
 	}
 	public String getBookTitle(int count) {
-		return books.get(count-1).getTitle();
+		return books.get(count).getTitle();
 	}
 	public int getBooksNumber() {
 		return books.size();
@@ -61,7 +61,7 @@ public abstract class Section {
 		this.books.add(book);
 	}
 	public void sellABook(int count) {
-		this.books.remove(count-1);
+		this.books.remove(count);
 	}
 
 	// toString
