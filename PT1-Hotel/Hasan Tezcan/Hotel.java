@@ -7,13 +7,13 @@ public class Hotel {
     private String Name;
     private int roomNumber;
     private int hotelStar;
-    Room[] rooms;
+    Room[] roomsAray;
     //These are keep the people count..
     int eco2=0;
-    int eco3=0;
+    
     int eco4=0;
     int nrml2=0;
-    int nrml3=0;
+    
     int nrml4=0;
     int kingS=0;
     
@@ -24,6 +24,11 @@ public class Hotel {
         this.hotelStar = hotelStar;
         createRoom();
         
+        
+    }
+    
+    
+    public Hotel(){
         
     }
 
@@ -53,59 +58,50 @@ public class Hotel {
 
     
     public void createRoom(){
+        roomsAray = new Room[roomNumber];
+        int ratio = roomNumber*(20/100);
         
-        int ratio = roomNumber*(10/100);
-        
-        rooms = new Room[roomNumber];
-        int stringCount=0;
-        for (; stringCount < ratio+stringCount; stringCount++){
-            rooms[stringCount]  = new Room(Room.roomSelect.economic2,"10"+stringCount);
+       int stringCount=0;
+       
+        for (; stringCount < ratio; stringCount++){
+            roomsAray[stringCount]  = new Room(Room.roomSelect.economic2,"10"+stringCount);
             eco2++;
         }
         
-        for (; stringCount < (ratio+(stringCount*1)) ; stringCount++) {
-            rooms[stringCount] = new Room(Room.roomSelect.economic3,"10"+stringCount);
-            eco3++;
-         }
-        
-        for (; stringCount < (ratio+(stringCount*2)) ; stringCount++) {
-            rooms[stringCount] = new Room(Room.roomSelect.economic4,"10"+stringCount);
+        for (; stringCount < (ratio*3) ; stringCount++) {
+            roomsAray[stringCount] = new Room(Room.roomSelect.economic4,"10"+stringCount);
             eco4++;
          }
         
-        for (; stringCount < (ratio+(stringCount*3)) ; stringCount++) {
-            rooms[stringCount] = new Room(Room.roomSelect.normal2,"10"+stringCount);
+        for (; stringCount < (ratio*4) ; stringCount++) {
+            roomsAray[stringCount] = new Room(Room.roomSelect.normal2,"10"+stringCount);
             nrml2++;
          }
         
-        for (; stringCount < (ratio+(stringCount*4)) ; stringCount++) {
-            rooms[stringCount] = new Room(Room.roomSelect.normal3,"10"+stringCount);
-            nrml3++;
-         }
-        
-        for (; stringCount < (ratio+(stringCount*5)) ; stringCount++) {
-            rooms[stringCount] = new Room(Room.roomSelect.normal4,"10"+stringCount);
+        for (; stringCount < (ratio*6) ; stringCount++) {
+            roomsAray[stringCount] = new Room(Room.roomSelect.normal4,"10"+stringCount);
             nrml4++;
          }
         
-        for (; stringCount < (ratio+(stringCount*6)) ; stringCount++) {
-            rooms[stringCount] = new Room(Room.roomSelect.kingSuit,"10"+stringCount);
+        for (; stringCount < (ratio*7) ; stringCount++) {
+            roomsAray[stringCount] = new Room(Room.roomSelect.kingSuit,"10"+stringCount);
             kingS++;
          }
         
         System.out.println("The rooms are ready.");
+        System.out.println("##################");
          
     }
     
     
     public void displayHotelInfo(){
-        
+        System.out.print("\n------------------------------");
         System.out.println("Hotel Name ="+Name);
         System.out.println("Room Number ="+roomNumber);
         System.out.println("Hotel Star ="+hotelStar);
         
-        for (int i = 0; i < rooms.length; i++) {
-            System.out.println(rooms[i]);
+        for (int i = 0; i < 20; i++) {
+            roomsAray[i].Display();
         }
         
     }
@@ -151,6 +147,8 @@ public class Hotel {
         System.out.println("4-icludeEverything");
 
         String g = scan.next();
+        
+        
         
         
 
