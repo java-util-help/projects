@@ -98,6 +98,9 @@ public class BookStore {
 				case "4":
 					sections.get((Integer.parseInt(menuOption))-1).addABook(takeBookInfo());
 					scan.nextLine(); // to ignore the "residual enter issue"
+					System.out.print("\n(->) " + sections.get((Integer.parseInt(menuOption)-1)).getBookTitle(sections.get((Integer.parseInt(menuOption)-1)).getBooksNumber()));
+					System.out.print(" has been added.");
+					scan.nextLine();
 					clear();
 					break;
 				case "9":
@@ -126,15 +129,24 @@ public class BookStore {
 			System.out.println("#");
 			System.out.println("# 9) Return to Upper Menu");
 			System.out.print("\n\t Menu Option: "); String menuOption = scan.nextLine();
+			int numberTemp;
 
 			switch(menuOption) {
 				case "1":
 				case "2":
 				case "3":
 				case "4":
+					sections.get((Integer.parseInt(menuOption))-1).sellABook((numberTemp = takeBookNumber()));
+					System.out.print("\n(->) \"" + sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp).getTitle().toUpperCase() + " by "  +"\" has been sold.");
+					scan.nextLine(); // to ignore the "residual enter issue"
+					scan.nextLine();
+					/*scan.nextLine();
+					String nameTemp = sections.get((Integer.parseInt(menuOption))-1).getBookTitle(takeBookNumber());
 					sections.get((Integer.parseInt(menuOption))-1).sellABook(takeBookNumber());
 					scan.nextLine(); // to ignore the "residual enter issue"
-					clear();
+					System.out.println("(->) nameTemp has been sold.");
+					//scan.nextLine();
+					//clear();*/
 					break;
 				case "9":
 					flag = false;
@@ -155,10 +167,10 @@ public class BookStore {
 		int price;
 
 		System.out.println();
-		System.out.println("# Title of The Book: "); title = scan.nextLine();
-		System.out.println("# Author of The Book: "); author = scan.nextLine();
-		System.out.println("# Publish Date of The Book: "); publishDate = scan.nextLine();
-		System.out.println("# Price of The Book: "); price = scan.nextInt();
+		System.out.print("# Title of The Book: "); title = scan.nextLine();
+		System.out.print("# Author of The Book: "); author = scan.nextLine();
+		System.out.print("# Publish Date of The Book: "); publishDate = scan.nextLine();
+		System.out.print("# Price of The Book: "); price = scan.nextInt();
 
 		Book book = new Book(title, author, publishDate, price);
 		return book;
@@ -168,7 +180,7 @@ public class BookStore {
 		int number;
 
 		System.out.println();
-		System.out.println("# The Number of The Book: "); number = scan.nextInt();
+		System.out.print("# The Number of The Book: "); number = scan.nextInt();
 
 		return number;
 	}

@@ -37,6 +37,15 @@ public abstract class Section {
 	public String getName() {
 		return this.name;
 	}
+	public Book getBook(int count) {
+		return books.get(count-1);
+	}
+	public String getBookTitle(int count) {
+		return books.get(count-1).getTitle();
+	}
+	public int getBooksNumber() {
+		return books.size();
+	}
 	public ArrayList<Book> getBooks() {
 		return this.books;
 	}
