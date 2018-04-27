@@ -138,8 +138,9 @@ public class BookStore {
 				case "4":
 					numberTemp = takeBookNumber();
 					if(numberTemp < sections.get((Integer.parseInt(menuOption))-1).getBooksNumber()) {
+						Book deletedBook = sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp);
 						sections.get((Integer.parseInt(menuOption))-1).sellABook(numberTemp);
-						System.out.print("\n(->) \"" + sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp).getTitle().toUpperCase() + " by " + sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp).getAuthor() + "\" has been sold.");
+						System.out.println(deletedBook.getTitle());
 						scan.nextLine(); // to ignore the "residual enter issue"
 						scan.nextLine();
 					}
@@ -196,6 +197,5 @@ public class BookStore {
 	public String getName() {
 		return this.name;
 	}
-
 	
 }

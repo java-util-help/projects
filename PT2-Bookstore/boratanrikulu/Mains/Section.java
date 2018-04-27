@@ -41,7 +41,10 @@ public abstract class Section {
 		return books.get(count);
 	}
 	public String getBookTitle(int count) {
-		return books.get(count).getTitle();
+		return getBook(count).getTitle();
+	}
+	public String getBookAuthor(int count) {
+		return getBook(count).getAuthor();
 	}
 	public int getBooksNumber() {
 		return books.size();
