@@ -80,12 +80,14 @@ public class Menu {
 					bookstore.addABook();
 					break;
 				case "2":
-					bookstore.sellABook();
 					clear();
+					bookstore.sellABook();
 					break;
 				case "3":
 					clear();
 					bookstore.showAllBooks();
+					System.out.print("\n(->) Push enter to return Main Menu.");
+					scan.nextLine();
 					break;
 				case "9":
 					flag = false;

@@ -57,9 +57,10 @@ public abstract class Section {
 
 	// toString
 	public void showTheBooks() {
+		int counter = 0;
 		System.out.println("# " + this.name.toUpperCase() + " >");
 		for(Book temp : books) {
-			System.out.println("#    " + temp.toString());
+			System.out.println("#   " + (++counter) + ") " + temp.toString());
 		}
 	}
 }

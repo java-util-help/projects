@@ -13,6 +13,7 @@ public class BookStore {
 	private ArrayList<Section> sections;
 	private static Employee employeeTemp;
 	private final Scanner scan;
+
 	// constructor
 	public BookStore(String name) {
 		if(name.equals(""))
@@ -62,16 +63,15 @@ public class BookStore {
 
 	// methods
 	public void showAllBooks() {
+		int counter = 0;
+
 		System.out.println("##########################################################################");
 		for(Section temp : this.sections) {
-			System.out.println("#");
+			System.out.println("# ");
 			temp.showTheBooks();
 		}
 		System.out.println("#");
 		System.out.println("##########################################################################");
-
-		System.out.print("\n(->) Push enter to return Main Menu.");
-		scan.nextLine();
 	}
 
 	public void addABook() {
@@ -93,23 +93,11 @@ public class BookStore {
 
 			switch(menuOption) {
 				case "1":
-					takeInfoOfBook();
-
-					clear();
-					break;
 				case "2":
-					takeInfoOfBook();
-
-					clear();
-					break;
 				case "3":
-					takeInfoOfBook();
-
-					clear();
-					break;
 				case "4":
-					takeInfoOfBook();
-
+					sections.get((Integer.parseInt(menuOption))-1).addABook(takeBookInfo());
+					scan.nextLine(); // to ignore the "residual enter issue"
 					clear();
 					break;
 				case "9":
@@ -121,10 +109,46 @@ public class BookStore {
 					break;
 			}
 		}
-		
 	}
 
 	public void sellABook() {
+		boolean flag = true;
+
+		while(flag) {
+			clear();
+			int counter = 0;
+			showAllBooks();
+			System.out.println("\n# Which Section to Sell A Book ?");
+			System.out.println("#");
+			for(Section temp : this.sections) {
+				System.out.println("# "+(++counter)+") " + temp.getName());
+			}
+			System.out.println("#");
+			System.out.println("# 9) Return to Upper Menu");
+			System.out.print("\n\t Menu Option: "); String menuOption = scan.nextLine();
+
+			switch(menuOption) {
+				case "1":
+				case "2":
+				case "3":
+				case "4":
+					sections.get((Integer.parseInt(menuOption))-1).sellABook(takeBookNumber());
+					scan.nextLine(); // to ignore the "residual enter issue"
+					clear();
+					break;
+				case "9":
+					flag = false;
+					break;
+				default:
+					System.out.print("\n(!) Select appropriate menu options.");
+					scan.nextLine();
+					break;
+			}
+		}
+	}
+
+	// sub-methods
+	private Book takeBookInfo() {
 		String title;
 		String author;
 		String publishDate;
@@ -135,11 +159,18 @@ public class BookStore {
 		System.out.println("# Author of The Book: "); author = scan.nextLine();
 		System.out.println("# Publish Date of The Book: "); publishDate = scan.nextLine();
 		System.out.println("# Price of The Book: "); price = scan.nextInt();
+
+		Book book = new Book(title, author, publishDate, price);
+		return book;
 	}
 
-	// sub-methods
-	private void takeInfoOfBook() {
-		
+	private int takeBookNumber() {
+		int number;
+
+		System.out.println();
+		System.out.println("# The Number of The Book: "); number = scan.nextInt();
+
+		return number;
 	}
 
 	// clear
