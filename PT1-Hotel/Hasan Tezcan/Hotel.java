@@ -20,7 +20,7 @@ public class Hotel {
     
     public Hotel(String Name, int roomNumber, int hotelStar){
         this.Name = Name;
-        this.roomNumber = roomNumber;
+        this.roomNumber = 20;
         this.hotelStar = hotelStar;
         createRoom();
         
@@ -59,31 +59,31 @@ public class Hotel {
     
     public void createRoom(){
         roomsAray = new Room[roomNumber];
-        int ratio = roomNumber*(20/100);
+        double preratio = 0.2;
+       double ratio = (double)roomNumber * preratio;
         
-       int stringCount=0;
-       
+       int stringCount = 0;
         for (; stringCount < ratio; stringCount++){
             roomsAray[stringCount]  = new Room(Room.roomSelect.economic2,"10"+stringCount);
             eco2++;
         }
         
-        for (; stringCount < (ratio*3) ; stringCount++) {
+        for (; stringCount < (ratio*2) ; stringCount++) {
             roomsAray[stringCount] = new Room(Room.roomSelect.economic4,"10"+stringCount);
             eco4++;
          }
         
-        for (; stringCount < (ratio*4) ; stringCount++) {
-            roomsAray[stringCount] = new Room(Room.roomSelect.normal2,"10"+stringCount);
+        for (; stringCount < (ratio*3) ; stringCount++) {
+           roomsAray[stringCount] = new Room(Room.roomSelect.normal2,"10"+stringCount);
             nrml2++;
          }
         
-        for (; stringCount < (ratio*6) ; stringCount++) {
-            roomsAray[stringCount] = new Room(Room.roomSelect.normal4,"10"+stringCount);
+        for (; stringCount < (ratio*4) ; stringCount++) {
+           roomsAray[stringCount] = new Room(Room.roomSelect.normal4,"10"+stringCount);
             nrml4++;
          }
         
-        for (; stringCount < (ratio*7) ; stringCount++) {
+        for (; stringCount < (ratio*5) ; stringCount++) {
             roomsAray[stringCount] = new Room(Room.roomSelect.kingSuit,"10"+stringCount);
             kingS++;
          }
@@ -100,8 +100,8 @@ public class Hotel {
         System.out.println("Room Number ="+roomNumber);
         System.out.println("Hotel Star ="+hotelStar);
         
-        for (int i = 0; i < 20; i++) {
-            roomsAray[i].Display();
+        for (int counter=0; counter < 20; counter++) {
+            roomsAray[counter].Display();
         }
         
     }
