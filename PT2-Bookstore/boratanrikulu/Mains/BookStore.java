@@ -140,12 +140,12 @@ public class BookStore {
 					if(numberTemp < sections.get((Integer.parseInt(menuOption))-1).getBooksNumber()) {
 						Book deletedBook = sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp);
 						sections.get((Integer.parseInt(menuOption))-1).sellABook(numberTemp);
-						System.out.println(deletedBook.getTitle());
+						System.out.print("\n(->) \"" + deletedBook.getTitle().toUpperCase() + " by " + deletedBook.getAuthor() + "\" has been deleted."  );
 						scan.nextLine(); // to ignore the "residual enter issue"
 						scan.nextLine();
 					}
 					else {
-						System.out.print("\n(!) The Book is not founded.");
+						System.out.print("\n(!) The Book is not found.");
 						scan.nextLine(); // to ignore the "residual enter issue"
 						scan.nextLine();
 					}
