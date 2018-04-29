@@ -119,13 +119,18 @@ public class Menu {
 
 			switch(menuOption) {
 				case "1":
+					bookstore.hireAEmployee();
 					clear();
 					break;
 				case "2":
+					bookstore.fireAEmployee();
 					clear();
 					break;
 				case "3":
 					clear();
+					bookstore.showAllEmployees();
+					System.out.print("\n(->) Push enter to return Upper Menu.");
+					scan.nextLine();
 					break;
 				case "9":
 					flag = false;

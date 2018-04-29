@@ -62,8 +62,8 @@ public abstract class Employee {
 	public Gender getGender() {
 		return gender;
 	}
-	public int getWeeklyHours() {
-		return weeklyHours;
+	public int getSalary() {
+		return weeklyHours*hourlySalary*4;
 	}
 
 	// toString

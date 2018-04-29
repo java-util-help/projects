@@ -14,8 +14,9 @@ public class BookStore {
 	private final String name;
 	private final Scanner scan;
 	private final double wholeSalerPercent;
-	private static double moneyCase;
-	private static Employee employeeTemp;
+	private double moneyCase;
+	private Employee employeeTemp;
+	private Employee employeeSuperVisor;
 
 	// constructor
 	public BookStore(String name,double moneyCase, double wholeSalerPercent) {
@@ -34,6 +35,7 @@ public class BookStore {
 		// Creates Default Section Objects
 		sections = new ArrayList<Section>();
 
+		employeeSuperVisor = new SuperVisor("Lagertha", Employee.Gender.F, 35, 10);
 		createHistorySection(); // sections[0]
 		createMythologySection(); // sections[1]
 		createPoemSection(); // sections[2]
@@ -83,6 +85,21 @@ public class BookStore {
 		System.out.println("##########################################################################");
 	}
 
+	public void showAllEmployees() {
+		int counter = 0;
+
+		System.out.println("##########################################################################");
+		System.out.println("#");
+		System.out.println("# The SuperVisor of The BookStore >");
+		System.out.println("#   - " + employeeSuperVisor.toString());
+		for(Section temp : this.sections) {
+			System.out.println("# ");
+			temp.showTheEmployees();
+		}
+		System.out.println("#");
+		System.out.println("##########################################################################");
+	}
+
 	public void addABook() {
 		boolean flag = true;
 
@@ -117,6 +134,38 @@ public class BookStore {
 					System.out.print("\n\n(->) Push enter to return Upper Menu.");
 					scan.nextLine();
 					clear();
+					break;
+				case "9":
+					flag = false;
+					break;
+				default:
+					System.out.print("\n(!) Select appropriate menu options.");
+					scan.nextLine();
+					break;
+			}
+		}
+	}
+
+	public void hireAEmployee() {
+		boolean flag = true;
+
+		while(flag) {
+			clear();
+			System.out.println("##########################################################################");
+			System.out.println("# Which Type Employee to Hire ?                                          #");
+			System.out.println("#");
+			System.out.println("# 1) SuperVisor");
+			System.out.println("# 2) Staff");
+			System.out.println("#");
+			System.out.println("# 9) Return to Upper Menu                                                #");
+			System.out.println("##########################################################################");
+			System.out.print("\t Menu Option: "); String menuOption = scan.nextLine();
+			switch(menuOption) {
+				case "1":
+					hireASuperVisor();
+					break;
+				case "2":
+					hireAStaff();
 					break;
 				case "9":
 					flag = false;
@@ -189,8 +238,70 @@ public class BookStore {
 		}
 	}
 
+	public void fireAEmployee() {
+
+	}
+
 	// sub-methods
+	private void hireAStaff() {
+		clear();
+
+		boolean flag = true;
+		int counter = 0;
+		while(flag) {
+			clear();
+
+			System.out.println("##########################################################################");
+			System.out.println("# Which Section to Hire A Staff ?                                         #");
+			System.out.println("#");
+			for(Section temp : this.sections) {
+				System.out.println("# "+(++counter)+") " + temp.getName());
+			}
+			System.out.println("#");
+			System.out.println("# 9) Return to Upper Menu                                                #");
+			System.out.println("##########################################################################");
+			System.out.print("\t Menu Option: "); String menuOption2 = scan.nextLine();
+
+			switch(menuOption2) {
+				case "1":
+				case "2":
+				case "3":
+				case "4":
+					Employee newStaff = takeEmployeeInfo(1);
+					sections.get((Integer.parseInt(menuOption2))-1).hireAEmployee(newStaff);
+					scan.nextLine(); // to ignore the "residual enter issue"
+					System.out.print("\n(->) \"" + newStaff.getName().toUpperCase() + "\" ");
+					System.out.print(" has been hired.");
+						
+					System.out.print("\n\n(->) Push enter to return Upper Menu.");
+					scan.nextLine();
+					clear();
+					break;
+				case "9":
+					flag = false;
+					break;
+				default:
+					System.out.print("\n(!) Select appropriate menu options.");
+					scan.nextLine();
+					break;
+			}
+		}
+	}
+
+	private void hireASuperVisor() {
+		Employee newSuperVisor = takeEmployeeInfo(0);
+		this.employeeSuperVisor = newSuperVisor;
+		scan.nextLine(); // to ignore the "residual enter issue"
+		System.out.print("\n(->) \"" + newSuperVisor.getName().toUpperCase() + "\" ");
+		System.out.print("has been hired.");
+			
+		System.out.print("\n\n(->) Push enter to return Upper Menu.");
+		scan.nextLine();
+		clear();
+	}
+
 	private Book takeBookInfo() {
+		Book book;
 		String title;
 		String author;
 		String publishDate;
@@ -202,8 +313,47 @@ public class BookStore {
 		System.out.print("# Publish Date of The Book: "); publishDate = scan.nextLine();
 		System.out.print("# Price of The Book: "); price = scan.nextInt();
 
-		Book book = new Book(title, author, publishDate, price);
+		book = new Book(title, author, publishDate, price);
 		return book;
+	}
+
+	private Employee takeEmployeeInfo(int type) {
+		String name = "";
+		Employee.Gender gender = Employee.Gender.F;
+		int genderTemp = 0;
+		int weeklyHours = 0;
+		int hourlySalary = 0;
+
+		boolean flag = true;
+		while(flag) {
+			flag = false;
+			System.out.println();
+			System.out.print("# Name of The Employee: "); name = scan.nextLine();
+			System.out.print("# Gender of The Employee [Male:0/Female:1]: "); genderTemp = scan.nextInt();
+			switch(genderTemp) {
+				case 0:
+					gender = Employee.Gender.M;
+					break;
+				case 1:
+					gender = Employee.Gender.F;
+					break;
+				default:
+					flag = true;
+					System.out.print("\n(!) Please only select 0 or 1.");
+					scan.nextLine(); // to ignore the "residual enter issue"
+					scan.nextLine();
+					continue;
+			}
+			System.out.print("# Weekly Hours of The Employee: "); weeklyHours = scan.nextInt();
+			System.out.print("# Hourly Salary of The Employee: "); hourlySalary = scan.nextInt();
+						
+			if(type == 0)
+				this.employeeTemp = new SuperVisor(name, gender, weeklyHours, hourlySalary);
+			else if(type == 1)
+				this.employeeTemp = new Staff(name, gender, weeklyHours, hourlySalary);
+		}
+
+		return this.employeeTemp;
 	}
 
 	private int takeBookNumber() {
@@ -227,6 +377,5 @@ public class BookStore {
 	}
 	public double getMoneyCase() {
 		return this.moneyCase;
-	}
-	
+	}	
 }

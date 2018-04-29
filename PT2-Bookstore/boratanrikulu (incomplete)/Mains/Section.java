@@ -54,16 +54,27 @@ public abstract class Section {
 	public void addABook(Book book) {
 		this.books.add(book);
 	}
+	public void hireAEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	public void sellABook(int count) {
 		this.books.remove(count);
 	}
+	public void fireAEmployee(Employee employee) {
+		hireAEmployee(employee);
+	}
 
-	// toString
+	// toStrings
 	public void showTheBooks() {
 		int counter = 0;
 		System.out.println("# " + this.name.toUpperCase() + " >");
 		for(Book temp : books) {
 			System.out.println("#   " + (++counter) + ") " + temp.toString());
 		}
+	}
+
+	public void showTheEmployees() {
+		System.out.println("# The Staff of " + this.name + " Section >");
+		System.out.println("#   - " + employee.toString());
 	}
 }
