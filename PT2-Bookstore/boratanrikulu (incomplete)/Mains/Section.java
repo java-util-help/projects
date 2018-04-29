@@ -40,20 +40,11 @@ public abstract class Section {
 	public Book getBook(int count) {
 		return books.get(count);
 	}
-	public String getBookTitle(int count) {
-		return getBook(count).getTitle();
-	}
-	public String getBookAuthor(int count) {
-		return getBook(count).getAuthor();
-	}
 	public int getBooksNumber() {
-		return books.size();
+		return books.size()-1;
 	}
 	public ArrayList<Book> getBooks() {
 		return this.books;
-	}
-	public int getNumberOfBooks() {
-		return books.size();
 	}
 	public Employee getEmployee() {
 		return this.employee;

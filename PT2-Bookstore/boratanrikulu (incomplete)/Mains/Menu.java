@@ -17,26 +17,27 @@ public class Menu {
 
 	private void startMenu() {
 		scan = new Scanner(System.in);
-		bookstore = new BookStore("Tanrikulu BookStore");
+		bookstore = new BookStore("Tanrikulu BookStore", 1000, 0.7);
 
 		while(true) {
 			clear();
 			String temp = "##########################################################################";
 			System.out.println("##########################################################################");
 			System.out.print("# ");
-			for(int counter=0; counter<((temp.length()-bookstore.getName().length())/2)-1; counter++) {
+			for(int counter=0; counter<((temp.length()-bookstore.getName().length())/2)-2; counter++) {
 				System.out.print(" ");
 			}
-			System.out.print(bookstore.getName());
-			for(int counter=0; counter<((temp.length()-bookstore.getName().length())/2)-1; counter++) {
+			System.out.print("#" + bookstore.getName() + "#");
+			for(int counter=0; counter<((temp.length()-bookstore.getName().length())/2)-2; counter++) {
 				System.out.print(" ");
 			}
 			System.out.print("#\n");
 			System.out.println("# ");
-			System.out.println("# 1) Books");
-			System.out.println("# 2) Employees");
+			System.out.println("# 1) Add or Sell Books");
+			System.out.println("# 2) Manage Employees");
+			
 			System.out.println("# ");
-			System.out.println("# 9) Exit                                                                #");
+			System.out.println("# 9) Terminate The BookStore                     The Money Case: " + bookstore.getMoneyCase() + "$ #");
 			System.out.println("##########################################################################");
 			System.out.print("\t Menu Option: "); String menuOption = scan.nextLine();
 
@@ -86,7 +87,7 @@ public class Menu {
 				case "3":
 					clear();
 					bookstore.showAllBooks();
-					System.out.print("\n(->) Push enter to return Main Menu.");
+					System.out.print("\n(->) Push enter to return Upper Menu.");
 					scan.nextLine();
 					break;
 				case "9":
