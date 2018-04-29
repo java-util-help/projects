@@ -5,3 +5,17 @@ use the following commands to use the program:
 	javac */*.java -d .
 	java bookstore.Menu
 ```
+
+
+### TODO  
+* [x]  Add or Sell Books  
+	* [x] Add A Book  
+	* [x] Sell A Book  
+	* [x] Show All Books  
+
+* [ ] Manage Employess  
+	* [ ] Hire A Employee  
+	* [ ] Fire A Emplyoee  
+	* [ ] Show All Employees  
+
+* [x] The Money Case
