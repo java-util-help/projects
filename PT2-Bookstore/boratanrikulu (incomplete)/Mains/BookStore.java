@@ -9,17 +9,26 @@ import java.util.Scanner;
 
 public class BookStore {
 
-	private final String name;
+	
 	private ArrayList<Section> sections;
-	private static Employee employeeTemp;
+	private final String name;
 	private final Scanner scan;
+	private final double wholeSalerPercent;
+	private static double moneyCase;
+	private static Employee employeeTemp;
 
 	// constructor
-	public BookStore(String name) {
+	public BookStore(String name,double moneyCase, double wholeSalerPercent) {
 		if(name.equals(""))
 			throw new IllegalArgumentException("(!) The Name of The Book Store is not entered.");
+		if(moneyCase < 0)
+			throw new IllegalArgumentException("(!) The Money Case can not be negative.");
+		if(wholeSalerPercent < 0)
+			throw new IllegalArgumentException("(!) Thw Whole Saler Percent can not be negative.");
 
 		this.name = name;
+		this.moneyCase = moneyCase;
+		this.wholeSalerPercent = wholeSalerPercent;
 
 		scan = new Scanner(System.in);
 		// Creates Default Section Objects
@@ -96,10 +105,16 @@ public class BookStore {
 				case "2":
 				case "3":
 				case "4":
-					sections.get((Integer.parseInt(menuOption))-1).addABook(takeBookInfo());
+					Book newBook = takeBookInfo();
+					sections.get((Integer.parseInt(menuOption))-1).addABook(newBook);
 					scan.nextLine(); // to ignore the "residual enter issue"
-					System.out.print("\n(->) " + sections.get((Integer.parseInt(menuOption)-1)).getBookTitle(sections.get((Integer.parseInt(menuOption)-1)).getBooksNumber()));
-					System.out.print(" has been added.");
+					this.moneyCase -= newBook.getPrice() * this.wholeSalerPercent;
+					System.out.print("\n(->) \"" + newBook.getTitle().toUpperCase() + " by ");
+					System.out.print(newBook.getAuthor() + "\" ");
+					System.out.print("has been added.");
+					System.out.print("\n(->) The Money Case: " + getMoneyCase() + "$");
+						
+					System.out.print("\n\n(->) Push enter to return Upper Menu.");
 					scan.nextLine();
 					clear();
 					break;
@@ -120,14 +135,16 @@ public class BookStore {
 		while(flag) {
 			clear();
 			int counter = 0;
-			showAllBooks();
-			System.out.println("\n# Which Section to Sell A Book ?");
+			System.out.println("##########################################################################");
+			System.out.println("# Which Section to Sell A Book ?");
 			System.out.println("#");
 			for(Section temp : this.sections) {
 				System.out.println("# "+(++counter)+") " + temp.getName());
 			}
 			System.out.println("#");
 			System.out.println("# 9) Return to Upper Menu");
+			System.out.println("##########################################################################");
+
 			System.out.print("\n\t Menu Option: "); String menuOption = scan.nextLine();
 			int numberTemp;
 
@@ -136,11 +153,22 @@ public class BookStore {
 				case "2":
 				case "3":
 				case "4":
+					clear();
+					System.out.println("##########################################################################");
+					System.out.println("# ");
+						sections.get((Integer.parseInt(menuOption))-1).showTheBooks();
+					System.out.println("#");
+					System.out.println("##########################################################################");
+
 					numberTemp = takeBookNumber();
-					if(numberTemp < sections.get((Integer.parseInt(menuOption))-1).getBooksNumber()) {
+					if(numberTemp <= sections.get((Integer.parseInt(menuOption))-1).getBooksNumber()) {
 						Book deletedBook = sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp);
 						sections.get((Integer.parseInt(menuOption))-1).sellABook(numberTemp);
-						System.out.print("\n(->) \"" + deletedBook.getTitle().toUpperCase() + " by " + deletedBook.getAuthor() + "\" has been deleted."  );
+						this.moneyCase += deletedBook.getPrice();
+						System.out.print("\n(->) \"" + deletedBook.getTitle().toUpperCase() + " by " + deletedBook.getAuthor() + "\" has been sold."  );
+						System.out.print("\n(->) The Money Case: " + getMoneyCase() + "$");
+						
+						System.out.print("\n\n(->) Push enter to return Upper Menu.");
 						scan.nextLine(); // to ignore the "residual enter issue"
 						scan.nextLine();
 					}
@@ -196,6 +224,9 @@ public class BookStore {
 	// getters
 	public String getName() {
 		return this.name;
+	}
+	public double getMoneyCase() {
+		return this.moneyCase;
 	}
 	
 }
