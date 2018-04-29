@@ -14,8 +14,8 @@ use the following commands to use the program:
 	* [x] Show All Books  
 
 * [ ] Manage Employess  
-	* [ ] Hire A Employee  
+	* [X] Hire A Employee  
 	* [ ] Fire A Emplyoee  
-	* [ ] Show All Employees  
+	* [X] Show All Employees  
 
 * [x] The Money Case
