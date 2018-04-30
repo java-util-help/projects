@@ -9,7 +9,8 @@ public abstract class Employee {
 
 	enum Gender {
 		M("Male"),
-		F("Female");
+		F("Female"),
+		NULL("NULL");
 
 		String gender;
 		Gender(String gender) {
@@ -40,6 +41,13 @@ public abstract class Employee {
 		this.gender = gender;
 		this.weeklyHours = weeklyHours;
 		this.hourlySalary = hourlySalary;
+	}
+
+	public Employee() {
+		this.name = null;
+		this.gender = Gender.NULL;
+		this.weeklyHours = 0;
+		this.hourlySalary = 0;
 	}
 
 	// setters

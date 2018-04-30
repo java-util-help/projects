@@ -239,7 +239,35 @@ public class BookStore {
 	}
 
 	public void fireAEmployee() {
+		boolean flag = true;
 
+		while(flag) {
+			clear();
+			System.out.println("##########################################################################");
+			System.out.println("# Which Type Employee to Fire ?                                          #");
+			System.out.println("#");
+			System.out.println("# 1) SuperVisor");
+			System.out.println("# 2) Staff");
+			System.out.println("#");
+			System.out.println("# 9) Return to Upper Menu                                                #");
+			System.out.println("##########################################################################");
+			System.out.print("\t Menu Option: "); String menuOption = scan.nextLine();
+			switch(menuOption) {
+				case "1":
+					fireASuperVisor();
+					break;
+				case "2":
+					fireAStaff();
+					break;
+				case "9":
+					flag = false;
+					break;
+				default:
+					System.out.print("\n(!) Select appropriate menu options.");
+					scan.nextLine();
+					break;
+			}
+		}
 	}
 
 	// sub-methods
@@ -290,7 +318,7 @@ public class BookStore {
 								break;
 							default:
 								flag = true;
-								System.out.print("\n(!) Please only select Y or N.");
+								System.out.print("\n(!) Please only select Yes(Y) or No(N).");
 								scan.nextLine();
 								continue;
 						}
@@ -348,7 +376,7 @@ public class BookStore {
 						break;
 					default:
 						flag = true;
-						System.out.print("\n(!) Please only select Y or N.");
+						System.out.print("\n(!) Please only select Yes(Y) or No(N).");
 						scan.nextLine();
 						continue;
 				}
@@ -367,6 +395,105 @@ public class BookStore {
 				}
 			}
 		}	
+	}
+	
+	private void fireAStaff() {
+		clear();
+
+		boolean flag = true;
+		while(flag) {
+			clear();
+			int counter = 0;
+
+			System.out.println("##########################################################################");
+			System.out.println("# Which Section to Fire A Staff ?                                        #");
+			System.out.println("#");
+			for(Section temp : this.sections) {
+				System.out.println("# "+(++counter)+") " + temp.getName());
+			}
+			System.out.println("#");
+			System.out.println("# 9) Return to Upper Menu                                                #");
+			System.out.println("##########################################################################");
+			System.out.print("\t Menu Option: "); String menuOption2 = scan.nextLine();
+
+			switch(menuOption2) {
+				case "1":
+				case "2":
+				case "3":
+				case "4":
+					if(!(this.employeeSuperVisor.getName().equals(null))) {
+						System.out.print("\n(!) The " + sections.get((Integer.parseInt(menuOption2))-1).getName().toUpperCase() + " Section can not sell books without a Staff.");
+						System.out.print("\n(->) Are You Sure to Fire The Super Visor [Y/N]? ");
+						
+						String menuOption = scan.nextLine();
+						switch(menuOption.toUpperCase()) {
+							case "Y":
+								Employee firedEmployee;
+								firedEmployee = sections.get((Integer.parseInt(menuOption2))-1).getEmployee();
+								Employee employeeStaffNULL = new Staff();
+								sections.get((Integer.parseInt(menuOption2))-1).setEmployee(employeeStaffNULL);
+								System.out.print("\n(->) \"" + firedEmployee.getName().toUpperCase() + "\" ");
+								System.out.print("has been fired.");
+								scan.nextLine();
+								break;
+							case "N":
+								break;
+							default:
+								flag = true;
+								System.out.print("\n(!) Please only select Yes(Y) or No(N).");
+								scan.nextLine();
+								continue;
+						}
+					}
+					else {
+						System.out.print("\n(!) There is no Staff of " + sections.get((Integer.parseInt(menuOption2))-1).getName().toUpperCase() + " to fire.");
+						scan.nextLine();
+					}
+					break;
+				case "9":
+					flag = false;
+					break;
+				default:
+					System.out.print("\n(!) Select appropriate menu options.");
+					scan.nextLine();
+					break;
+			}
+		}
+	}
+
+	private void fireASuperVisor() {
+		boolean flag = true;
+		
+		while(flag) {
+			flag = false;
+			if(!(this.employeeSuperVisor.getName().equals(null))) {
+				System.out.print("\n(!) The BookStore can not sell books without a Super Visor.");
+				System.out.print("\n(->) Are You Sure to Fire The Super Visor [Y/N]? ");
+				
+				String menuOption = scan.nextLine();
+				switch(menuOption.toUpperCase()) {
+					case "Y":
+						Employee firedEmployee;
+						firedEmployee = this.employeeSuperVisor;
+						this.employeeSuperVisor = new SuperVisor();
+						System.out.print("\n(->) \"" + firedEmployee.getName().toUpperCase() + "\" ");
+						System.out.print("has been fired.");
+						scan.nextLine();
+						break;
+					case "N":
+						break;
+					default:
+						flag = true;
+						System.out.print("\n(!) Please only select Yes(Y) or No(N).");
+						scan.nextLine();
+						continue;
+				}
+			}
+			else {
+				System.out.print("\n(!) There is no Super Visor to fire.");
+				scan.nextLine();
+			}
+		}
 	}
 
 	private Book takeBookInfo() {

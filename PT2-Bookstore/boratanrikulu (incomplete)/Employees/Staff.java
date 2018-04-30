@@ -10,4 +10,9 @@ public class Staff extends Employee {
 	public Staff(String name, Employee.Gender gender, int weeklyHours, int hourlySalary) {
 		super(name, gender, weeklyHours, hourlySalary);
 	}
+
+	public Staff() {
+		// to create a null employee
+		super();
+	}
 }

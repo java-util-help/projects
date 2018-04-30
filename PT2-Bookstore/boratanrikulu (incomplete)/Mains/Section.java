@@ -28,9 +28,6 @@ public abstract class Section {
 		this.books = books;
 	}
 	public void setEmployee(Employee employee) {
-		if(employee.getName().equals(""))
-			throw new IllegalArgumentException("(!) The Employee is not sent.");
-
 		this.employee = employee;
 	}
 	// getters

@@ -10,4 +10,9 @@ public class SuperVisor extends Employee {
 	public SuperVisor(String name, Employee.Gender gender, int weeklyHours, int hourlySalary) {
 		super(name, gender, weeklyHours, hourlySalary);
 	}
+
+	public SuperVisor() {
+		// to create a null employee
+		super();
+	}
 }
