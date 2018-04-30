@@ -202,28 +202,42 @@ public class BookStore {
 				case "2":
 				case "3":
 				case "4":
-					clear();
-					System.out.println("##########################################################################");
-					System.out.println("# ");
-						sections.get((Integer.parseInt(menuOption))-1).showTheBooks();
-					System.out.println("#");
-					System.out.println("##########################################################################");
+					if(!(this.employeeSuperVisor.getName() == null)) {
+						if(!(sections.get((Integer.parseInt(menuOption))-1).getEmployee().getName() == null)) {
+							clear();
+							System.out.println("##########################################################################");
+							System.out.println("# ");
+								sections.get((Integer.parseInt(menuOption))-1).showTheBooks();
+							System.out.println("#");
+							System.out.println("##########################################################################");
 
-					numberTemp = takeBookNumber();
-					if(numberTemp <= sections.get((Integer.parseInt(menuOption))-1).getBooksNumber()) {
-						Book deletedBook = sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp);
-						sections.get((Integer.parseInt(menuOption))-1).sellABook(numberTemp);
-						this.moneyCase += deletedBook.getPrice();
-						System.out.print("\n(->) \"" + deletedBook.getTitle().toUpperCase() + " by " + deletedBook.getAuthor() + "\" has been sold."  );
-						System.out.print("\n(->) The Money Case: " + getMoneyCase() + "$");
-						
-						System.out.print("\n\n(->) Push enter to return Upper Menu.");
-						scan.nextLine(); // to ignore the "residual enter issue"
-						scan.nextLine();
+							numberTemp = takeBookNumber();
+							if(numberTemp <= sections.get((Integer.parseInt(menuOption))-1).getBooksNumber()) {
+								Book deletedBook = sections.get((Integer.parseInt(menuOption))-1).getBook(numberTemp);
+								sections.get((Integer.parseInt(menuOption))-1).sellABook(numberTemp);
+								this.moneyCase += deletedBook.getPrice();
+								System.out.print("\n(->) \"" + deletedBook.getTitle().toUpperCase() + " by " + deletedBook.getAuthor() + "\" has been sold."  );
+								System.out.print("\n(->) The Money Case: " + getMoneyCase() + "$");
+								
+								System.out.print("\n\n(->) Push enter to return Upper Menu.");
+								scan.nextLine(); // to ignore the "residual enter issue"
+								scan.nextLine();
+							}
+							else {
+								System.out.print("\n(!) The Book is not found.");
+								scan.nextLine(); // to ignore the "residual enter issue"
+								scan.nextLine();
+							}
+						}
+						else {
+							System.out.print("\n(!) This " + sections.get((Integer.parseInt(menuOption))-1).getName() + " Section has no staff right now.");
+							System.out.print("\n(!) Please hire a employee to sell book at this section.");
+							scan.nextLine();
+						}
 					}
 					else {
-						System.out.print("\n(!) The Book is not found.");
-						scan.nextLine(); // to ignore the "residual enter issue"
+						System.out.print("\n(!) " + this.name + " has no a Super Visor right now. ");
+						System.out.print("\n(!) Please hire a employee to sell book at BookStore.");
 						scan.nextLine();
 					}
 					break;
@@ -295,7 +309,7 @@ public class BookStore {
 				case "2":
 				case "3":
 				case "4":
-					if(!(this.employeeSuperVisor.getName().equals(null))) {
+					if(!(sections.get((Integer.parseInt(menuOption2))-1).getEmployee().getName() == null)) {
 						System.out.print("\n(!) There is already a Staff of " + sections.get((Integer.parseInt(menuOption2))-1).getName().toUpperCase() + ".");
 						System.out.print(".\n(->) Do You Want to Change The Staff [Y/N]? ");
 						String menuOption3 = scan.nextLine();
