@@ -466,7 +466,7 @@ public class BookStore {
 		
 		while(flag) {
 			flag = false;
-			if(!(this.employeeSuperVisor.getName() == null) {
+			if(!(this.employeeSuperVisor.getName() == null)) {
 				System.out.print("\n(!) The BookStore can not sell books without a Super Visor.");
 				System.out.print("\n(->) Are You Sure to Fire The Super Visor [Y/N]? ");
 				
