@@ -421,7 +421,7 @@ public class BookStore {
 				case "2":
 				case "3":
 				case "4":
-					if(!(this.employeeSuperVisor.getName().equals(null))) {
+					if(!(sections.get((Integer.parseInt(menuOption2))-1).getEmployee().getName() == null)) {
 						System.out.print("\n(!) The " + sections.get((Integer.parseInt(menuOption2))-1).getName().toUpperCase() + " Section can not sell books without a Staff.");
 						System.out.print("\n(->) Are You Sure to Fire The Super Visor [Y/N]? ");
 						
@@ -466,7 +466,7 @@ public class BookStore {
 		
 		while(flag) {
 			flag = false;
-			if(!(this.employeeSuperVisor.getName().equals(null))) {
+			if(!(this.employeeSuperVisor.getName() == null) {
 				System.out.print("\n(!) The BookStore can not sell books without a Super Visor.");
 				System.out.print("\n(->) Are You Sure to Fire The Super Visor [Y/N]? ");
 				
