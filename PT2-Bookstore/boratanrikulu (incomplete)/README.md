@@ -15,7 +15,7 @@ use the following commands to use the program:
 
 * [ ] Manage Employess  
 	* [X] Change/Hire A Employee  
-	* [ ] Fire A Employee  
+	* [X] Fire A Employee  
 	* [X] Show All Employees  
 
 * [x] The Money Case
