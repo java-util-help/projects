@@ -109,7 +109,7 @@ public class Menu {
 			System.out.println("##########################################################################");
 			System.out.println("# Which Option Do You Want to Choose ?                                    #");
 			System.out.println("# ");
-			System.out.println("# 1) Hire A Employee");
+			System.out.println("# 1) Change/Hire A Employee");
 			System.out.println("# 2) Fire A Employee");
 			System.out.println("# 3) Show All Employees");
 			System.out.println("# ");

@@ -247,12 +247,12 @@ public class BookStore {
 		clear();
 
 		boolean flag = true;
-		int counter = 0;
 		while(flag) {
 			clear();
+			int counter = 0;
 
 			System.out.println("##########################################################################");
-			System.out.println("# Which Section to Hire A Staff ?                                         #");
+			System.out.println("# Which Section to Hire A Staff ?                                        #");
 			System.out.println("#");
 			for(Section temp : this.sections) {
 				System.out.println("# "+(++counter)+") " + temp.getName());
@@ -267,15 +267,34 @@ public class BookStore {
 				case "2":
 				case "3":
 				case "4":
-					Employee newStaff = takeEmployeeInfo(1);
-					sections.get((Integer.parseInt(menuOption2))-1).hireAEmployee(newStaff);
-					scan.nextLine(); // to ignore the "residual enter issue"
-					System.out.print("\n(->) \"" + newStaff.getName().toUpperCase() + "\" ");
-					System.out.print(" has been hired.");
+					if(!(this.employeeSuperVisor.getName().equals(null))) {
+						System.out.print("\n(!) There is already a Staff of " + sections.get((Integer.parseInt(menuOption2))-1).getName().toUpperCase() + ".");
+						System.out.print(".\n(->) Do You Want to Change The Staff [Y/N]? ");
+						String menuOption3 = scan.nextLine();
 						
-					System.out.print("\n\n(->) Push enter to return Upper Menu.");
-					scan.nextLine();
-					clear();
+						switch(menuOption3.toUpperCase()) {
+							case "Y":
+								if(takeEmployeeInfo(1)) {
+									Employee newStaff = this.employeeTemp;
+									sections.get((Integer.parseInt(menuOption2))-1).hireAEmployee(newStaff);
+									scan.nextLine(); // to ignore the "residual enter issue"
+									System.out.print("\n(->) \"" + newStaff.getName().toUpperCase() + "\" ");
+									System.out.print(" has been hired.");
+										
+									System.out.print("\n\n(->) Push enter to return Upper Menu.");
+									scan.nextLine();
+									clear();
+								}
+							case "N":
+								clear();
+								break;
+							default:
+								flag = true;
+								System.out.print("\n(!) Please only select Y or N.");
+								scan.nextLine();
+								continue;
+						}
+					}
 					break;
 				case "9":
 					flag = false;
@@ -289,15 +308,40 @@ public class BookStore {
 	}
 
 	private void hireASuperVisor() {
-		Employee newSuperVisor = takeEmployeeInfo(0);
-		this.employeeSuperVisor = newSuperVisor;
-		scan.nextLine(); // to ignore the "residual enter issue"
-		System.out.print("\n(->) \"" + newSuperVisor.getName().toUpperCase() + "\" ");
-		System.out.print("has been hired.");
-			
-		System.out.print("\n\n(->) Push enter to return Upper Menu.");
-		scan.nextLine();
-		clear();
+		boolean flag = true;
+		while(flag) {
+			flag = false;
+			if(!(this.employeeSuperVisor.getName().equals(null))) {
+				System.out.print("\n(!) There is already a Super Visor of " + this.name.toUpperCase() + ".");
+				System.out.print("\n(->) Do You Want to Change The Super Visor [Y/N]? ");
+				String menuOption = scan.nextLine();
+
+				switch(menuOption.toUpperCase()) {
+					case "Y":
+						if(takeEmployeeInfo(0)) {
+							this.employeeSuperVisor = this.employeeTemp;
+							scan.nextLine(); // to ignore the "residual enter issue"
+							System.out.print("\n(->) \"" + this.employeeSuperVisor.getName().toUpperCase() + "\" ");
+							System.out.print("has been hired.");
+
+							System.out.print("\n(->) Push enter to return Upper Menu.");
+							scan.nextLine();
+							clear();
+						}
+						break;
+					case "N":
+						System.out.print("\n(->) Push enter to return Upper Menu.");
+						scan.nextLine();
+						clear();
+						break;
+					default:
+						flag = true;
+						System.out.print("\n(!) Please only select Y or N.");
+						scan.nextLine();
+						continue;
+				}
+			}
+		}	
 	}
 
 	private Book takeBookInfo() {
@@ -317,43 +361,45 @@ public class BookStore {
 		return book;
 	}
 
-	private Employee takeEmployeeInfo(int type) {
+	private boolean takeEmployeeInfo(int type) {
 		String name = "";
 		Employee.Gender gender = Employee.Gender.F;
-		int genderTemp = 0;
 		int weeklyHours = 0;
 		int hourlySalary = 0;
 
 		boolean flag = true;
-		while(flag) {
-			flag = false;
-			System.out.println();
-			System.out.print("# Name of The Employee: "); name = scan.nextLine();
-			System.out.print("# Gender of The Employee [Male:0/Female:1]: "); genderTemp = scan.nextInt();
-			switch(genderTemp) {
-				case 0:
-					gender = Employee.Gender.M;
-					break;
-				case 1:
-					gender = Employee.Gender.F;
-					break;
-				default:
-					flag = true;
-					System.out.print("\n(!) Please only select 0 or 1.");
-					scan.nextLine(); // to ignore the "residual enter issue"
-					scan.nextLine();
-					continue;
-			}
-			System.out.print("# Weekly Hours of The Employee: "); weeklyHours = scan.nextInt();
-			System.out.print("# Hourly Salary of The Employee: "); hourlySalary = scan.nextInt();
-						
-			if(type == 0)
-				this.employeeTemp = new SuperVisor(name, gender, weeklyHours, hourlySalary);
-			else if(type == 1)
-				this.employeeTemp = new Staff(name, gender, weeklyHours, hourlySalary);
+		System.out.println();
+		System.out.print("# Name of The Employee: "); name = scan.nextLine();
+		System.out.print("# Gender of The Employee [M/F]: "); String genderTemp = scan.nextLine();
+		switch(genderTemp.toUpperCase()) {
+			case "M":
+				gender = Employee.Gender.M;
+				System.out.print("# Weekly Hours of The Employee: "); weeklyHours = scan.nextInt();
+				System.out.print("# Hourly Salary of The Employee: "); hourlySalary = scan.nextInt();
+							
+				if(type == 0)
+					this.employeeTemp = new SuperVisor(name, gender, weeklyHours, hourlySalary);
+				else if(type == 1)
+					this.employeeTemp = new Staff(name, gender, weeklyHours, hourlySalary);
+				break;
+			case "F":
+				gender = Employee.Gender.F;
+				System.out.print("# Weekly Hours of The Employee: "); weeklyHours = scan.nextInt();
+				System.out.print("# Hourly Salary of The Employee: "); hourlySalary = scan.nextInt();
+							
+				if(type == 0)
+					this.employeeTemp = new SuperVisor(name, gender, weeklyHours, hourlySalary);
+				else if(type == 1)
+					this.employeeTemp = new Staff(name, gender, weeklyHours, hourlySalary);
+				break;
+			default:
+				flag = false;
+				System.out.print("\n(!) Please only select Male(M) or Female(F).");
+				scan.nextLine();
+				break;
 		}
 
-		return this.employeeTemp;
+		return flag;
 	}
 
 	private int takeBookNumber() {
