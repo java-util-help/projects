@@ -295,6 +295,20 @@ public class BookStore {
 								continue;
 						}
 					}
+
+					else {
+						if(takeEmployeeInfo(1)) {
+							Employee newStaff = this.employeeTemp;
+							sections.get((Integer.parseInt(menuOption2))-1).hireAEmployee(newStaff);
+							scan.nextLine(); // to ignore the "residual enter issue"
+							System.out.print("\n(->) \"" + newStaff.getName().toUpperCase() + "\" ");
+							System.out.print(" has been hired.");
+								
+							System.out.print("\n\n(->) Push enter to return Upper Menu.");
+							scan.nextLine();
+							clear();
+						}
+					}
 					break;
 				case "9":
 					flag = false;
@@ -330,8 +344,6 @@ public class BookStore {
 						}
 						break;
 					case "N":
-						System.out.print("\n(->) Push enter to return Upper Menu.");
-						scan.nextLine();
 						clear();
 						break;
 					default:
@@ -339,6 +351,19 @@ public class BookStore {
 						System.out.print("\n(!) Please only select Y or N.");
 						scan.nextLine();
 						continue;
+				}
+			}
+
+			else {
+				if(takeEmployeeInfo(0)) {
+					this.employeeSuperVisor = this.employeeTemp;
+					scan.nextLine(); // to ignore the "residual enter issue"
+					System.out.print("\n(->) \"" + this.employeeSuperVisor.getName().toUpperCase() + "\" ");
+					System.out.print("has been hired.");
+
+					System.out.print("\n(->) Push enter to return Upper Menu.");
+					scan.nextLine();
+					clear();
 				}
 			}
 		}	
