@@ -65,9 +65,12 @@ public abstract class Section {
 	public void showTheBooks() {
 		int counter = 0;
 		System.out.println("# " + this.name.toUpperCase() + " >");
-		for(Book temp : books) {
-			System.out.println("#   " + (++counter) + ") " + temp.toString());
-		}
+		if(getBooksNumber() >= 0)
+			for(Book temp : books) {
+					System.out.println("#   " + (++counter) + ") " + temp.toString());
+			}
+		else
+			System.out.println("#   THIS SECTION HAS NOT ANY BOOKS.");
 	}
 
 	public void showTheEmployees() {
