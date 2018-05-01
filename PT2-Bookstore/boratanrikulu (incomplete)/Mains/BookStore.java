@@ -203,8 +203,8 @@ public class BookStore {
 				case "2":
 				case "3":
 				case "4":
-					if(sections.get((Integer.parseInt(menuOption))-1).getBooksNumber() >= 0) {
-						if(!(this.employeeSuperVisor.getName() == null)) {
+					if(!(this.employeeSuperVisor.getName() == null)) {
+						if(sections.get((Integer.parseInt(menuOption))-1).getBooksNumber() >= 0) {
 							if(!(sections.get((Integer.parseInt(menuOption))-1).getEmployee().getName() == null)) {
 								clear();
 								System.out.println("##########################################################################");
@@ -239,14 +239,14 @@ public class BookStore {
 							}
 						}
 						else {
-							System.out.print("\n(!) " + this.name + " has not a Super Visor right now. ");
-							System.out.print("\n(!) Please hire a employee to sell book at BookStore.");
+							System.out.print("\n(!) This " + sections.get((Integer.parseInt(menuOption))-1).getName() + " Section has not any book right now.");
+							System.out.print("\n(!) Please add at least one book to sell book at this section.");
 							scan.nextLine();
 						}
 					}
 					else {
-						System.out.print("\n(!) This " + sections.get((Integer.parseInt(menuOption))-1).getName() + " Section has not any book right now.");
-						System.out.print("\n(!) Please add at least one book to sell book at this section.");
+						System.out.print("\n(!) " + this.name + " has not a Super Visor right now. ");
+						System.out.print("\n(!) Please hire a employee to sell book at BookStore.");
 						scan.nextLine();
 					}
 					break;
