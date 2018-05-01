@@ -13,7 +13,7 @@ use the following commands to use the program:
 	* [x] Sell A Book  
 	* [x] Show All Books  
 
-* [ ] Manage Employess  
+* [X] Manage Employess  
 	* [X] Change/Hire A Employee  
 	* [X] Fire A Employee  
 	* [X] Show All Employees  
