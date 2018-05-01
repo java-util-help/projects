@@ -37,7 +37,7 @@ public class Menu {
 			System.out.println("# 2) Manage Employees");
 			
 			System.out.println("# ");
-			System.out.println("# 9) Terminate The BookStore                     The Money Case: " + bookstore.getMoneyCase() + "$ #");
+			System.out.printf("# 9) Terminate The BookStore                  The Money Case: %9.2f$ #\n", bookstore.getMoneyCase());
 			System.out.println("##########################################################################");
 			System.out.print("\t Menu Option: "); String menuOption = scan.nextLine();
 
