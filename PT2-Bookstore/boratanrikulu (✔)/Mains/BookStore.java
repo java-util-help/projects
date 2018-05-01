@@ -463,7 +463,7 @@ public class BookStore {
 				case "4":
 					if(!(sections.get((Integer.parseInt(menuOption2))-1).getEmployee().getName() == null)) {
 						System.out.print("\n(!) The " + sections.get((Integer.parseInt(menuOption2))-1).getName().toUpperCase() + " Section can not sell books without a Staff.");
-						System.out.print("\n(->) Are You Sure to Fire The Super Visor [Y/N]? ");
+						System.out.print("\n(->) Are You Sure to Fire The Staff [Y/N]? ");
 						
 						String menuOption = scan.nextLine();
 						switch(menuOption.toUpperCase()) {
