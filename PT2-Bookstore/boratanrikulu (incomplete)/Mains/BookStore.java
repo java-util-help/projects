@@ -367,7 +367,7 @@ public class BookStore {
 		boolean flag = true;
 		while(flag) {
 			flag = false;
-			if(!(this.employeeSuperVisor.getName().equals(null))) {
+			if(!(this.employeeSuperVisor.getName() == null)) {
 				System.out.print("\n(!) There is already a Super Visor of " + this.name.toUpperCase() + ".");
 				System.out.print("\n(->) Do You Want to Change The Super Visor [Y/N]? ");
 				String menuOption = scan.nextLine();
