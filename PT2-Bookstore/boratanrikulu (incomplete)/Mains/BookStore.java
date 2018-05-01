@@ -91,7 +91,10 @@ public class BookStore {
 		System.out.println("##########################################################################");
 		System.out.println("#");
 		System.out.println("# The SuperVisor of The BookStore >");
-		System.out.println("#   - " + employeeSuperVisor.toString());
+		if(employeeSuperVisor.getName() != null)
+			System.out.println("#   - " + employeeSuperVisor.toString());
+		else
+			System.out.println("#   THIS SECTION HAS NOT A EMPLOYEE.");
 		for(Section temp : this.sections) {
 			System.out.println("# ");
 			temp.showTheEmployees();
@@ -153,7 +156,7 @@ public class BookStore {
 		while(flag) {
 			clear();
 			System.out.println("##########################################################################");
-			System.out.println("# Which Type Employee to Hire ?                                          #");
+			System.out.println("# Which Type Employee to Change/Hire ?                                   #");
 			System.out.println("#");
 			System.out.println("# 1) SuperVisor");
 			System.out.println("# 2) Staff");
@@ -303,7 +306,7 @@ public class BookStore {
 			int counter = 0;
 
 			System.out.println("##########################################################################");
-			System.out.println("# Which Section to Hire A Staff ?                                        #");
+			System.out.println("# Which Section to Change/Hire A Staff ?                                 #");
 			System.out.println("#");
 			for(Section temp : this.sections) {
 				System.out.println("# "+(++counter)+") " + temp.getName());
@@ -327,11 +330,18 @@ public class BookStore {
 							case "Y":
 								if(takeEmployeeInfo(1)) {
 									Employee newStaff = this.employeeTemp;
+									Employee firedEmployee = sections.get((Integer.parseInt(menuOption2))-1).getEmployee();
 									sections.get((Integer.parseInt(menuOption2))-1).hireAEmployee(newStaff);
 									scan.nextLine(); // to ignore the "residual enter issue"
+									
+									System.out.print("\n(->) \"" + firedEmployee.getName().toUpperCase() + "\" ");
+									System.out.print("has been fired.");
+									this.moneyCase -= firedEmployee.getSalary();
+									System.out.printf("\n(->) %.2f$ were paid to the Fired Employee.", (double)firedEmployee.getSalary());
 									System.out.print("\n(->) \"" + newStaff.getName().toUpperCase() + "\" ");
 									System.out.print(" has been hired.");
-										
+									System.out.printf("\n(->) The Money Case: %.2f$", getMoneyCase());
+
 									System.out.print("\n\n(->) Push enter to return Upper Menu.");
 									scan.nextLine();
 									clear();
@@ -384,12 +394,19 @@ public class BookStore {
 				switch(menuOption.toUpperCase()) {
 					case "Y":
 						if(takeEmployeeInfo(0)) {
+							Employee firedEmployee = this.employeeSuperVisor;
 							this.employeeSuperVisor = this.employeeTemp;
 							scan.nextLine(); // to ignore the "residual enter issue"
+
+							System.out.print("\n(->) \"" + firedEmployee.getName().toUpperCase() + "\" ");
+							System.out.print("has been fired.");
+							this.moneyCase -= firedEmployee.getSalary();
+							System.out.printf("\n(->) %.2f$ were paid to the Fired Employee.", (double)firedEmployee.getSalary());
 							System.out.print("\n(->) \"" + this.employeeSuperVisor.getName().toUpperCase() + "\" ");
 							System.out.print("has been hired.");
+							System.out.printf("\n(->) The Money Case: %.2f$", getMoneyCase());
 
-							System.out.print("\n(->) Push enter to return Upper Menu.");
+							System.out.print("\n\n(->) Push enter to return Upper Menu.");
 							scan.nextLine();
 							clear();
 						}
@@ -457,6 +474,12 @@ public class BookStore {
 								sections.get((Integer.parseInt(menuOption2))-1).setEmployee(employeeStaffNULL);
 								System.out.print("\n(->) \"" + firedEmployee.getName().toUpperCase() + "\" ");
 								System.out.print("has been fired.");
+
+								this.moneyCase -= firedEmployee.getSalary();
+								System.out.printf("\n(->) %.2f$ were paid to the Fired Employee.", (double)firedEmployee.getSalary());
+								System.out.printf("\n(->) The Money Case: %.2f$", getMoneyCase());
+								
+								System.out.print("\n\n(->) Push enter to return Upper Menu.");
 								scan.nextLine();
 								break;
 							case "N":
@@ -501,6 +524,12 @@ public class BookStore {
 						this.employeeSuperVisor = new SuperVisor();
 						System.out.print("\n(->) \"" + firedEmployee.getName().toUpperCase() + "\" ");
 						System.out.print("has been fired.");
+						
+						this.moneyCase -= firedEmployee.getSalary();
+						System.out.printf("\n(->) %.2f$ were paid to the Fired Employee.", (double)firedEmployee.getSalary());
+						System.out.printf("\n(->) The Money Case: %.2f$", getMoneyCase());
+						
+						System.out.print("\n\n(->) Push enter to return Upper Menu.");
 						scan.nextLine();
 						break;
 					case "N":

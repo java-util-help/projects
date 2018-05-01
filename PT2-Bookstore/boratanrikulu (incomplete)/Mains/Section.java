@@ -75,6 +75,9 @@ public abstract class Section {
 
 	public void showTheEmployees() {
 		System.out.println("# The Staff of " + this.name + " Section >");
-		System.out.println("#   - " + employee.toString());
+		if(employee.getName() != null)
+			System.out.println("#   - " + employee.toString());
+		else
+			System.out.println("#   THIS SECTION HAS NOT A EMPLOYEE.");
 	}
 }
