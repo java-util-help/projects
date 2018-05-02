@@ -20,6 +20,8 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
 
 	**ResultPage class'ı** sonuç classıdır. Bu classta login'nin veya register'ın başarılı olup olmadığını ekrana bastırılmalıdır.
 
+	**Not**: Data base kullanılmadan tek bir değişken için yapmanız yeterlidir.
+
 #### Proje son teslim tarihi:
 
 *Projenin süresi 4 gündür. **6 Mayıs (23:59)** tarihine kadar bu klasör altına **IsimSoyisim** şeklinde alt-klasör oluşturarak yüklemeniz beklenmektedir. Esinlenmenin olmaması için lütfen en erken **4 Mayıs** tarihinde yükleyiniz.*  
