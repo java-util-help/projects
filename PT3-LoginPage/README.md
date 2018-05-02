@@ -11,7 +11,7 @@ Proje fikri: [@btnerylmz](https://github.com/btnerylmz)
   * Result Page
 
 
-  - BookStore uygulamasının aşağıdaki gibi olması istenmektedir.
+  - Login Page uygulamasının aşağıdaki gibi olması istenmektedir.
 
   * **Welcome Page class'ı** giriş classıdır. Bir hoşgeldin mesajı bulunmalıdır ve *login* ve *register* yazılı 2 buttona sahip olmalıdır.
 
