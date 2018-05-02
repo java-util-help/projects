@@ -28,9 +28,6 @@ public abstract class Section {
 		this.books = books;
 	}
 	public void setEmployee(Employee employee) {
-		if(employee.getName().equals(""))
-			throw new IllegalArgumentException("(!) The Employee is not sent.");
-
 		this.employee = employee;
 	}
 	// getters
@@ -40,17 +37,11 @@ public abstract class Section {
 	public Book getBook(int count) {
 		return books.get(count);
 	}
-	public String getBookTitle(int count) {
-		return books.get(count).getTitle();
-	}
 	public int getBooksNumber() {
-		return books.size();
+		return books.size()-1;
 	}
 	public ArrayList<Book> getBooks() {
 		return this.books;
-	}
-	public int getNumberOfBooks() {
-		return books.size();
 	}
 	public Employee getEmployee() {
 		return this.employee;
@@ -60,16 +51,33 @@ public abstract class Section {
 	public void addABook(Book book) {
 		this.books.add(book);
 	}
+	public void hireAEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	public void sellABook(int count) {
 		this.books.remove(count);
 	}
+	public void fireAEmployee(Employee employee) {
+		hireAEmployee(employee);
+	}
 
-	// toString
+	// toStrings
 	public void showTheBooks() {
 		int counter = 0;
 		System.out.println("# " + this.name.toUpperCase() + " >");
-		for(Book temp : books) {
-			System.out.println("#   " + (++counter) + ") " + temp.toString());
-		}
+		if(getBooksNumber() >= 0)
+			for(Book temp : books) {
+					System.out.println("#   " + (++counter) + ") " + temp.toString());
+			}
+		else
+			System.out.println("#   THIS SECTION HAS NOT ANY BOOKS.");
+	}
+
+	public void showTheEmployees() {
+		System.out.println("# The Staff of " + this.name + " Section >");
+		if(employee.getName() != null)
+			System.out.println("#   - " + employee.toString());
+		else
+			System.out.println("#   THIS SECTION HAS NOT A EMPLOYEE.");
 	}
 }

@@ -9,7 +9,8 @@ public abstract class Employee {
 
 	enum Gender {
 		M("Male"),
-		F("Female");
+		F("Female"),
+		NULL("NULL");
 
 		String gender;
 		Gender(String gender) {
@@ -42,6 +43,13 @@ public abstract class Employee {
 		this.hourlySalary = hourlySalary;
 	}
 
+	public Employee() {
+		this.name = null;
+		this.gender = Gender.NULL;
+		this.weeklyHours = 0;
+		this.hourlySalary = 0;
+	}
+
 	// setters
 	public void setWeeklyHours(int weeklyHours) {
 		if(weeklyHours < 0)
@@ -62,8 +70,8 @@ public abstract class Employee {
 	public Gender getGender() {
 		return gender;
 	}
-	public int getWeeklyHours() {
-		return weeklyHours;
+	public int getSalary() {
+		return weeklyHours*hourlySalary;
 	}
 
 	// toString
