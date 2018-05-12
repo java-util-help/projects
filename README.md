@@ -1,9 +1,10 @@
 ## Aktif Proje
 
-- Proje 3 : [Login Page](PT3-LoginPage)
+- Okul Projesi
 
 ## Tamamlanan Projeler
 
+- Proje 3 : [Login Page](PT3-LoginPage)
 - Proje 2 : [Bookstore](PT2-Bookstore)
 - Proje 1 : [Hotel](PT1-Hotel)  
 
