@@ -1,4 +1,4 @@
-## Let's Go to Cinema
+## Let's Go to The Cinema
 
 Proje fikri : **Pamukkale Üniversitesi CENG - 2017**
 
