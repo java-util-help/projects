@@ -1,50 +1,63 @@
 ## CineJAVA
 
-Proje fikri : **Pamukkale Üniversitesi CENG - 2017**
+Proje fikri: **Pamukkale University CENG - 2017**
+
+<p align="center"> 
+  <img src="img/logo.jpg">
+</p>
+
+---
 
 Proje genel olarak sinemaya bilet almak isteyen kullanıcıların aşama aşama bilet almasını sağlamalıdır. Günümüzdeki sinema bileti alma uygulamaları gibi işlem görmelidir.
 
-- Sistemde *iki tür* kullanıcı bulunmaktadır
+Sistemde *iki tür* kullanıcı bulunmaktadır.
 
-* **Kullanıcılar:**
-  * **Adminler**
-  * **Müşteriler (Üyeler)**
+**Kullanıcılar:**  
+  |  
+  |___ **Admin'ler**  
+  |  
+  |___ **Müşteriler**  
 
-- Her kullanıcı sisteme kullanıcı adı ve şifre ile giriş yapacak.
-  - Kullanıcılar sisteme üye olabilmeliler. Aynı zamanda admin tarafından da sisteme dahil edilebilrler.
-- Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin paneline bu özellik eklenebilir.
+**->** Her kullanıcı sisteme kullanıcı adı ve şifre ile giriş yapmalıdır.  
+**->** Kullanıcılar sisteme üye olabilmelidir. Aynı zamanda admin tarafından da sisteme dahil edilebilirler.  
+**->** Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin paneline bu özellik eklenebilir.  
 
-- Her grubun **rolleri aşağıdaki** gibidir:
+Her grubun **rolleri aşağıdaki** gibidir:
 
-#### Admin :
+---
 
- Admin salon ekleyebilir ve salondaki sıra sayısı, her sıradaki koltuk sayısı gibi bilgilerini girebilir.
-  *(Salon oluşturma mantığının nesneye yönelik düşünülmesi tavsiye edilmektedir)*
+* **Admin:**
 
- Admin film ekleyebilir ve bu flimle ilgili *prodüksiyon yılı, oyuncular, dil, yönetmen, çıkış tarihi, 2 boyutlu - 3 boyutlu, poster vs. gibi bilgileri girebilir.* (*Fragman eklemek* **bonus** olarak sayılacaktır)
+	Admin salon ekleyebilir ve salondaki sıra sayısı, her sıradaki koltuk sayısı gibi bilgilerini girebilir.
+	*(Salon oluşturma mantığının nesneye yönelik düşünülmesi tavsiye edilmektedir)*
 
- Admin salonlara film ve gösterim zamanı atama işlemi yapabilir.
- *Satılan* ve *boş* olan koltuklar **farklı renklerde** görünmelidir.
+	Admin film ekleyebilir ve bu flimle ilgili *prodüksiyon yılı, oyuncular, dil, yönetmen, çıkış tarihi, 2 boyutlu - 3 boyutlu, poster vs. gibi bilgileri girebilir.* (*Fragman eklemek* **bonus** olarak sayılacaktır)
 
- Salon, film ve gösterim zamanları **güncellenebilir** olmalıdır.
+	Admin salonlara film ve gösterim zamanı atama işlemi yapabilir.
+	*Satılan* ve *boş* olan koltuklar **farklı renklerde** görünmelidir.
 
-#### Müşteri :
+	Salon, film ve gösterim zamanları **güncellenebilir** olmalıdır.
 
- Kullanıcı sisteme kullanıcı adını ve şifresini kullanarak girebilir.
+---
 
- Kullanıcı salon ve koltuk bilgilerini, **film bilgilerini** *(poster vs.)*, filmin gösterim saatlerini **görebilir**.
+* **Müşteri:**
 
- Kullanıcı istediği gösterim saatinde istediği salondaki koltuklar için bilet satın alma işlemlerini yapabilir. *(önceden satılmamışsa)*
+	Kullanıcı sisteme kullanıcı adını ve şifresini kullanarak girebilir.
 
- Müşteriler almış olduğu bileti **iptal** edebilirler.**(Film gösteriminden 2 gün önceye kadar para iadesi yapılırken; Film gösterimine 2 günden az kalması takdirinde para iadesi yapılmaz.)**
+	Kullanıcı salon ve koltuk bilgilerini, **film bilgilerini** *(poster vs.)*, filmin gösterim saatlerini **görebilir**.
 
- Kullanıcı **istediği kriterlere** göre(yönetmen, oyuncu, film adı, salon adı, gösterim saati vs.) **film arama** işlemi yapabilir.
+	Kullanıcı istediği gösterim saatinde istediği salondaki koltuklar için bilet satın alma işlemlerini yapabilir. *(önceden satılmamışsa)*
 
- 3 boyutlu filmler için **3-D gözlük** istenip istenmediği sorulmalıdır. İsteniyorsa bilet tutarına ek olarak **3-D gözlük kiralama ücreti** eklenmelidir.
+	Müşteriler almış olduğu bileti **iptal** edebilirler.**(Film gösteriminden 2 gün önceye kadar para iadesi yapılırken; Film gösterimine 2 günden az kalması takdirinde para iadesi yapılmaz.)**
 
- Bilet satış veya rezervazyonundan sonra işleme ait tüm bilgiler ekranda listelenir.**(İşlem Özeti)**
+	Kullanıcı **istediği kriterlere** göre(yönetmen, oyuncu, film adı, salon adı, gösterim saati vs.) **film arama** işlemi yapabilir.
 
-![New Line Cinema Photo](READMEimages/logo2.jpg)
+	3 boyutlu filmler için **3-D gözlük** istenip istenmediği sorulmalıdır. İsteniyorsa bilet tutarına ek olarak **3-D gözlük kiralama ücreti** eklenmelidir.
+
+	Bilet satış veya rezervazyonundan sonra işleme ait tüm bilgiler ekranda listelenir.**(İşlem Özeti)**
+
+---
+
 
 #### Proje son teslim tarihi:
 
