@@ -1,5 +1,4 @@
-## Cinema
-![1](logo.jpg)
+## CineJAVA
 
 Proje fikri : **Pamukkale Üniversitesi CENG - 2017**
 
@@ -45,7 +44,7 @@ Proje genel olarak sinemaya bilet almak isteyen kullanıcıların aşama aşama 
 
  Bilet satış veya rezervazyonundan sonra işleme ait tüm bilgiler ekranda listelenir.**(İşlem Özeti)**
 
-![1](logo2.jpg)
+![New Line Cinema Photo](READMEimages/logo2.jpg)
 
 #### Proje son teslim tarihi:
 
