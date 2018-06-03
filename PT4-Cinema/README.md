@@ -3,7 +3,7 @@
 Proje fikri: **Pamukkale University CENG - 2017**
 
 <p align="center">
-  <img src="img/logo.jpg">
+  <img src="img/javaUtilHelp.png">
 </p>
 
 ---
