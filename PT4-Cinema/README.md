@@ -3,12 +3,15 @@
 Proje fikri: **Pamukkale University CENG - 2017**
 
 <p align="center"> 
-  <img src="img/logo.png">
+  <img src="img/logo.jpg">
 </p>
+
+---
 
 Proje genel olarak sinemaya bilet almak isteyen kullanıcıların aşama aşama bilet almasını sağlamalıdır. Günümüzdeki sinema bileti alma uygulamaları gibi işlem görmelidir.
 
-Sistemde *iki tür* kullanıcı bulunmaktadır.  
+Sistemde *iki tür* kullanıcı bulunmaktadır.
+
 **Kullanıcılar:**
   * **Adminler**
   * **Müşteriler (Üyeler)**
@@ -17,7 +20,9 @@ Her kullanıcı sisteme kullanıcı adı ve şifre ile giriş yapmalıdır.
 Kullanıcılar sisteme üye olabilidir. Aynı zamanda admin tarafından da sisteme dahil edilebilirler.  
 Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin paneline bu özellik eklenebilir.  
 
-- Her grubun **rolleri aşağıdaki** gibidir:
+Her grubun **rolleri aşağıdaki** gibidir:
+
+---
 
 * **Admin:**
 
@@ -30,6 +35,8 @@ Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin panel
 	*Satılan* ve *boş* olan koltuklar **farklı renklerde** görünmelidir.
 
 	Salon, film ve gösterim zamanları **güncellenebilir** olmalıdır.
+
+---
 
 * **Müşteri:**
 
@@ -46,6 +53,8 @@ Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin panel
 	3 boyutlu filmler için **3-D gözlük** istenip istenmediği sorulmalıdır. İsteniyorsa bilet tutarına ek olarak **3-D gözlük kiralama ücreti** eklenmelidir.
 
 	Bilet satış veya rezervazyonundan sonra işleme ait tüm bilgiler ekranda listelenir.**(İşlem Özeti)**
+
+---
 
 
 #### Proje son teslim tarihi:
