@@ -1,6 +1,6 @@
 ## Aktif Proje
 
-- Okul Projesi
+- Proje 4 : [Cinema](PT4-LetsGoToTheCinema)
 
 ## Tamamlanan Projeler
 
