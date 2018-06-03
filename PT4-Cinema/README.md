@@ -21,20 +21,31 @@ Proje genel olarak sinemaya bilet almak isteyen kullanıcıların aşama aşama 
 
  Admin salon ekleyebilir ve salondaki sıra sayısı, her sıradaki koltuk sayısı gibi bilgilerini girebilir.
   *(Salon oluşturma mantığının nesneye yönelik düşünülmesi tavsiye edilmektedir)*
+
  Admin film ekleyebilir ve bu flimle ilgili *prodüksiyon yılı, oyuncular, dil, yönetmen, çıkış tarihi, 2 boyutlu - 3 boyutlu, poster vs. gibi bilgileri girebilir.* (*Fragman eklemek* **bonus** olarak sayılacaktır)
+
  Admin salonlara film ve gösterim zamanı atama işlemi yapabilir.
  *Satılan* ve *boş* olan koltuklar **farklı renklerde** görünmelidir.
+
  Salon, film ve gösterim zamanları **güncellenebilir** olmalıdır.
 
 #### Müşteri :
 
  Kullanıcı sisteme kullanıcı adını ve şifresini kullanarak girebilir.
+
  Kullanıcı salon ve koltuk bilgilerini, **film bilgilerini** *(poster vs.)*, filmin gösterim saatlerini **görebilir**.
+
  Kullanıcı istediği gösterim saatinde istediği salondaki koltuklar için bilet satın alma işlemlerini yapabilir. *(önceden satılmamışsa)*
+
  Müşteriler almış olduğu bileti **iptal** edebilirler.**(Film gösteriminden 2 gün önceye kadar para iadesi yapılırken; Film gösterimine 2 günden az kalması takdirinde para iadesi yapılmaz.)**
+
  Kullanıcı **istediği kriterlere** göre(yönetmen, oyuncu, film adı, salon adı, gösterim saati vs.) **film arama** işlemi yapabilir.
+
  3 boyutlu filmler için **3-D gözlük** istenip istenmediği sorulmalıdır. İsteniyorsa bilet tutarına ek olarak **3-D gözlük kiralama ücreti** eklenmelidir.
+
  Bilet satış veya rezervazyonundan sonra işleme ait tüm bilgiler ekranda listelenir.**(İşlem Özeti)**
+
+![1](logo2.jpg)
 
 #### Proje son teslim tarihi:
 
