@@ -16,9 +16,9 @@ Sistemde *iki tür* kullanıcı bulunmaktadır.
   * **Adminler**
   * **Müşteriler (Üyeler)**
 
-Her kullanıcı sisteme kullanıcı adı ve şifre ile giriş yapmalıdır.  
-Kullanıcılar sisteme üye olabilidir. Aynı zamanda admin tarafından da sisteme dahil edilebilirler.  
-Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin paneline bu özellik eklenebilir.  
+-> Her kullanıcı sisteme kullanıcı adı ve şifre ile giriş yapmalıdır.  
+-> Kullanıcılar sisteme üye olabilmelidir. Aynı zamanda admin tarafından da sisteme dahil edilebilirler.  
+-> Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin paneline bu özellik eklenebilir.  
 
 Her grubun **rolleri aşağıdaki** gibidir:
 
