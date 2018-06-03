@@ -2,7 +2,7 @@
 
 Proje fikri: **Pamukkale University CENG - 2017**
 
-<p align="center"> 
+<p align="center">
   <img src="img/logo.jpg">
 </p>
 
@@ -12,15 +12,13 @@ Proje genel olarak sinemaya bilet almak isteyen kullanıcıların aşama aşama 
 
 Sistemde *iki tür* kullanıcı bulunmaktadır.
 
-**Kullanıcılar:**  
-  |  
-  |___ **Admin'ler**  
-  |  
-  |___ **Müşteriler**  
+* **Kullanıcılar:**  
+  * **Admin'ler**  
+  * **Müşteriler**  
 
-**->** Her kullanıcı sisteme kullanıcı adı ve şifre ile giriş yapmalıdır.  
-**->** Kullanıcılar sisteme üye olabilmelidir. Aynı zamanda admin tarafından da sisteme dahil edilebilirler.  
-**->** Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin paneline bu özellik eklenebilir.  
+**>** Her kullanıcı sisteme kullanıcı adı ve şifre ile giriş yapmalıdır.  
+**>** Kullanıcılar sisteme üye olabilmelidir. Aynı zamanda admin tarafından da sisteme dahil edilebilirler.  
+**>** Adminler için bir kayıt ekranı zorunluluğu yok. Opsiyonel olarak admin paneline bu özellik eklenebilir.  
 
 Her grubun **rolleri aşağıdaki** gibidir:
 
