@@ -1,6 +1,8 @@
-## Let's Go to The Cinema
+## Cinema
 
 Proje fikri : **Pamukkale Üniversitesi CENG - 2017**
+
+Proje genel olarak sinemaya bilet almak isteyen kullanıcıların aşama aşama bilet almasını sağlamalıdır. Günümüzdeki sinema bileti alma uygulamaları gibi işlem görmelidir.
 
 - Sistemde *iki tür* kullanıcı bulunmaktadır
 
