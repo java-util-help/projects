@@ -5,12 +5,56 @@
 
 package cinema.Frames;
 
+import cinema.Objects.Customer;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLDataException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 public class SignOut extends javax.swing.JFrame {
 
 	private int xMouse;
 	private int yMouse;
-	public SignOut() {
+	private PreparedStatement preparedStatement;
+	private Connection connection;
+	
+	public SignOut(Connection connection) {
 		initComponents();
+		
+		this.connection = connection;
+	}
+	
+	private void signOut(Customer customer, java.awt.event.ActionEvent evt) {
+		String query = "insert into customers (name, surname, email, password, birthdate) values (?, ?, ?, ?, ?)";
+		
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setString(1, customer.getName());
+			preparedStatement.setString(2, customer.getSurname());
+			preparedStatement.setString(3, customer.getEmail());
+			preparedStatement.setString(4, customer.getPassword());
+			preparedStatement.setString(5, customer.getBirthdate());
+			
+			preparedStatement.executeUpdate();
+			
+			JOptionPane.showMessageDialog(this, "SignOut is successful.\nYou will be directed to the SignIn page.");
+			this.dispose();
+			signInButtonActionPerformed(evt);
+		} catch(SQLIntegrityConstraintViolationException ex) {
+			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(this, "SignOut is failed.\nThis email is already registered.");
+		} catch(SQLDataException ex) {
+			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(this, "SignOut is failed.\nSome formats are not acceptable.\nIt might be due to birthday date.\nMake an entry like 1984-01-01.");
+		} catch (SQLException ex) {
+			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(this, "SignOut is failed.");
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -78,6 +122,11 @@ public class SignOut extends javax.swing.JFrame {
 
         signOutButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         signOutButton.setText("Sign Out");
+        signOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signOutButtonActionPerformed(evt);
+            }
+        });
 
         nameArea.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
 
@@ -224,12 +273,28 @@ public class SignOut extends javax.swing.JFrame {
     }//GEN-LAST:event_mainPanelMousePressed
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
-		LoginPage loginPage = new LoginPage();
+		SignIn loginPage = new SignIn();
 		
 		loginPage.setLocation(this.getLocation());
 		this.dispose();
 		loginPage.setVisible(true);	
     }//GEN-LAST:event_signInButtonActionPerformed
+
+    private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
+		String name = this.nameArea.getText();
+		String surname = this.surnameArea.getText();
+		String email = this.emailArea.getText();
+		String password = new String(this.passwordArea.getText());
+		String birthdate = this.birthdateArea.getText();
+		
+		if(email.equals("") || password.equals("")){
+			JOptionPane.showMessageDialog(this, "Please fill out all information."); // shows an error if informations is not completed.
+		}
+		else {
+			Customer customer = new Customer(name, surname, email, password, birthdate);
+			signOut(customer, evt);
+		}
+    }//GEN-LAST:event_signOutButtonActionPerformed
 
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -251,11 +316,11 @@ public class SignOut extends javax.swing.JFrame {
 		}
 		//</editor-fold>
 
-		java.awt.EventQueue.invokeLater(new Runnable() {
+		/*java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new SignOut().setVisible(true);
+				// new SignOut().setVisible(true);
 			}
-		});
+		});*/
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

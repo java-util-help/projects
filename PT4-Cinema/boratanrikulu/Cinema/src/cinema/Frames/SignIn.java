@@ -10,26 +10,27 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class LoginPage extends javax.swing.JFrame {
+public class SignIn extends javax.swing.JFrame {
 
 	private int xMouse;
 	private int yMouse;
-	
 	private int customerID;
 	private DatabaseConnector connector;
 	private Connection connection;
 	private PreparedStatement preparedStatement;
 	
-	public LoginPage() {
+	public SignIn() {
 		initComponents();
 		
 		this.connector = new DatabaseConnector(); // makes a connection to the database
 		this.connection = connector.getConnection(); // gets the connection from the DatabaseConnector
 	}
 	
-	private boolean login(String email, String password) {
+	private void signIn(String email, String password) {
 		String query = "SELECT * FROM customers WHERE email = ? AND password = ?";
 		
 		try {
@@ -41,12 +42,17 @@ public class LoginPage extends javax.swing.JFrame {
 			ResultSet resultSet  = preparedStatement.executeQuery();
 			if(resultSet.next()) {
 				this.customerID = resultSet.getInt("id");
-				return true;
+				
+				System.out.println("SignIn is successful.");
+				JOptionPane.showMessageDialog(this, "SignIn is successful.");	
 			}
-			return false;
+			else {
+				System.out.println("Email or Password is invalid.");
+				JOptionPane.showMessageDialog(this, "Email or Password is invalid.");
+			}
 		} catch (SQLException ex) {
-			System.out.println("[TRY-CATCH] Error. (signInButton)");
-			return false;
+			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(this, "SignIn is failed.");
 		}
 	}
 
@@ -246,16 +252,7 @@ public class LoginPage extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(this, "Please fill out all information."); // shows an error if informations is not completed.
 		}
 		else {
-			if(login(email, password)) {
-				System.out.println("SignIn is successful.");
-				JOptionPane.showMessageDialog(this, "SignIn is successful.");
-				
-				
-			}
-			else {
-				System.out.println("Email or Password is invalid.");
-				JOptionPane.showMessageDialog(this, "Email or Password is invalid.");
-			}
+			signIn(email, password);
 		}
     }//GEN-LAST:event_signInButtonActionPerformed
 
@@ -268,7 +265,7 @@ public class LoginPage extends javax.swing.JFrame {
     }//GEN-LAST:event_emailAreaActionPerformed
 
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
-		SignOut signOut = new SignOut();
+		SignOut signOut = new SignOut(this.connection);
 		
 		signOut.setLocation(this.getLocation());
 		this.dispose();
@@ -285,19 +282,20 @@ public class LoginPage extends javax.swing.JFrame {
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
+		//</editor-fold>
 		//</editor-fold>
 
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new LoginPage().setVisible(true);
+				new SignIn().setVisible(true);
 			}
 		});
 	}

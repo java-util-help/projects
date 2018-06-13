@@ -15,13 +15,12 @@ public class Customer {
 	private String address;
 
 	/* constructor */
-	public Customer(String name, String surname, String email, String password, String birthdate, String address) {
+	public Customer(String name, String surname, String email, String password, String birthdate) {
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.password = password;
 		this.birthdate = birthdate;
-		this.address = address;
 	}
 	
 	/* getters */
