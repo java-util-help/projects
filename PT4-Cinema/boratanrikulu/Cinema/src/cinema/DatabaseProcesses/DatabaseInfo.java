@@ -8,7 +8,7 @@ package cinema.DatabaseProcesses;
 public class DatabaseInfo {
 
 	private static final String username = "root";
-	private static final String password = "password'";
+	private static final String password = "password";
 	private static final String name = "cinema";
 	private static final String host = "localhost";
 	private static final int port = 3306;
