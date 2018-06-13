@@ -261,15 +261,15 @@ public class SignUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mainPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainPanelMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
+		int x = evt.getXOnScreen();
+		int y = evt.getYOnScreen();
 
-        this.setLocation(x - xMouse, y - yMouse);
+		this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_mainPanelMouseDragged
 
     private void mainPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainPanelMousePressed
-        this.xMouse = evt.getX();
-        this.yMouse = evt.getY() + 30; // 30 is for the top panel of the system.
+		this.xMouse = evt.getX();
+		this.yMouse = evt.getY() + 30; // 30 is for the top panel of the system.
     }//GEN-LAST:event_mainPanelMousePressed
 
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
