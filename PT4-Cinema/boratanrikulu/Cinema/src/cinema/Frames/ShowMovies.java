@@ -6,6 +6,11 @@
 package cinema.Frames;
 
 import cinema.Objects.Movie;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +18,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 public class ShowMovies extends javax.swing.JFrame {
@@ -43,6 +51,9 @@ public class ShowMovies extends javax.swing.JFrame {
 			
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
+			if(!movies.isEmpty()) {
+				movies.clear(); // clears all movies from the arraylist to make a new start.
+			}
 			while(resultSet.next()) {
 				Movie movie = new Movie(resultSet.getInt("id"), resultSet.getString("title"),
 						resultSet.getString("genre"), resultSet.getDouble("rate"), resultSet.getString("date"),
@@ -119,6 +130,11 @@ public class ShowMovies extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        movieTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                movieTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(movieTable);
         if (movieTable.getColumnModel().getColumnCount() > 0) {
             movieTable.getColumnModel().getColumn(0).setMinWidth(0);
@@ -143,11 +159,14 @@ public class ShowMovies extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(imageLabel)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(imageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -228,6 +247,27 @@ public class ShowMovies extends javax.swing.JFrame {
 		this.dispose();
 		signIn.setVisible(true);
     }//GEN-LAST:event_signOutButtonActionPerformed
+
+    private void movieTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_movieTableMouseClicked
+		int id = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
+		
+		System.out.println(id);
+		for(Movie movie : movies) {
+			if(movie.getID() == id) {
+				try {
+					URL url = new URL(movie.getUrlPoster());
+					BufferedImage img = ImageIO.read(url);
+					Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
+					ImageIcon imageIcon = new ImageIcon(dimg);
+					imageLabel.setIcon(imageIcon);
+				} catch (MalformedURLException ex) {
+					Logger.getLogger(ShowMovies.class.getName()).log(Level.SEVERE, null, ex);
+				} catch (IOException ex) {
+					Logger.getLogger(ShowMovies.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+		}
+    }//GEN-LAST:event_movieTableMouseClicked
 
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

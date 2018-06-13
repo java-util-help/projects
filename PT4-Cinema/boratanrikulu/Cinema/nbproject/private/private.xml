@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/Frames/SignOut.java</file>
-            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/Objects/Customer.java</file>
-            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/DatabaseProcesses/DatabaseInfo.java</file>
-            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/Frames/LoginPage.java</file>
-            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/DatabaseProcesses/DatabaseConnector.java</file>
+            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/Objects/Movie.java</file>
+            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/Frames/SignIn.java</file>
+            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/Frames/SignUp.java</file>
+            <file>file:/home/fsutil/Documents/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/Frames/ShowMovies.java</file>
         </group>
     </open-files>
 </project-private>
