@@ -44,7 +44,10 @@ public class SignIn extends javax.swing.JFrame {
 				this.customerID = resultSet.getInt("id");
 				
 				System.out.println("SignIn is successful.");
-				JOptionPane.showMessageDialog(this, "SignIn is successful.");	
+				ShowMovies showMovies = new ShowMovies(connection);
+				this.dispose();
+				showMovies.setLocation(this.getLocation());
+				showMovies.setVisible(true);
 			}
 			else {
 				System.out.println("Email or Password is invalid.");
@@ -73,7 +76,7 @@ public class SignIn extends javax.swing.JFrame {
         logoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cinema - java.util.help");
+        setTitle("Cinema - SignIn");
         setResizable(false);
 
         mainPanel.setBackground(new java.awt.Color(231, 232, 235));
