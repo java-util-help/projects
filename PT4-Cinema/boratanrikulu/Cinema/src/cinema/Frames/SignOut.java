@@ -226,6 +226,7 @@ public class SignOut extends javax.swing.JFrame {
     private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
 		LoginPage loginPage = new LoginPage();
 		
+		loginPage.setLocation(this.getLocation());
 		this.dispose();
 		loginPage.setVisible(true);	
     }//GEN-LAST:event_signInButtonActionPerformed

@@ -270,6 +270,7 @@ public class LoginPage extends javax.swing.JFrame {
     private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
 		SignOut signOut = new SignOut();
 		
+		signOut.setLocation(this.getLocation());
 		this.dispose();
 		signOut.setVisible(true);
     }//GEN-LAST:event_signOutButtonActionPerformed
