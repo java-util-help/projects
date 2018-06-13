@@ -68,7 +68,7 @@ public class SignIn extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         signInButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        signOutButton = new javax.swing.JButton();
+        signUpButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         logoLabel = new javax.swing.JLabel();
 
@@ -122,10 +122,10 @@ public class SignIn extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(47, 52, 63));
 
-        signOutButton.setText("Sign Out");
-        signOutButton.addActionListener(new java.awt.event.ActionListener() {
+        signUpButton.setText("Sign Up");
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signOutButtonActionPerformed(evt);
+                signUpButtonActionPerformed(evt);
             }
         });
 
@@ -138,18 +138,18 @@ public class SignIn extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(123, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(signOutButton)
-                .addGap(101, 101, 101))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(signUpButton)
+                .addGap(107, 107, 107))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(signOutButton)
+                    .addComponent(signUpButton)
                     .addComponent(jLabel3))
                 .addGap(34, 34, 34))
         );
@@ -264,13 +264,13 @@ public class SignIn extends javax.swing.JFrame {
 		signInButtonActionPerformed(evt);
     }//GEN-LAST:event_emailAreaActionPerformed
 
-    private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
-		SignOut signOut = new SignOut(this.connection);
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
+		SignUp signOut = new SignUp(this.connection);
 		
 		signOut.setLocation(this.getLocation());
 		this.dispose();
 		signOut.setVisible(true);
-    }//GEN-LAST:event_signOutButtonActionPerformed
+    }//GEN-LAST:event_signUpButtonActionPerformed
 
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -292,6 +292,12 @@ public class SignIn extends javax.swing.JFrame {
 		}
 		//</editor-fold>
 		//</editor-fold>
+		//</editor-fold>
+		//</editor-fold>
+		//</editor-fold>
+		//</editor-fold>
+		//</editor-fold>
+		//</editor-fold>
 
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -311,6 +317,6 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPasswordField passwordArea;
     private javax.swing.JButton signInButton;
-    private javax.swing.JButton signOutButton;
+    private javax.swing.JButton signUpButton;
     // End of variables declaration//GEN-END:variables
 }
