@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ShowMovies extends javax.swing.JFrame {
@@ -181,6 +182,11 @@ public class ShowMovies extends javax.swing.JFrame {
 
         showTicketsButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         showTicketsButton.setText("Show Tickets");
+        showTicketsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showTicketsButtonActionPerformed(evt);
+            }
+        });
 
         imageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/logo.png"))); // NOI18N
@@ -290,6 +296,20 @@ public class ShowMovies extends javax.swing.JFrame {
 		
 		searchAMovie(search);
     }//GEN-LAST:event_searchAreaKeyReleased
+
+    private void showTicketsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTicketsButtonActionPerformed
+		if(movieTable.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(this, "Please select a movie.");
+		}
+		else {
+			int id = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
+
+			ShowTickets showTickets = new ShowTickets(this.connection);
+			showTickets.setLocation(this.getLocation());
+			this.dispose();
+			showTickets.setVisible(true);
+		}
+    }//GEN-LAST:event_showTicketsButtonActionPerformed
 
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
