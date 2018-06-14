@@ -48,4 +48,9 @@ public class Movie {
 	public String getUrlPoster() {
 		return urlPoster;
 	}
+	
+	/* toString */
+	public String toString() {
+		return getTitle() + getGenre() + getRate() + getDate() + getTime();
+	}
 }
