@@ -3,9 +3,8 @@
  * If you have any question about the project, you can contact me at http://boratanrikulu.me/contact
  */
 
-package cinema.Frames;
+package cinema.FramesAndObjects;
 
-import cinema.Objects.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLDataException;

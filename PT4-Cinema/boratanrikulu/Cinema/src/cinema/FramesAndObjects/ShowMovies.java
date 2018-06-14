@@ -3,9 +3,8 @@
  * If you have any question about the project, you can contact me at http://boratanrikulu.me/contact
  */
 
-package cinema.Frames;
+package cinema.FramesAndObjects;
 
-import cinema.Objects.Movie;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -112,7 +111,7 @@ public class ShowMovies extends javax.swing.JFrame {
         movieTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         searchArea = new javax.swing.JTextField();
-        showTicketsButton = new javax.swing.JButton();
+        showSeatsButton = new javax.swing.JButton();
         ImagePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
 
@@ -180,11 +179,11 @@ public class ShowMovies extends javax.swing.JFrame {
             }
         });
 
-        showTicketsButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
-        showTicketsButton.setText("Show Tickets");
-        showTicketsButton.addActionListener(new java.awt.event.ActionListener() {
+        showSeatsButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        showSeatsButton.setText("Show Seats");
+        showSeatsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showTicketsButtonActionPerformed(evt);
+                showSeatsButtonActionPerformed(evt);
             }
         });
 
@@ -227,7 +226,7 @@ public class ShowMovies extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(signOutButton)
-                            .addComponent(showTicketsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(showSeatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(40, 40, 40))
         );
         MainPanelLayout.setVerticalGroup(
@@ -245,7 +244,7 @@ public class ShowMovies extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ImagePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
-                .addComponent(showTicketsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(showSeatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -297,19 +296,19 @@ public class ShowMovies extends javax.swing.JFrame {
 		searchAMovie(search);
     }//GEN-LAST:event_searchAreaKeyReleased
 
-    private void showTicketsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showTicketsButtonActionPerformed
+    private void showSeatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSeatsButtonActionPerformed
 		if(movieTable.getSelectedRow() == -1) {
 			JOptionPane.showMessageDialog(this, "Please select a movie.");
 		}
 		else {
 			int id = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
 
-			ShowTickets showTickets = new ShowTickets(this.connection);
+			ShowSeats showTickets = new ShowSeats(this.connection);
 			showTickets.setLocation(this.getLocation());
 			this.dispose();
 			showTickets.setVisible(true);
 		}
-    }//GEN-LAST:event_showTicketsButtonActionPerformed
+    }//GEN-LAST:event_showSeatsButtonActionPerformed
 
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -346,7 +345,7 @@ public class ShowMovies extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable movieTable;
     private javax.swing.JTextField searchArea;
-    private javax.swing.JButton showTicketsButton;
+    private javax.swing.JButton showSeatsButton;
     private javax.swing.JButton signOutButton;
     // End of variables declaration//GEN-END:variables
 }

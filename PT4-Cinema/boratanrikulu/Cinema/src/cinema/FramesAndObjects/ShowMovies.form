@@ -72,7 +72,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="signOutButton" min="-2" max="-2" attributes="0"/>
-                              <Component id="showTicketsButton" alignment="1" min="-2" pref="157" max="-2" attributes="0"/>
+                              <Component id="showSeatsButton" alignment="1" min="-2" pref="157" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -98,7 +98,7 @@
                       <Component id="ImagePanel" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="showTicketsButton" min="-2" pref="68" max="-2" attributes="0"/>
+                  <Component id="showSeatsButton" min="-2" pref="68" max="-2" attributes="0"/>
                   <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -203,15 +203,15 @@
             <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchAreaKeyReleased"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="showTicketsButton">
+        <Component class="javax.swing.JButton" name="showSeatsButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Monospaced" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Show Tickets"/>
+            <Property name="text" type="java.lang.String" value="Show Seats"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showTicketsButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showSeatsButtonActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="ImagePanel">

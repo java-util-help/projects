@@ -3,20 +3,24 @@
  * If you have any question about the project, you can contact me at http://boratanrikulu.me/contact
  */
 
-package cinema.Frames;
+package cinema.FramesAndObjects;
 
+import cinema.FramesAndObjects.ShowMovies;
 import java.sql.Connection;
+import javax.swing.ImageIcon;
 
-public class ShowTickets extends javax.swing.JFrame {
+public class ShowSeats extends javax.swing.JFrame {
 
 	private int xMouse;
 	private int yMouse;
 	private Connection connection;
+	private Seat seats1;
 	
-	public ShowTickets(Connection connection) {
+	public ShowSeats(Connection connection) {
 		initComponents();
 		
 		this.connection = connection;
+		seats1 = new Seat();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -24,8 +28,11 @@ public class ShowTickets extends javax.swing.JFrame {
     private void initComponents() {
 
         MainPanel = new javax.swing.JPanel();
+        backButton = new javax.swing.JButton();
+        seat1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cinema - Select A Seat");
 
         MainPanel.setBackground(new java.awt.Color(231, 232, 235));
         MainPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -39,15 +46,41 @@ public class ShowTickets extends javax.swing.JFrame {
             }
         });
 
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        seat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
+        seat1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seat1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1095, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(40, 40, 40))
+            .addGroup(MainPanelLayout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addComponent(seat1)
+                .addContainerGap(893, Short.MAX_VALUE))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 674, Short.MAX_VALUE)
+            .addGroup(MainPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(backButton)
+                .addGap(61, 61, 61)
+                .addComponent(seat1)
+                .addContainerGap(560, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -78,6 +111,27 @@ public class ShowTickets extends javax.swing.JFrame {
 		this.yMouse = evt.getY() + 30; // 30 is for the top panel of the system.
     }//GEN-LAST:event_MainPanelMousePressed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+		ShowMovies showMovies = new ShowMovies(connection);
+
+		showMovies.setLocation(this.getLocation());
+		this.dispose();
+		showMovies.setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void seat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat1MouseClicked
+		if(seats1.getStatus() == Seat.Status.VACANT) {
+			ImageIcon selectedSeatIcon = new ImageIcon("/home/fsutil/Desktop/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/selected-seat.png");
+			this.seat1.setIcon(selectedSeatIcon);
+			seats1.setStatus(Seat.Status.SELECTED);
+		}
+		else if(seats1.getStatus() == Seat.Status.SELECTED) {
+			ImageIcon vacantSeatIcon = new ImageIcon("/home/fsutil/Desktop/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/vacant-seat.png");
+			this.seat1.setIcon(vacantSeatIcon);
+			seats1.setStatus(Seat.Status.VACANT);
+		}
+    }//GEN-LAST:event_seat1MouseClicked
+
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 		try {
@@ -88,14 +142,20 @@ public class ShowTickets extends javax.swing.JFrame {
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(ShowTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ShowSeats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(ShowTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ShowSeats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(ShowTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ShowSeats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(ShowTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ShowSeats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
+		//</editor-fold>
+
+		/*java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new ShowTickets().setVisible(true);
+			}
 		//</editor-fold>
 
 		/*java.awt.EventQueue.invokeLater(new Runnable() {
@@ -107,5 +167,7 @@ public class ShowTickets extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JButton backButton;
+    private javax.swing.JLabel seat1;
     // End of variables declaration//GEN-END:variables
 }

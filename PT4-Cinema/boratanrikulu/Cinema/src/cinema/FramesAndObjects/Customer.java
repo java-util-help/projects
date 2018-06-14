@@ -3,7 +3,7 @@
  * If you have any question about the project, you can contact me at http://boratanrikulu.me/contact
  */
 
-package cinema.Objects;
+package cinema.FramesAndObjects;
 
 public class Customer {
 
