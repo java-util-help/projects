@@ -7,16 +7,18 @@ package cinema.Objects;
 
 public class Seat {
 
-	enum Status {
+	private enum Status {
 		VACANT(),
 		TAKEN(),
 		SELECTED();
 	}
-	public Status status;
-
+	private Status status;
+	private int number;
+	
 	/* constructor */
-	public Seat() {
+	public Seat(int number) {
 		this.status = Status.VACANT;
+		this.number = number;
 	}
 	
 	/* isIts */
@@ -42,7 +44,7 @@ public class Seat {
 	}
 
 	/* getter */
-	public Status getStatus() {
-		return status;
+	public int getNumber() {
+		return number;
 	}
 }
