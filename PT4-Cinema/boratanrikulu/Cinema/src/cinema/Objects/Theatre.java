@@ -25,6 +25,9 @@ public class Theatre {
 	}
 	
 	/* getter */ 
+	public Seat[] getSeats() {
+		return seats;
+	}
 	public Seat getSeat(int counter) {
 		return seats[counter];
 	}

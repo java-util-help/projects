@@ -31,6 +31,7 @@ public class ShowMovies extends javax.swing.JFrame {
 	private Connection connection;
 	private DefaultTableModel defaultMovieTable;
 	private PreparedStatement preparedStatement;
+	private ImageIcon imageIcon;
 	
 	public ShowMovies(Connection connection) {
 		initComponents();
@@ -81,9 +82,9 @@ public class ShowMovies extends javax.swing.JFrame {
 				try {
 					URL url = new URL(movie.getUrlPoster());
 					BufferedImage img = ImageIO.read(url);
-					Image dimg = img.getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
-					ImageIcon imageIcon = new ImageIcon(dimg);
-					imageLabel.setIcon(imageIcon);
+					Image dimg = img.getScaledInstance(posterLabel.getWidth(), posterLabel.getHeight(), Image.SCALE_SMOOTH);
+					imageIcon = new ImageIcon(dimg);
+					posterLabel.setIcon(imageIcon);
 				} catch (MalformedURLException ex) {
 					Logger.getLogger(ShowMovies.class.getName()).log(Level.SEVERE, null, ex);
 				} catch (IOException ex) {
@@ -113,8 +114,8 @@ public class ShowMovies extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         searchArea = new javax.swing.JTextField();
         showSeatsButton = new javax.swing.JButton();
-        ImagePanel = new javax.swing.JPanel();
-        imageLabel = new javax.swing.JLabel();
+        posterPanel = new javax.swing.JPanel();
+        posterLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cinema - java.util.help");
@@ -188,22 +189,24 @@ public class ShowMovies extends javax.swing.JFrame {
             }
         });
 
-        imageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/logo.png"))); // NOI18N
-        imageLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        posterPanel.setMaximumSize(new java.awt.Dimension(409, 428));
 
-        javax.swing.GroupLayout ImagePanelLayout = new javax.swing.GroupLayout(ImagePanel);
-        ImagePanel.setLayout(ImagePanelLayout);
-        ImagePanelLayout.setHorizontalGroup(
-            ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ImagePanelLayout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(imageLabel)
-                .addContainerGap(108, Short.MAX_VALUE))
+        posterLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        posterLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/logo.png"))); // NOI18N
+        posterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout posterPanelLayout = new javax.swing.GroupLayout(posterPanel);
+        posterPanel.setLayout(posterPanelLayout);
+        posterPanelLayout.setHorizontalGroup(
+            posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(posterPanelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(posterLabel)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
-        ImagePanelLayout.setVerticalGroup(
-            ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+        posterPanelLayout.setVerticalGroup(
+            posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(posterLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
@@ -212,17 +215,16 @@ public class ShowMovies extends javax.swing.JFrame {
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MainPanelLayout.createSequentialGroup()
+                    .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(MainPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(40, 40, 40)
-                        .addComponent(ImagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(26, 26, 26)
+                                .addComponent(searchArea))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(posterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -236,14 +238,14 @@ public class ShowMovies extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(signOutButton)
                 .addGap(40, 40, 40)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(MainPanelLayout.createSequentialGroup()
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ImagePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(posterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(52, 52, 52)
                 .addComponent(showSeatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
@@ -304,7 +306,7 @@ public class ShowMovies extends javax.swing.JFrame {
 		else {
 			int id = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
 
-			ShowSeats showTickets = new ShowSeats(this.connection);
+			ShowSeats showTickets = new ShowSeats(this.connection, imageIcon);
 			showTickets.setLocation(this.getLocation());
 			this.dispose();
 			showTickets.setVisible(true);
@@ -339,12 +341,12 @@ public class ShowMovies extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel ImagePanel;
     private javax.swing.JPanel MainPanel;
-    private javax.swing.JLabel imageLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable movieTable;
+    private javax.swing.JLabel posterLabel;
+    private javax.swing.JPanel posterPanel;
     private javax.swing.JTextField searchArea;
     private javax.swing.JButton showSeatsButton;
     private javax.swing.JButton signOutButton;
