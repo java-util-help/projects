@@ -3,9 +3,10 @@
  * If you have any question about the project, you can contact me at http://boratanrikulu.me/contact
  */
 
-package cinema.FramesAndObjects;
+package cinema.Frames;
 
-import cinema.FramesAndObjects.ShowMovies;
+import cinema.Objects.Seat;
+import cinema.Frames.ShowMovies;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
 
@@ -120,15 +121,15 @@ public class ShowSeats extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void seat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat1MouseClicked
-		if(seats1.getStatus() == Seat.Status.VACANT) {
-			ImageIcon selectedSeatIcon = new ImageIcon("/home/fsutil/Desktop/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/selected-seat.png");
+		if(seats1.isVacant()) {
+			ImageIcon selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
 			this.seat1.setIcon(selectedSeatIcon);
-			seats1.setStatus(Seat.Status.SELECTED);
+			seats1.setStatusSeleted();
 		}
-		else if(seats1.getStatus() == Seat.Status.SELECTED) {
-			ImageIcon vacantSeatIcon = new ImageIcon("/home/fsutil/Desktop/programming/JAVA/java.util.help/projects/PT4-Cinema/boratanrikulu/Cinema/src/cinema/vacant-seat.png");
+		else if(seats1.isSelected()) {
+			ImageIcon vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
 			this.seat1.setIcon(vacantSeatIcon);
-			seats1.setStatus(Seat.Status.VACANT);
+			seats1.setStatusVacant();
 		}
     }//GEN-LAST:event_seat1MouseClicked
 

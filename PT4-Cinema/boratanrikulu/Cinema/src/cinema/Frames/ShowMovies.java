@@ -3,8 +3,9 @@
  * If you have any question about the project, you can contact me at http://boratanrikulu.me/contact
  */
 
-package cinema.FramesAndObjects;
+package cinema.Frames;
 
+import cinema.Objects.Movie;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
