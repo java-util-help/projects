@@ -919,6 +919,11 @@ public class ShowSeats extends javax.swing.JFrame {
 
         buyTicketButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         buyTicketButton.setText("But Ticket");
+        buyTicketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyTicketButtonActionPerformed(evt);
+            }
+        });
 
         selectedSeatsLabel.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         selectedSeatsLabel.setForeground(new java.awt.Color(122, 24, 26));
@@ -979,6 +984,7 @@ public class ShowSeats extends javax.swing.JFrame {
                                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(MainPanelLayout.createSequentialGroup()
+                                        .addGap(13, 13, 13)
                                         .addComponent(vacantImageLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel3)
@@ -1358,6 +1364,10 @@ public class ShowSeats extends javax.swing.JFrame {
 		updateMessage();
     }//GEN-LAST:event_seat59MouseClicked
 	//</editor-fold>
+	
+    private void buyTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyTicketButtonActionPerformed
+		
+    }//GEN-LAST:event_buyTicketButtonActionPerformed
 
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
