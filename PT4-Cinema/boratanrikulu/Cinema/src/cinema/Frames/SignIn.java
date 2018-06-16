@@ -56,6 +56,9 @@ public class SignIn extends javax.swing.JFrame {
 		} catch (SQLException ex) {
 			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
 			JOptionPane.showMessageDialog(this, "SignIn is failed.");
+		} catch(java.lang.NullPointerException ex) {
+			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(this, "Connection is failed.");
 		}
 	}
 

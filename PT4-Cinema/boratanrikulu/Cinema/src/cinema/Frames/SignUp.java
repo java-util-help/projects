@@ -54,6 +54,9 @@ public class SignUp extends javax.swing.JFrame {
 		} catch (SQLException ex) {
 			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
 			JOptionPane.showMessageDialog(this, "SignUp is failed.");
+		} catch(java.lang.NullPointerException ex) {
+			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
+			JOptionPane.showMessageDialog(this, "Connection is failed.");
 		}
 	}
 
