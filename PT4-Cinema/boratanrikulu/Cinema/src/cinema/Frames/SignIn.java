@@ -268,11 +268,11 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_emailAreaActionPerformed
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
-		SignUp signOut = new SignUp(this.connection);
+		SignUp signUp = new SignUp(this.connection);
 		
-		signOut.setLocation(this.getLocation());
+		signUp.setLocation(this.getLocation());
 		this.dispose();
-		signOut.setVisible(true);
+		signUp.setVisible(true);
     }//GEN-LAST:event_signUpButtonActionPerformed
 
 	public static void main(String args[]) {

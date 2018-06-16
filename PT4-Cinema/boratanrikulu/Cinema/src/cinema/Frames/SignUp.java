@@ -28,7 +28,7 @@ public class SignUp extends javax.swing.JFrame {
 		this.connection = connection;
 	}
 	
-	private void signOut(Customer customer, java.awt.event.ActionEvent evt) {
+	private void signUp(Customer customer, java.awt.event.ActionEvent evt) {
 		String query = "insert into customers (name, surname, email, password, birthdate) values (?, ?, ?, ?, ?)";
 		
 		try {
@@ -42,18 +42,18 @@ public class SignUp extends javax.swing.JFrame {
 			
 			preparedStatement.executeUpdate();
 			
-			JOptionPane.showMessageDialog(this, "SignOut is successful.\nYou will be directed to the SignIn page.");
+			JOptionPane.showMessageDialog(this, "SignUp is successful.\nYou will be directed to the SignIn page.");
 			this.dispose();
 			signInButtonActionPerformed(evt);
 		} catch(SQLIntegrityConstraintViolationException ex) {
 			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-			JOptionPane.showMessageDialog(this, "SignOut is failed.\nThis email is already registered.");
+			JOptionPane.showMessageDialog(this, "SignUp is failed.\nThis email is already registered.");
 		} catch(SQLDataException ex) {
 			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-			JOptionPane.showMessageDialog(this, "SignOut is failed.\nSome formats are not acceptable.\nIt might be due to birthday date.\nMake an entry like 1984-01-01.");
+			JOptionPane.showMessageDialog(this, "SignUp is failed.\nSome formats are not acceptable.\nIt might be due to birthday date.\nMake an entry like 1984-01-01.");
 		} catch (SQLException ex) {
 			Logger.getLogger(SignIn.class.getName()).log(Level.SEVERE, null, ex);
-			JOptionPane.showMessageDialog(this, "SignOut is failed.");
+			JOptionPane.showMessageDialog(this, "SignUp is failed.");
 		}
 	}
 
@@ -69,7 +69,7 @@ public class SignUp extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        signOutButton = new javax.swing.JButton();
+        signUpButton = new javax.swing.JButton();
         nameArea = new javax.swing.JTextField();
         passwordArea = new javax.swing.JPasswordField();
         emailArea = new javax.swing.JTextField();
@@ -80,7 +80,7 @@ public class SignUp extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cinema - SignOut");
+        setTitle("Cinema - SignUp");
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setResizable(false);
 
@@ -120,11 +120,11 @@ public class SignUp extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(122, 24, 26));
         jLabel6.setText("Birthdate");
 
-        signOutButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
-        signOutButton.setText("Sign Out");
-        signOutButton.addActionListener(new java.awt.event.ActionListener() {
+        signUpButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        signUpButton.setText("Sign Up");
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signOutButtonActionPerformed(evt);
+                signUpButtonActionPerformed(evt);
             }
         });
 
@@ -195,7 +195,7 @@ public class SignUp extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
             .addGroup(SignUpPanelLayout.createSequentialGroup()
                 .addGap(122, 122, 122)
-                .addComponent(signOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SignUpPanelLayout.setVerticalGroup(
@@ -222,7 +222,7 @@ public class SignUp extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(birthdateArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(signOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -280,7 +280,7 @@ public class SignUp extends javax.swing.JFrame {
 		loginPage.setVisible(true);	
     }//GEN-LAST:event_signInButtonActionPerformed
 
-    private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
 		String name = this.nameArea.getText();
 		String surname = this.surnameArea.getText();
 		String email = this.emailArea.getText();
@@ -292,9 +292,9 @@ public class SignUp extends javax.swing.JFrame {
 		}
 		else {
 			Customer customer = new Customer(name, surname, email, password, birthdate);
-			signOut(customer, evt);
+			signUp(customer, evt);
 		}
-    }//GEN-LAST:event_signOutButtonActionPerformed
+    }//GEN-LAST:event_signUpButtonActionPerformed
 
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -318,13 +318,13 @@ public class SignUp extends javax.swing.JFrame {
 
 		/*java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				// new SignOut().setVisible(true);
+				// new SignUp().setVisible(true);
 			}
 		//</editor-fold>
 
 		/*java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				// new SignOut().setVisible(true);
+				// new SignUp().setVisible(true);
 			}
 		});*/
 	}
@@ -345,7 +345,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField nameArea;
     private javax.swing.JPasswordField passwordArea;
     private javax.swing.JButton signInButton;
-    private javax.swing.JButton signOutButton;
+    private javax.swing.JButton signUpButton;
     private javax.swing.JTextField surnameArea;
     // End of variables declaration//GEN-END:variables
 }
