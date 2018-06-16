@@ -158,6 +158,16 @@ public class ShowSeats extends javax.swing.JFrame {
         seat59 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         buyTicketButton = new javax.swing.JButton();
         selectedSeatsLabel = new javax.swing.JLabel();
         posterPanel = new javax.swing.JPanel();
@@ -615,16 +625,67 @@ public class ShowSeats extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/screen.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(122, 24, 26));
-        jLabel2.setText("SCREEN");
+        jLabel2.setText("1");
+
+        jLabel6.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel6.setText("SCREEN");
+
+        jLabel7.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel7.setText("12");
+
+        jLabel8.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel8.setText("13");
+
+        jLabel9.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel9.setText("24");
+
+        jLabel10.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel10.setText("25");
+
+        jLabel11.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel11.setText("36");
+
+        jLabel12.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel12.setText("37");
+
+        jLabel13.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel13.setText("48");
+
+        jLabel14.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel14.setText("49");
+
+        jLabel15.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel15.setText("60");
 
         javax.swing.GroupLayout seatsPanelLayout = new javax.swing.GroupLayout(seatsPanel);
         seatsPanel.setLayout(seatsPanelLayout);
         seatsPanelLayout.setHorizontalGroup(
             seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seatsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(25, 25, 25))
             .addGroup(seatsPanelLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(16, 16, 16)
+                .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat24)
@@ -649,7 +710,9 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat34)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat35))
+                        .addComponent(seat35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11))
                     .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat0)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -673,7 +736,9 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(seat10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat11))
+                        .addComponent(seat11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7))
                     .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -697,7 +762,9 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat23))
+                        .addComponent(seat23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9))
                     .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat36)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -721,7 +788,9 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat46)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat47))
+                        .addComponent(seat47)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13))
                     .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat48)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -733,12 +802,9 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat52)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(seatsPanelLayout.createSequentialGroup()
-                                .addComponent(seat53)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(seat54))
-                            .addComponent(jLabel2))
+                        .addComponent(seat53)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(seat54)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat55)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -748,12 +814,15 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat58)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat59)))
-                .addContainerGap(36, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seatsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(25, 25, 25))
+                        .addComponent(seat59)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15)))
+                .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seatsPanelLayout.createSequentialGroup()
+                    .addContainerGap(260, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addGap(236, 236, 236)))
         );
         seatsPanelLayout.setVerticalGroup(
             seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -771,7 +840,9 @@ public class ShowSeats extends javax.swing.JFrame {
                     .addComponent(seat8)
                     .addComponent(seat10)
                     .addComponent(seat11)
-                    .addComponent(seat9))
+                    .addComponent(seat9)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seat12)
@@ -785,7 +856,9 @@ public class ShowSeats extends javax.swing.JFrame {
                     .addComponent(seat20)
                     .addComponent(seat21)
                     .addComponent(seat22)
-                    .addComponent(seat23))
+                    .addComponent(seat23)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seat24)
@@ -799,7 +872,9 @@ public class ShowSeats extends javax.swing.JFrame {
                     .addComponent(seat32)
                     .addComponent(seat33)
                     .addComponent(seat34)
-                    .addComponent(seat35))
+                    .addComponent(seat35)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seat36)
@@ -813,7 +888,9 @@ public class ShowSeats extends javax.swing.JFrame {
                     .addComponent(seat44)
                     .addComponent(seat45)
                     .addComponent(seat46)
-                    .addComponent(seat47))
+                    .addComponent(seat47)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seat48)
@@ -827,12 +904,17 @@ public class ShowSeats extends javax.swing.JFrame {
                     .addComponent(seat56)
                     .addComponent(seat57)
                     .addComponent(seat58)
-                    .addComponent(seat59))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(seat59)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(24, 24, 24))
+            .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, seatsPanelLayout.createSequentialGroup()
+                    .addContainerGap(308, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addGap(58, 58, 58)))
         );
 
         buyTicketButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
@@ -1315,10 +1397,20 @@ public class ShowSeats extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JButton buyTicketButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel posterLabel;
     private javax.swing.JPanel posterPanel;
     private javax.swing.JLabel seat0;
