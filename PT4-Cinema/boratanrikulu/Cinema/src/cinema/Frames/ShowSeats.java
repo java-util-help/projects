@@ -9,6 +9,7 @@ import cinema.Frames.ShowMovies;
 import cinema.Objects.Theatre;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class ShowSeats extends javax.swing.JFrame {
 
@@ -16,12 +17,64 @@ public class ShowSeats extends javax.swing.JFrame {
 	private int yMouse;
 	private Connection connection;
 	private Theatre theatre;
+	private JLabel[] seats;
 	
 	public ShowSeats(Connection connection) {
 		initComponents();
 		
 		this.connection = connection;
 		theatre = new Theatre(30);
+		
+		seatSeatsArray();
+	}
+	
+	public void seatSeatsArray() {
+		seats = new JLabel[30];
+		seats[0] = seat0;
+		//<editor-fold defaultstate="collapsed" desc="and other 29s">
+		seats[1] = seat1;
+		seats[2] = seat2;
+		seats[3] = seat3;
+		seats[4] = seat4;
+		seats[5] = seat5;
+		seats[6] = seat6;
+		seats[7] = seat7;
+		seats[8] = seat8;
+		seats[9] = seat9;
+		seats[10] = seat10;
+		seats[11] = seat11;
+		seats[12] = seat12;
+		seats[13] = seat13;
+		seats[14] = seat14;
+		seats[15] = seat15;
+		seats[16] = seat16;
+		seats[17] = seat17;
+		seats[18] = seat18;
+		seats[19] = seat19;
+		seats[20] = seat20;
+		seats[21] = seat21;
+		seats[22] = seat22;
+		seats[23] = seat23;
+		seats[24] = seat24;
+		seats[25] = seat25;
+		seats[26] = seat26;
+		seats[27] = seat27;
+		seats[28] = seat28;
+		seats[29] = seat29;
+		//</editor-fold>
+	}
+	
+	public void changeImageIcon(int counter) {
+		if(theatre.getSeat(counter).isVacant()) {
+			ImageIcon selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
+			seats[counter].setIcon(selectedSeatIcon);
+			theatre.getSeat(counter).setStatusSeleted();
+		}
+		else if(theatre.getSeat(counter).isSelected()) {
+			ImageIcon vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
+			seats[counter].setIcon(vacantSeatIcon);
+			theatre.getSeat(counter).setStatusVacant();
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -30,7 +83,7 @@ public class ShowSeats extends javax.swing.JFrame {
 
         MainPanel = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        seatsPanel = new javax.swing.JPanel();
         seat0 = new javax.swing.JLabel();
         seat1 = new javax.swing.JLabel();
         seat2 = new javax.swing.JLabel();
@@ -294,26 +347,14 @@ public class ShowSeats extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout seatsPanelLayout = new javax.swing.GroupLayout(seatsPanel);
+        seatsPanel.setLayout(seatsPanelLayout);
+        seatsPanelLayout.setHorizontalGroup(
+            seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(seatsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(seat6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(seat11))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat0)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat1)
@@ -325,7 +366,19 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addComponent(seat4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(seatsPanelLayout.createSequentialGroup()
+                        .addComponent(seat6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(seat7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(seat8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(seat10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(seat9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(seat11))
+                    .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat13)
@@ -337,7 +390,7 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addComponent(seat16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat17))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat19)
@@ -349,7 +402,7 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addComponent(seat22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat23))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(seatsPanelLayout.createSequentialGroup()
                         .addComponent(seat24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(seat25)
@@ -363,27 +416,27 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addComponent(seat29)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        seatsPanelLayout.setVerticalGroup(
+            seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(seatsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(seat0)
-                    .addComponent(seat1)
-                    .addComponent(seat2)
-                    .addComponent(seat3)
+                .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(seat5)
                     .addComponent(seat4)
-                    .addComponent(seat5))
+                    .addComponent(seat3)
+                    .addComponent(seat2)
+                    .addComponent(seat1)
+                    .addComponent(seat0))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seat6)
                     .addComponent(seat7)
                     .addComponent(seat8)
-                    .addComponent(seat9)
                     .addComponent(seat10)
+                    .addComponent(seat9)
                     .addComponent(seat11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seat12)
                     .addComponent(seat13)
                     .addComponent(seat14)
@@ -391,7 +444,7 @@ public class ShowSeats extends javax.swing.JFrame {
                     .addComponent(seat16)
                     .addComponent(seat17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seat18)
                     .addComponent(seat19)
                     .addComponent(seat20)
@@ -399,7 +452,7 @@ public class ShowSeats extends javax.swing.JFrame {
                     .addComponent(seat22)
                     .addComponent(seat23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(seatsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(seat24)
                     .addComponent(seat25)
                     .addComponent(seat26)
@@ -418,8 +471,8 @@ public class ShowSeats extends javax.swing.JFrame {
                 .addComponent(backButton)
                 .addGap(40, 40, 40))
             .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(352, 352, 352)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(323, 323, 323)
+                .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MainPanelLayout.setVerticalGroup(
@@ -427,9 +480,9 @@ public class ShowSeats extends javax.swing.JFrame {
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(backButton)
-                .addGap(49, 49, 49)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(378, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -468,162 +521,128 @@ public class ShowSeats extends javax.swing.JFrame {
 		showMovies.setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
+	
     private void seat0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat0MouseClicked
-		if(theatre.getSeat(0).isVacant()) {
-			ImageIcon selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
-			seat0.setIcon(selectedSeatIcon);
-			theatre.getSeat(0).setStatusSeleted();
-		}
-		else if(theatre.getSeat(0).isSelected()) {
-			ImageIcon vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
-			seat0.setIcon(vacantSeatIcon);
-			theatre.getSeat(0).setStatusVacant();
-		}
+		changeImageIcon(0);
     }//GEN-LAST:event_seat0MouseClicked
-
+	//<editor-fold defaultstate="collapsed" desc="and other 29s">
     private void seat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat1MouseClicked
-		if(theatre.getSeat(1).isVacant()) {
-			ImageIcon selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
-			seat1.setIcon(selectedSeatIcon);
-			theatre.getSeat(1).setStatusSeleted();
-		}
-		else if(theatre.getSeat(1).isSelected()) {
-			ImageIcon vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
-			seat1.setIcon(vacantSeatIcon);
-			theatre.getSeat(1).setStatusVacant();
-		}
+		changeImageIcon(1);
     }//GEN-LAST:event_seat1MouseClicked
 
     private void seat2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat2MouseClicked
-		if(theatre.getSeat(2).isVacant()) {
-			ImageIcon selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
-			seat2.setIcon(selectedSeatIcon);
-			theatre.getSeat(2).setStatusSeleted();
-		}
-		else if(theatre.getSeat(2).isSelected()) {
-			ImageIcon vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
-			seat2.setIcon(vacantSeatIcon);
-			theatre.getSeat(2).setStatusVacant();
-		}
+		changeImageIcon(2);
     }//GEN-LAST:event_seat2MouseClicked
 
     private void seat3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat3MouseClicked
-		if(theatre.getSeat(3).isVacant()) {
-			ImageIcon selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
-			seat3.setIcon(selectedSeatIcon);
-			theatre.getSeat(3).setStatusSeleted();
-		}
-		else if(theatre.getSeat(3).isSelected()) {
-			ImageIcon vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
-			seat3.setIcon(vacantSeatIcon);
-			theatre.getSeat(3).setStatusVacant();
-		}
+		changeImageIcon(3);
     }//GEN-LAST:event_seat3MouseClicked
 
     private void seat4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat4MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(4);
     }//GEN-LAST:event_seat4MouseClicked
 
     private void seat5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat5MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(5);
     }//GEN-LAST:event_seat5MouseClicked
 
     private void seat6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat6MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(6);
     }//GEN-LAST:event_seat6MouseClicked
 
     private void seat7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat7MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(7);
     }//GEN-LAST:event_seat7MouseClicked
 
     private void seat8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat8MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(8);
     }//GEN-LAST:event_seat8MouseClicked
 
     private void seat9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat9MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(9);
     }//GEN-LAST:event_seat9MouseClicked
 
     private void seat10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat10MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(10);
     }//GEN-LAST:event_seat10MouseClicked
 
     private void seat11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat11MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(11);
     }//GEN-LAST:event_seat11MouseClicked
 
     private void seat12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat12MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(12);
     }//GEN-LAST:event_seat12MouseClicked
 
     private void seat13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat13MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(13);
     }//GEN-LAST:event_seat13MouseClicked
 
     private void seat14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat14MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(14);
     }//GEN-LAST:event_seat14MouseClicked
 
     private void seat15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat15MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(15);
     }//GEN-LAST:event_seat15MouseClicked
 
     private void seat16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat16MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(16);
     }//GEN-LAST:event_seat16MouseClicked
 
     private void seat17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat17MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(17);
     }//GEN-LAST:event_seat17MouseClicked
 
     private void seat18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat18MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(18);
     }//GEN-LAST:event_seat18MouseClicked
 
     private void seat19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat19MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(19);
     }//GEN-LAST:event_seat19MouseClicked
 
     private void seat20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat20MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(20);
     }//GEN-LAST:event_seat20MouseClicked
 
     private void seat21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat21MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(21);
     }//GEN-LAST:event_seat21MouseClicked
 
     private void seat22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat22MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(22);
     }//GEN-LAST:event_seat22MouseClicked
 
     private void seat23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat23MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(23);
     }//GEN-LAST:event_seat23MouseClicked
 
     private void seat24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat24MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(24);
     }//GEN-LAST:event_seat24MouseClicked
 
     private void seat25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat25MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(25);
     }//GEN-LAST:event_seat25MouseClicked
 
     private void seat26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat26MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(26);
     }//GEN-LAST:event_seat26MouseClicked
 
     private void seat27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat27MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(27);
     }//GEN-LAST:event_seat27MouseClicked
 
     private void seat28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat28MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(28);
     }//GEN-LAST:event_seat28MouseClicked
 
     private void seat29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat29MouseClicked
-        // TODO add your handling code here:
+		changeImageIcon(29);
     }//GEN-LAST:event_seat29MouseClicked
-
+	//</editor-fold>
+	
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 		try {
@@ -660,7 +679,6 @@ public class ShowSeats extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private javax.swing.JButton backButton;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel seat0;
     private javax.swing.JLabel seat1;
     private javax.swing.JLabel seat10;
@@ -691,5 +709,6 @@ public class ShowSeats extends javax.swing.JFrame {
     private javax.swing.JLabel seat7;
     private javax.swing.JLabel seat8;
     private javax.swing.JLabel seat9;
+    private javax.swing.JPanel seatsPanel;
     // End of variables declaration//GEN-END:variables
 }
