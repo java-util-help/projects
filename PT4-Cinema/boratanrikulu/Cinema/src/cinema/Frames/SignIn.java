@@ -44,7 +44,7 @@ public class SignIn extends javax.swing.JFrame {
 				this.customerID = resultSet.getInt("id");
 				
 				System.out.println("SignIn is successful.");
-				ShowMovies showMovies = new ShowMovies(connection);
+				ShowMovies showMovies = new ShowMovies(connection, customerID);
 				this.dispose();
 				showMovies.setLocation(this.getLocation());
 				showMovies.setVisible(true);

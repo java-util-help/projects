@@ -27,16 +27,19 @@ public class ShowMovies extends javax.swing.JFrame {
 
 	private int xMouse;
 	private int yMouse;
+	private int movieID;
+	private int customerID;
 	private ArrayList<Movie> movies;
 	private Connection connection;
 	private DefaultTableModel defaultMovieTable;
 	private PreparedStatement preparedStatement;
 	private ImageIcon imageIcon;
 	
-	public ShowMovies(Connection connection) {
+	public ShowMovies(Connection connection, int customerID) {
 		initComponents();
 		
 		this.connection = connection;
+		this.customerID = customerID;
 		this.defaultMovieTable = (DefaultTableModel) movieTable.getModel();
 		this.movies = new ArrayList<Movie>();
 		
@@ -288,9 +291,9 @@ public class ShowMovies extends javax.swing.JFrame {
     }//GEN-LAST:event_signOutButtonActionPerformed
 
     private void movieTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_movieTableMouseClicked
-		int id = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
+		movieID = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
 		
-		showThePoster(id);
+		showThePoster(movieID);
     }//GEN-LAST:event_movieTableMouseClicked
 
     private void searchAreaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchAreaKeyReleased
@@ -306,7 +309,7 @@ public class ShowMovies extends javax.swing.JFrame {
 		else {
 			int id = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
 
-			ShowSeats showTickets = new ShowSeats(this.connection, imageIcon);
+			ShowSeats showTickets = new ShowSeats(this.connection, imageIcon, movieID, customerID);
 			showTickets.setLocation(this.getLocation());
 			this.dispose();
 			showTickets.setVisible(true);

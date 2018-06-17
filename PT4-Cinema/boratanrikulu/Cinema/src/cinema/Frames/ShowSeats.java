@@ -9,7 +9,12 @@ import cinema.Frames.ShowMovies;
 import cinema.Objects.Seat;
 import cinema.Objects.Theatre;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -17,25 +22,36 @@ public class ShowSeats extends javax.swing.JFrame {
 
 	private int xMouse;
 	private int yMouse;
+	private int movieID;
+	private int customerID;
 	private Connection connection;
 	private Theatre theatre;
 	private JLabel[] seats;
 	private ArrayList<Integer> selectedSeats;
+	private ArrayList<Integer> takenSeats;
 	private ImageIcon imageIcon;
 	private ImageIcon selectedSeatIcon;
 	private ImageIcon vacantSeatIcon;
+	private ImageIcon takenSeatIcon;
 	private String message;
+	private PreparedStatement preparedStatement;
 	
-	public ShowSeats(Connection connection, ImageIcon imageIcon) {
+	public ShowSeats(Connection connection, ImageIcon imageIcon, int movieID, int customerID) {
 		initComponents();
 		
 		this.connection = connection;
 		this.imageIcon = imageIcon;
+		this.movieID = movieID;
+		this.customerID = customerID;
+		this.takenSeats = new ArrayList<Integer>();
 		theatre = new Theatre(60);
 		vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
 		selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
+		takenSeatIcon = new ImageIcon(getClass().getResource("/cinema/taken-seat.png"));
 		posterLabel.setIcon(imageIcon);
 		setSeatsArray();
+		getTakenSeats();
+		setTakenSeats();
 	}
 	
 	public void setSeatsArray() {
@@ -55,6 +71,33 @@ public class ShowSeats extends javax.swing.JFrame {
 		seats[51] = seat51; seats[52] = seat52; seats[53] = seat53; seats[54] = seat54; seats[55] = seat55;
 		seats[56] = seat56; seats[57] = seat57; seats[58] = seat58; seats[59] = seat59;
 		//</editor-fold>
+	}
+	
+	public void getTakenSeats() {
+		String query = "select * from sold_tickets where movieID  = ?";
+		
+		try {
+			preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setInt(1, movieID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if(!takenSeats.isEmpty()) {
+				takenSeats.clear(); // clears all movies from the arraylist to make a new start.
+			}
+			while(resultSet.next()) {
+				takenSeats.add(resultSet.getInt("seatNumber")-1);
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(ShowSeats.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+	
+	public void setTakenSeats() {
+		for(int counter : takenSeats) {
+			seats[counter].setIcon(takenSeatIcon);
+			theatre.getSeat(counter).setStatusTaken();
+		}
 	}
 	
 	public void getSelectedSeats() {
@@ -81,13 +124,15 @@ public class ShowSeats extends javax.swing.JFrame {
 	}
 	
 	public void changeImageIcon(int counter) {
-		if(theatre.getSeat(counter).isVacant()) {
-			seats[counter].setIcon(selectedSeatIcon);
-			theatre.getSeat(counter).setStatusSeleted();
-		}
-		else if(theatre.getSeat(counter).isSelected()) {
-			seats[counter].setIcon(vacantSeatIcon);
-			theatre.getSeat(counter).setStatusVacant();
+		if(!theatre.getSeat(counter).isTaken()) {
+			if(theatre.getSeat(counter).isVacant()) {
+				seats[counter].setIcon(selectedSeatIcon);
+				theatre.getSeat(counter).setStatusSeleted();
+			}
+			else if(theatre.getSeat(counter).isSelected()) {
+				seats[counter].setIcon(vacantSeatIcon);
+				theatre.getSeat(counter).setStatusVacant();
+			}
 		}
 	}
 
@@ -1058,7 +1103,7 @@ public class ShowSeats extends javax.swing.JFrame {
     }//GEN-LAST:event_MainPanelMousePressed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-		ShowMovies showMovies = new ShowMovies(connection);
+		ShowMovies showMovies = new ShowMovies(connection, customerID);
 
 		showMovies.setLocation(this.getLocation());
 		this.dispose();
@@ -1368,7 +1413,7 @@ public class ShowSeats extends javax.swing.JFrame {
 	//</editor-fold>
 	
     private void buyTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyTicketButtonActionPerformed
-		BuyTickets buyTickets = new BuyTickets(connection, imageIcon, selectedSeats, selectedSeatIcon, message);
+		BuyTickets buyTickets = new BuyTickets(connection, imageIcon, selectedSeats, takenSeats, selectedSeatIcon, takenSeatIcon, message, movieID, customerID);
 
 		buyTickets.setLocation(this.getLocation());
 		this.dispose();

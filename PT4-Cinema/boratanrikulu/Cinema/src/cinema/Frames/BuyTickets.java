@@ -14,26 +14,35 @@ public class BuyTickets extends javax.swing.JFrame {
 
 	private int xMouse;
 	private int yMouse;
+	private int movieID;
+	private int customerID;
 	private Connection connection;
 	private ImageIcon imageIcon;
 	private JLabel[] seats;
 	private ArrayList<Integer> selectedSeats;
+	private ArrayList<Integer> takenSeats;
 	private ImageIcon selectedSeatIcon;
+	private ImageIcon takenSeatIcon;
 	private String message;
 	
-	public BuyTickets(Connection connection, ImageIcon imageIcon, ArrayList<Integer> selectedSeats, ImageIcon selectedSeatIcon, String message) {
+	public BuyTickets(Connection connection, ImageIcon imageIcon, ArrayList<Integer> selectedSeats, ArrayList<Integer> takenSeats, ImageIcon selectedSeatIcon, ImageIcon takenSeatIcon, String message, int movieID, int customerID) {
 		initComponents();
 		
 		this.connection = connection;
 		this.imageIcon = imageIcon;
+		this.movieID = movieID;
+		this.customerID = customerID;
 		this.selectedSeats = selectedSeats;
+		this.takenSeats = takenSeats;
 		this.selectedSeatIcon = selectedSeatIcon;
+		this.takenSeatIcon = takenSeatIcon;
 		this.message = message;
 		
 		selectedSeatsLabel.setText(message);
 		
 		setSeatsArray();
 		setSelectedSeats();
+		setTakenSeats();
 	}
 	
 	public void setSeatsArray() {
@@ -58,6 +67,12 @@ public class BuyTickets extends javax.swing.JFrame {
 	public void setSelectedSeats() {
 		for(int counter : selectedSeats) {
 			seats[counter].setIcon(selectedSeatIcon);
+		}
+	}
+	
+	public void setTakenSeats() {
+		for(int counter : takenSeats) {
+			seats[counter].setIcon(takenSeatIcon);
 		}
 	}
 
@@ -766,7 +781,7 @@ public class BuyTickets extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-		ShowSeats showSeats = new ShowSeats(connection, imageIcon);
+		ShowSeats showSeats = new ShowSeats(connection, imageIcon, movieID, customerID);
 
 		showSeats.setLocation(this.getLocation());
 		this.dispose();
