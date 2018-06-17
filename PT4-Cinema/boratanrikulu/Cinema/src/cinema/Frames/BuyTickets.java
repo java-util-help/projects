@@ -6,9 +6,14 @@
 package cinema.Frames;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class BuyTickets extends javax.swing.JFrame {
 
@@ -24,6 +29,7 @@ public class BuyTickets extends javax.swing.JFrame {
 	private ImageIcon selectedSeatIcon;
 	private ImageIcon takenSeatIcon;
 	private String message;
+	private PreparedStatement preparedStatement;
 	
 	public BuyTickets(Connection connection, ImageIcon imageIcon, ArrayList<Integer> selectedSeats, ArrayList<Integer> takenSeats, ImageIcon selectedSeatIcon, ImageIcon takenSeatIcon, String message, int movieID, int customerID) {
 		initComponents();
@@ -73,6 +79,30 @@ public class BuyTickets extends javax.swing.JFrame {
 	public void setTakenSeats() {
 		for(int counter : takenSeats) {
 			seats[counter].setIcon(takenSeatIcon);
+		}
+	}
+	
+	public void buyTickets(java.awt.event.ActionEvent evt) {
+		int flag = 0;
+		for(int seatNumber : selectedSeats) {
+			String query = "insert into sold_tickets(movieID, customerID, seatNumber) values(?, ?, ?)" ;
+
+			try {
+				preparedStatement = connection.prepareStatement(query);
+
+				preparedStatement.setInt(1, movieID);
+				preparedStatement.setInt(2, customerID);
+				preparedStatement.setInt(3, seatNumber+1);
+
+				preparedStatement.execute();
+				flag++;
+			} catch (SQLException ex) {
+				Logger.getLogger(BuyTickets.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+		if(flag != 0){
+			JOptionPane.showMessageDialog(this, "The ticket was bought by you.\nYou will be directed to the ShowSeats Page");
+			backButtonActionPerformed(evt);
 		}
 	}
 
@@ -161,11 +191,11 @@ public class BuyTickets extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        searchArea = new javax.swing.JTextField();
-        searchArea4 = new javax.swing.JTextField();
+        cardNumberArea = new javax.swing.JTextField();
+        expireDateArea1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        searchArea5 = new javax.swing.JTextField();
-        searchArea6 = new javax.swing.JTextField();
+        expireDateArea2 = new javax.swing.JTextField();
+        cvc2Area = new javax.swing.JTextField();
         vacantImageLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         vacantImageLabel1 = new javax.swing.JLabel();
@@ -613,6 +643,11 @@ public class BuyTickets extends javax.swing.JFrame {
 
         payTheTickets.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
         payTheTickets.setText("Pay The Tickets");
+        payTheTickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payTheTicketsActionPerformed(evt);
+            }
+        });
 
         selectedSeatsLabel.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         selectedSeatsLabel.setForeground(new java.awt.Color(122, 24, 26));
@@ -629,18 +664,18 @@ public class BuyTickets extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(122, 24, 26));
         jLabel20.setText("CVC2               :");
 
-        searchArea.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        cardNumberArea.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
 
-        searchArea4.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        expireDateArea1.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(122, 24, 26));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("/");
 
-        searchArea5.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        expireDateArea2.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
 
-        searchArea6.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        cvc2Area.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout posterPanelLayout = new javax.swing.GroupLayout(posterPanel);
         posterPanel.setLayout(posterPanelLayout);
@@ -655,13 +690,13 @@ public class BuyTickets extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(posterPanelLayout.createSequentialGroup()
-                        .addComponent(searchArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(expireDateArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchArea5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchArea6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(expireDateArea2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cardNumberArea, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cvc2Area, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
         posterPanelLayout.setVerticalGroup(
@@ -670,17 +705,17 @@ public class BuyTickets extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cardNumberArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchArea5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchArea4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(expireDateArea2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(expireDateArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchArea6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cvc2Area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78))
         );
 
@@ -800,6 +835,20 @@ public class BuyTickets extends javax.swing.JFrame {
 		this.yMouse = evt.getY() + 30; // 30 is for the top panel of the system.
     }//GEN-LAST:event_MainPanelMousePressed
 
+    private void payTheTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payTheTicketsActionPerformed
+		String cardNumber = this.cardNumberArea.getText();
+		String expireDate1 = this.expireDateArea1.getText();
+		String expireDate2 = this.expireDateArea2.getText();
+		String cvc2 = this.cvc2Area.getText();
+		
+		if(cardNumber.equals("") || expireDate1.equals("") || expireDate2.equals("") || cvc2.equals("")){
+			JOptionPane.showMessageDialog(this, "Please fill out all information."); // show an error if informations is not completed.
+		}
+		else {
+			buyTickets(evt);	
+		}
+    }//GEN-LAST:event_payTheTicketsActionPerformed
+
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 		try {
@@ -830,6 +879,10 @@ public class BuyTickets extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private javax.swing.JButton backButton;
+    private javax.swing.JTextField cardNumberArea;
+    private javax.swing.JTextField cvc2Area;
+    private javax.swing.JTextField expireDateArea1;
+    private javax.swing.JTextField expireDateArea2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -851,10 +904,6 @@ public class BuyTickets extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton payTheTickets;
     private javax.swing.JPanel posterPanel;
-    private javax.swing.JTextField searchArea;
-    private javax.swing.JTextField searchArea4;
-    private javax.swing.JTextField searchArea5;
-    private javax.swing.JTextField searchArea6;
     private javax.swing.JLabel seat0;
     private javax.swing.JLabel seat1;
     private javax.swing.JLabel seat10;

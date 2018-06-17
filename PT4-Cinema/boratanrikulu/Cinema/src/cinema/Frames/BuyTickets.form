@@ -968,6 +968,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Pay The Tickets"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="payTheTicketsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="selectedSeatsLabel">
           <Properties>
@@ -994,14 +997,14 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="searchArea4" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="expireDateArea1" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Component id="jLabel18" min="-2" pref="29" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="searchArea5" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="expireDateArea2" min="-2" pref="74" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="searchArea" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="searchArea6" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                          <Component id="cardNumberArea" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="cvc2Area" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
@@ -1013,19 +1016,19 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel17" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="searchArea" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cardNumberArea" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel19" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel18" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="searchArea5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="searchArea4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="expireDateArea2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="expireDateArea1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel20" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="searchArea6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cvc2Area" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
@@ -1066,14 +1069,14 @@
                 <Property name="text" type="java.lang.String" value="CVC2               :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="searchArea">
+            <Component class="javax.swing.JTextField" name="cardNumberArea">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Monospaced" size="16" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="searchArea4">
+            <Component class="javax.swing.JTextField" name="expireDateArea1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Monospaced" size="16" style="0"/>
@@ -1092,14 +1095,14 @@
                 <Property name="text" type="java.lang.String" value="/"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="searchArea5">
+            <Component class="javax.swing.JTextField" name="expireDateArea2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Monospaced" size="16" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="searchArea6">
+            <Component class="javax.swing.JTextField" name="cvc2Area">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Monospaced" size="16" style="0"/>
