@@ -5,6 +5,7 @@
 
 package cinema.Frames;
 
+import cinema.Objects.Movie;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ public class BuyTickets extends javax.swing.JFrame {
 	private int yMouse;
 	private int movieID;
 	private int customerID;
+	private Movie movie;
 	private Connection connection;
 	private ImageIcon imageIcon;
 	private JLabel[] seats;
@@ -31,7 +33,7 @@ public class BuyTickets extends javax.swing.JFrame {
 	private String message;
 	private PreparedStatement preparedStatement;
 	
-	public BuyTickets(Connection connection, ImageIcon imageIcon, ArrayList<Integer> selectedSeats, ArrayList<Integer> takenSeats, ImageIcon selectedSeatIcon, ImageIcon takenSeatIcon, String message, int movieID, int customerID) {
+	public BuyTickets(Connection connection, ImageIcon imageIcon, ArrayList<Integer> selectedSeats, ArrayList<Integer> takenSeats, ImageIcon selectedSeatIcon, ImageIcon takenSeatIcon, String message, int movieID, int customerID, Movie movie) {
 		initComponents();
 		
 		this.connection = connection;
@@ -43,8 +45,10 @@ public class BuyTickets extends javax.swing.JFrame {
 		this.selectedSeatIcon = selectedSeatIcon;
 		this.takenSeatIcon = takenSeatIcon;
 		this.message = message;
+		this.movie = movie;
 		
 		selectedSeatsLabel.setText(message);
+		theMovieLabel.setText(movie.getTitle()+" ["+movie.getDate()+" - "+movie.getTime()+"]");
 		
 		setSeatsArray();
 		setSelectedSeats();
@@ -101,7 +105,7 @@ public class BuyTickets extends javax.swing.JFrame {
 			}
 		}
 		if(flag != 0){
-			JOptionPane.showMessageDialog(this, "The ticket was bought by you.\nYou will be directed to the ShowSeats Page");
+			JOptionPane.showMessageDialog(this, "The ticket was bought by you.\nYou will be directed to the previous page.");
 			backButtonActionPerformed(evt);
 		}
 	}
@@ -202,6 +206,7 @@ public class BuyTickets extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         vacantImageLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        theMovieLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cinema - Buy The Tickets");
@@ -737,6 +742,10 @@ public class BuyTickets extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(122, 24, 26));
         jLabel5.setText("Taken");
 
+        theMovieLabel.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        theMovieLabel.setForeground(new java.awt.Color(122, 24, 26));
+        theMovieLabel.setText("The Movie [TIME]");
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
@@ -765,7 +774,9 @@ public class BuyTickets extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(theMovieLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(seatsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(posterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(MainPanelLayout.createSequentialGroup()
@@ -794,7 +805,9 @@ public class BuyTickets extends javax.swing.JFrame {
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(posterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(seatsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(theMovieLabel)
+                .addGap(12, 12, 12)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(selectedSeatsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(payTheTickets, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
@@ -816,7 +829,7 @@ public class BuyTickets extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-		ShowSeats showSeats = new ShowSeats(connection, imageIcon, movieID, customerID);
+		ShowSeats showSeats = new ShowSeats(connection, imageIcon, movieID, customerID, movie);
 
 		showSeats.setLocation(this.getLocation());
 		this.dispose();
@@ -966,6 +979,7 @@ public class BuyTickets extends javax.swing.JFrame {
     private javax.swing.JLabel seat9;
     private javax.swing.JPanel seatsPanel;
     private javax.swing.JLabel selectedSeatsLabel;
+    private javax.swing.JLabel theMovieLabel;
     private javax.swing.JLabel vacantImageLabel;
     private javax.swing.JLabel vacantImageLabel1;
     private javax.swing.JLabel vacantImageLabel2;

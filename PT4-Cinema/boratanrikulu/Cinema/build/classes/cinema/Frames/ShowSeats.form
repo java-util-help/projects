@@ -63,8 +63,8 @@
                                   <Component id="buyTicketButton" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="seatsPanel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="seatsPanel" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                           <Component id="vacantImageLabel" min="-2" max="-2" attributes="0"/>
@@ -79,6 +79,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="theMovieLabel" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="50" max="32767" attributes="0"/>
                                   <Component id="posterPanel" min="-2" max="-2" attributes="0"/>
@@ -119,7 +120,9 @@
                       </Group>
                       <Component id="posterPanel" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="theMovieLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="selectedSeatsLabel" max="32767" attributes="0"/>
                       <Component id="buyTicketButton" pref="68" max="32767" attributes="0"/>
@@ -1247,6 +1250,17 @@
               <Color blue="1a" green="18" red="7a" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Taken"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="theMovieLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Monospaced" size="18" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1a" green="18" red="7a" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="The Movie [TIME]"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -6,6 +6,7 @@
 package cinema.Frames;
 
 import cinema.Frames.ShowMovies;
+import cinema.Objects.Movie;
 import cinema.Objects.Seat;
 import cinema.Objects.Theatre;
 import java.sql.Connection;
@@ -24,6 +25,7 @@ public class ShowSeats extends javax.swing.JFrame {
 	private int yMouse;
 	private int movieID;
 	private int customerID;
+	private Movie movie;
 	private Connection connection;
 	private Theatre theatre;
 	private JLabel[] seats;
@@ -36,7 +38,7 @@ public class ShowSeats extends javax.swing.JFrame {
 	private String message;
 	private PreparedStatement preparedStatement;
 	
-	public ShowSeats(Connection connection, ImageIcon imageIcon, int movieID, int customerID) {
+	public ShowSeats(Connection connection, ImageIcon imageIcon, int movieID, int customerID, Movie movie) {
 		initComponents();
 		
 		this.connection = connection;
@@ -44,10 +46,12 @@ public class ShowSeats extends javax.swing.JFrame {
 		this.movieID = movieID;
 		this.customerID = customerID;
 		this.takenSeats = new ArrayList<Integer>();
+		this.movie = movie;
 		theatre = new Theatre(60);
 		vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
 		selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
 		takenSeatIcon = new ImageIcon(getClass().getResource("/cinema/taken-seat.png"));
+		theMovieLabel.setText(movie.getTitle()+" ["+movie.getDate()+" - "+movie.getTime()+"]");
 		posterLabel.setIcon(imageIcon);
 		setSeatsArray();
 		getTakenSeats();
@@ -125,14 +129,14 @@ public class ShowSeats extends javax.swing.JFrame {
 	
 	public void changeImageIcon(int counter) {
 		if(!theatre.getSeat(counter).isTaken()) {
-			if(theatre.getSeat(counter).isVacant()) {
-				seats[counter].setIcon(selectedSeatIcon);
-				theatre.getSeat(counter).setStatusSeleted();
-			}
-			else if(theatre.getSeat(counter).isSelected()) {
-				seats[counter].setIcon(vacantSeatIcon);
-				theatre.getSeat(counter).setStatusVacant();
-			}
+				if(theatre.getSeat(counter).isVacant()) {
+					seats[counter].setIcon(selectedSeatIcon);
+					theatre.getSeat(counter).setStatusSeleted();
+				}
+				else if(theatre.getSeat(counter).isSelected()) {
+					seats[counter].setIcon(vacantSeatIcon);
+					theatre.getSeat(counter).setStatusVacant();
+				}
 		}
 	}
 
@@ -225,6 +229,7 @@ public class ShowSeats extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         vacantImageLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        theMovieLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cinema - Select A Seat");
@@ -1011,6 +1016,10 @@ public class ShowSeats extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(122, 24, 26));
         jLabel5.setText("Taken");
 
+        theMovieLabel.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        theMovieLabel.setForeground(new java.awt.Color(122, 24, 26));
+        theMovieLabel.setText("The Movie [TIME]");
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
@@ -1028,8 +1037,8 @@ public class ShowSeats extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(buyTicketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(seatsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(MainPanelLayout.createSequentialGroup()
                                         .addGap(13, 13, 13)
                                         .addComponent(vacantImageLabel)
@@ -1042,7 +1051,8 @@ public class ShowSeats extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(vacantImageLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel5)))
+                                        .addComponent(jLabel5))
+                                    .addComponent(theMovieLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                                 .addComponent(posterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(40, 40, 40))
@@ -1069,7 +1079,9 @@ public class ShowSeats extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(posterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(43, 43, 43)
+                .addGap(15, 15, 15)
+                .addComponent(theMovieLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(selectedSeatsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buyTicketButton, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
@@ -1413,7 +1425,7 @@ public class ShowSeats extends javax.swing.JFrame {
 	//</editor-fold>
 	
     private void buyTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyTicketButtonActionPerformed
-		BuyTickets buyTickets = new BuyTickets(connection, imageIcon, selectedSeats, takenSeats, selectedSeatIcon, takenSeatIcon, message, movieID, customerID);
+		BuyTickets buyTickets = new BuyTickets(connection, imageIcon, selectedSeats, takenSeats, selectedSeatIcon, takenSeatIcon, message, movieID, customerID, movie);
 
 		buyTickets.setLocation(this.getLocation());
 		this.dispose();
@@ -1536,6 +1548,7 @@ public class ShowSeats extends javax.swing.JFrame {
     private javax.swing.JLabel seat9;
     private javax.swing.JPanel seatsPanel;
     private javax.swing.JLabel selectedSeatsLabel;
+    private javax.swing.JLabel theMovieLabel;
     private javax.swing.JLabel vacantImageLabel;
     private javax.swing.JLabel vacantImageLabel1;
     private javax.swing.JLabel vacantImageLabel2;

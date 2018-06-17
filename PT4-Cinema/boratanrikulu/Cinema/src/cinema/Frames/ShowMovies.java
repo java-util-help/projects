@@ -92,6 +92,8 @@ public class ShowMovies extends javax.swing.JFrame {
 					Logger.getLogger(ShowMovies.class.getName()).log(Level.SEVERE, null, ex);
 				} catch (IOException ex) {
 					Logger.getLogger(ShowMovies.class.getName()).log(Level.SEVERE, null, ex);
+					imageIcon = new ImageIcon(getClass().getResource("/cinema/logo.png"));
+					posterLabel.setIcon(imageIcon);
 				}
 			}
 		}
@@ -309,7 +311,7 @@ public class ShowMovies extends javax.swing.JFrame {
 		else {
 			int id = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
 
-			ShowSeats showTickets = new ShowSeats(this.connection, imageIcon, movieID, customerID);
+			ShowSeats showTickets = new ShowSeats(this.connection, imageIcon, movieID, customerID, movies.get(movieID-1));
 			showTickets.setLocation(this.getLocation());
 			this.dispose();
 			showTickets.setVisible(true);
