@@ -3,7 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Cinema - Select A Seat"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -29,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainPanel" min="-2" max="-2" attributes="0"/>
+          <Component id="MainPanel" alignment="0" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -50,40 +49,39 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace pref="1005" max="32767" attributes="0"/>
-                          <Component id="backButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="selectedSeatsLabel" min="-2" pref="834" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="buyTicketButton" min="-2" pref="157" max="-2" attributes="0"/>
+                                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                                  <Component id="payTheTickets" min="-2" pref="157" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="seatsPanel" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                          <Component id="vacantImageLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="vacantImageLabel1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="vacantImageLabel2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                  <Component id="vacantImageLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="vacantImageLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="vacantImageLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="seatsPanel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="posterPanel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="backButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -96,33 +94,31 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="backButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="vacantImageLabel" max="32767" attributes="0"/>
-                                      <Component id="jLabel3" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="vacantImageLabel1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel4" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="vacantImageLabel2" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                              </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="vacantImageLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel3" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="seatsPanel" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="vacantImageLabel1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="vacantImageLabel2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="posterPanel" max="32767" attributes="0"/>
+                      <Component id="seatsPanel" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="selectedSeatsLabel" max="32767" attributes="0"/>
-                      <Component id="buyTicketButton" pref="68" max="32767" attributes="0"/>
+                      <Component id="selectedSeatsLabel" alignment="0" max="32767" attributes="0"/>
+                      <Component id="payTheTickets" alignment="0" pref="68" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               </Group>
@@ -153,14 +149,14 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -191,7 +187,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="seat0" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="seat1" min="-2" max="-2" attributes="0"/>
@@ -316,54 +312,54 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="seat5" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat4" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat3" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat2" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat1" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat0" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat6" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat7" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat8" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat10" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat11" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat9" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat0" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat10" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat11" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="seat12" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat13" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat14" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat15" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat16" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat17" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat18" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat19" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat20" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat21" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat22" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat23" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat12" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat13" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat14" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat15" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat16" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat17" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat18" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat19" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat20" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat21" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat22" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat23" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="seat24" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat25" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat26" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat27" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat28" min="-2" max="-2" attributes="0"/>
-                          <Component id="seat29" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat24" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat25" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat26" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat27" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat28" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="seat29" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat30" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat31" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat32" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat33" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat34" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat35" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -379,8 +375,8 @@
                           <Component id="seat45" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat46" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat47" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -396,8 +392,8 @@
                           <Component id="seat57" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat58" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="seat59" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="96" max="32767" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -420,9 +416,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat0MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat1">
               <Properties>
@@ -430,9 +423,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat1MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat2">
               <Properties>
@@ -440,9 +430,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat2MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat3">
               <Properties>
@@ -450,9 +437,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat3MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat4">
               <Properties>
@@ -460,9 +444,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat4MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat5">
               <Properties>
@@ -470,9 +451,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat5MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat6">
               <Properties>
@@ -480,9 +458,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat6MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat7">
               <Properties>
@@ -490,9 +465,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat7MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat8">
               <Properties>
@@ -500,9 +472,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat8MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat9">
               <Properties>
@@ -510,9 +479,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat9MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat10">
               <Properties>
@@ -520,9 +486,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat10MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat11">
               <Properties>
@@ -530,9 +493,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat11MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat12">
               <Properties>
@@ -540,9 +500,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat12MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat13">
               <Properties>
@@ -550,9 +507,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat13MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat14">
               <Properties>
@@ -560,9 +514,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat14MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat15">
               <Properties>
@@ -570,9 +521,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat15MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat16">
               <Properties>
@@ -580,9 +528,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat16MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat17">
               <Properties>
@@ -590,9 +535,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat17MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat18">
               <Properties>
@@ -600,9 +542,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat18MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat19">
               <Properties>
@@ -610,9 +549,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat19MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat20">
               <Properties>
@@ -620,9 +556,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat20MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat21">
               <Properties>
@@ -630,9 +563,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat21MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat22">
               <Properties>
@@ -640,9 +570,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat22MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat23">
               <Properties>
@@ -650,9 +577,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat23MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat24">
               <Properties>
@@ -660,9 +584,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat24MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat25">
               <Properties>
@@ -670,9 +591,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat25MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat26">
               <Properties>
@@ -680,9 +598,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat26MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat27">
               <Properties>
@@ -690,9 +605,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat27MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat28">
               <Properties>
@@ -700,9 +612,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat28MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat29">
               <Properties>
@@ -710,9 +619,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat29MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat30">
               <Properties>
@@ -720,9 +626,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat30MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat31">
               <Properties>
@@ -730,9 +633,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat31MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat32">
               <Properties>
@@ -740,9 +640,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat32MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat33">
               <Properties>
@@ -750,9 +647,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat33MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat34">
               <Properties>
@@ -760,9 +654,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat34MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat35">
               <Properties>
@@ -770,9 +661,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat35MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat36">
               <Properties>
@@ -780,9 +668,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat36MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat37">
               <Properties>
@@ -790,9 +675,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat37MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat38">
               <Properties>
@@ -800,9 +682,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat38MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat39">
               <Properties>
@@ -810,9 +689,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat39MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat40">
               <Properties>
@@ -820,9 +696,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat40MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat41">
               <Properties>
@@ -830,9 +703,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat41MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat42">
               <Properties>
@@ -840,9 +710,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat42MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat43">
               <Properties>
@@ -850,9 +717,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat43MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat44">
               <Properties>
@@ -860,9 +724,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat44MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat45">
               <Properties>
@@ -870,9 +731,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat45MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat46">
               <Properties>
@@ -880,9 +738,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat46MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat47">
               <Properties>
@@ -890,9 +745,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat47MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat48">
               <Properties>
@@ -900,9 +752,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat48MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat49">
               <Properties>
@@ -910,9 +759,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat49MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat50">
               <Properties>
@@ -920,9 +766,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat50MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat51">
               <Properties>
@@ -930,9 +773,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat51MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat52">
               <Properties>
@@ -940,9 +780,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat52MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat53">
               <Properties>
@@ -950,9 +787,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat53MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat54">
               <Properties>
@@ -960,9 +794,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat54MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat55">
               <Properties>
@@ -970,9 +801,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat55MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat56">
               <Properties>
@@ -980,9 +808,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat56MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat57">
               <Properties>
@@ -990,9 +815,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat57MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat58">
               <Properties>
@@ -1000,9 +822,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat58MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="seat59">
               <Properties>
@@ -1010,9 +829,6 @@
                   <Image iconType="3" name="/cinema/vacant-seat.png"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="seat59MouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
@@ -1144,16 +960,13 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="buyTicketButton">
+        <Component class="javax.swing.JButton" name="payTheTickets">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Monospaced" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Buy Ticket"/>
+            <Property name="text" type="java.lang.String" value="Pay The Tickets"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buyTicketButtonActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="selectedSeatsLabel">
           <Properties>
@@ -1170,27 +983,126 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="posterLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="searchArea4" min="-2" pref="74" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="jLabel18" min="-2" pref="29" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="searchArea5" min="-2" pref="74" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="searchArea" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="searchArea6" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="posterLabel" alignment="1" min="-2" pref="428" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel17" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="searchArea" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel19" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="jLabel18" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="searchArea5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="searchArea4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel20" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="searchArea6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="posterLabel">
+            <Component class="javax.swing.JLabel" name="jLabel17">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/cinema/logo.png"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Monospaced" size="18" style="1"/>
                 </Property>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="1a" green="18" red="7a" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Card Number :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel19">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Monospaced" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="1a" green="18" red="7a" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Expire Date    :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel20">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Monospaced" size="18" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="1a" green="18" red="7a" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="CVC2               :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="searchArea">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Monospaced" size="16" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="searchArea4">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Monospaced" size="16" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel18">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Monospaced" size="18" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="1a" green="18" red="7a" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="/"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="searchArea5">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Monospaced" size="16" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="searchArea6">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Monospaced" size="16" style="0"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

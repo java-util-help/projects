@@ -5,37 +5,35 @@
 
 package cinema.Frames;
 
-import cinema.Frames.ShowMovies;
-import cinema.Objects.Seat;
-import cinema.Objects.Theatre;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class ShowSeats extends javax.swing.JFrame {
+public class BuyTickets extends javax.swing.JFrame {
 
 	private int xMouse;
 	private int yMouse;
 	private Connection connection;
-	private Theatre theatre;
+	private ImageIcon imageIcon;
 	private JLabel[] seats;
 	private ArrayList<Integer> selectedSeats;
-	private ImageIcon imageIcon;
 	private ImageIcon selectedSeatIcon;
-	private ImageIcon vacantSeatIcon;
 	private String message;
 	
-	public ShowSeats(Connection connection, ImageIcon imageIcon) {
+	public BuyTickets(Connection connection, ImageIcon imageIcon, ArrayList<Integer> selectedSeats, ImageIcon selectedSeatIcon, String message) {
 		initComponents();
 		
 		this.connection = connection;
 		this.imageIcon = imageIcon;
-		theatre = new Theatre(60);
-		vacantSeatIcon = new ImageIcon(getClass().getResource("/cinema/vacant-seat.png"));
-		selectedSeatIcon = new ImageIcon(getClass().getResource("/cinema/selected-seat.png"));
-		posterLabel.setIcon(imageIcon);
+		this.selectedSeats = selectedSeats;
+		this.selectedSeatIcon = selectedSeatIcon;
+		this.message = message;
+		
+		selectedSeatsLabel.setText(message);
+		
 		setSeatsArray();
+		setSelectedSeats();
 	}
 	
 	public void setSeatsArray() {
@@ -57,37 +55,9 @@ public class ShowSeats extends javax.swing.JFrame {
 		//</editor-fold>
 	}
 	
-	public void getSelectedSeats() {
-		selectedSeats = new ArrayList<Integer>();
-		for(Seat seat : theatre.getSeats()) {
-			if(seat.isSelected()) {
-				selectedSeats.add(seat.getNumber());
-			}
-		}
-	}
-	
-	public void updateMessage() {
-		getSelectedSeats();
-		message = "Selected Seats : ";
-		if(!selectedSeats.isEmpty()) {
-			for(int counter : selectedSeats) {
-				message = message + " S" + (counter+1);
-			}
-			selectedSeatsLabel.setText(message);
-		}
-		else {
-			selectedSeatsLabel.setText("");
-		}
-	}
-	
-	public void changeImageIcon(int counter) {
-		if(theatre.getSeat(counter).isVacant()) {
+	public void setSelectedSeats() {
+		for(int counter : selectedSeats) {
 			seats[counter].setIcon(selectedSeatIcon);
-			theatre.getSeat(counter).setStatusSeleted();
-		}
-		else if(theatre.getSeat(counter).isSelected()) {
-			seats[counter].setIcon(vacantSeatIcon);
-			theatre.getSeat(counter).setStatusVacant();
 		}
 	}
 
@@ -170,10 +140,17 @@ public class ShowSeats extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        buyTicketButton = new javax.swing.JButton();
+        payTheTickets = new javax.swing.JButton();
         selectedSeatsLabel = new javax.swing.JLabel();
         posterPanel = new javax.swing.JPanel();
-        posterLabel = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        searchArea = new javax.swing.JTextField();
+        searchArea4 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        searchArea5 = new javax.swing.JTextField();
+        searchArea6 = new javax.swing.JTextField();
         vacantImageLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         vacantImageLabel1 = new javax.swing.JLabel();
@@ -182,7 +159,6 @@ public class ShowSeats extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cinema - Select A Seat");
 
         MainPanel.setBackground(new java.awt.Color(231, 232, 235));
         MainPanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -206,424 +182,124 @@ public class ShowSeats extends javax.swing.JFrame {
         seatsPanel.setBackground(new java.awt.Color(217, 193, 183));
 
         seat0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat0.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat0MouseClicked(evt);
-            }
-        });
 
         seat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat1MouseClicked(evt);
-            }
-        });
 
         seat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat2MouseClicked(evt);
-            }
-        });
 
         seat3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat3MouseClicked(evt);
-            }
-        });
 
         seat4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat4MouseClicked(evt);
-            }
-        });
 
         seat5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat5MouseClicked(evt);
-            }
-        });
 
         seat6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat6MouseClicked(evt);
-            }
-        });
 
         seat7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat7MouseClicked(evt);
-            }
-        });
 
         seat8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat8MouseClicked(evt);
-            }
-        });
 
         seat9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat9MouseClicked(evt);
-            }
-        });
 
         seat10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat10MouseClicked(evt);
-            }
-        });
 
         seat11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat11MouseClicked(evt);
-            }
-        });
 
         seat12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat12MouseClicked(evt);
-            }
-        });
 
         seat13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat13MouseClicked(evt);
-            }
-        });
 
         seat14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat14MouseClicked(evt);
-            }
-        });
 
         seat15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat15MouseClicked(evt);
-            }
-        });
 
         seat16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat16MouseClicked(evt);
-            }
-        });
 
         seat17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat17MouseClicked(evt);
-            }
-        });
 
         seat18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat18MouseClicked(evt);
-            }
-        });
 
         seat19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat19MouseClicked(evt);
-            }
-        });
 
         seat20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat20MouseClicked(evt);
-            }
-        });
 
         seat21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat21MouseClicked(evt);
-            }
-        });
 
         seat22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat22MouseClicked(evt);
-            }
-        });
 
         seat23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat23MouseClicked(evt);
-            }
-        });
 
         seat24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat24.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat24MouseClicked(evt);
-            }
-        });
 
         seat25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat25MouseClicked(evt);
-            }
-        });
 
         seat26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat26MouseClicked(evt);
-            }
-        });
 
         seat27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat27MouseClicked(evt);
-            }
-        });
 
         seat28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat28.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat28MouseClicked(evt);
-            }
-        });
 
         seat29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat29.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat29MouseClicked(evt);
-            }
-        });
 
         seat30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat30.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat30MouseClicked(evt);
-            }
-        });
 
         seat31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat31.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat31MouseClicked(evt);
-            }
-        });
 
         seat32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat32.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat32MouseClicked(evt);
-            }
-        });
 
         seat33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat33.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat33MouseClicked(evt);
-            }
-        });
 
         seat34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat34.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat34MouseClicked(evt);
-            }
-        });
 
         seat35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat35.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat35MouseClicked(evt);
-            }
-        });
 
         seat36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat36.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat36MouseClicked(evt);
-            }
-        });
 
         seat37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat37.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat37MouseClicked(evt);
-            }
-        });
 
         seat38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat38.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat38MouseClicked(evt);
-            }
-        });
 
         seat39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat39.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat39MouseClicked(evt);
-            }
-        });
 
         seat40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat40.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat40MouseClicked(evt);
-            }
-        });
 
         seat41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat41.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat41MouseClicked(evt);
-            }
-        });
 
         seat42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat42.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat42MouseClicked(evt);
-            }
-        });
 
         seat43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat43.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat43MouseClicked(evt);
-            }
-        });
 
         seat44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat44.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat44MouseClicked(evt);
-            }
-        });
 
         seat45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat45.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat45MouseClicked(evt);
-            }
-        });
 
         seat46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat46.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat46MouseClicked(evt);
-            }
-        });
 
         seat47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat47.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat47MouseClicked(evt);
-            }
-        });
 
         seat48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat48.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat48MouseClicked(evt);
-            }
-        });
 
         seat49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat49.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat49MouseClicked(evt);
-            }
-        });
 
         seat50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat50.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat50MouseClicked(evt);
-            }
-        });
 
         seat51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat51.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat51MouseClicked(evt);
-            }
-        });
 
         seat52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat52.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat52MouseClicked(evt);
-            }
-        });
 
         seat53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat53.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat53MouseClicked(evt);
-            }
-        });
 
         seat54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat54.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat54MouseClicked(evt);
-            }
-        });
 
         seat55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat55.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat55MouseClicked(evt);
-            }
-        });
 
         seat56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat56.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat56MouseClicked(evt);
-            }
-        });
 
         seat57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat57.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat57MouseClicked(evt);
-            }
-        });
 
         seat58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat58.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat58MouseClicked(evt);
-            }
-        });
 
         seat59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
-        seat59.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                seat59MouseClicked(evt);
-            }
-        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/screen.png"))); // NOI18N
 
@@ -919,33 +595,77 @@ public class ShowSeats extends javax.swing.JFrame {
                     .addGap(58, 58, 58)))
         );
 
-        buyTicketButton.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
-        buyTicketButton.setText("Buy Ticket");
-        buyTicketButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buyTicketButtonActionPerformed(evt);
-            }
-        });
+        payTheTickets.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+        payTheTickets.setText("Pay The Tickets");
 
         selectedSeatsLabel.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         selectedSeatsLabel.setForeground(new java.awt.Color(122, 24, 26));
 
-        posterLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        posterLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/logo.png"))); // NOI18N
-        posterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel17.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel17.setText("Card Number :");
+
+        jLabel19.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel19.setText("Expire Date    :");
+
+        jLabel20.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel20.setText("CVC2               :");
+
+        searchArea.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+
+        searchArea4.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel18.setText("/");
+
+        searchArea5.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
+
+        searchArea6.setFont(new java.awt.Font("Monospaced", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout posterPanelLayout = new javax.swing.GroupLayout(posterPanel);
         posterPanel.setLayout(posterPanelLayout);
         posterPanelLayout.setHorizontalGroup(
             posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(posterPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(posterLabel)
-                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, posterPanelLayout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(posterPanelLayout.createSequentialGroup()
+                        .addComponent(searchArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(searchArea5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchArea6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
         posterPanelLayout.setVerticalGroup(
             posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(posterLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, posterPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67)
+                .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchArea5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchArea4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(67, 67, 67)
+                .addGroup(posterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchArea6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(78, 78, 78))
         );
 
         vacantImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cinema/vacant-seat.png"))); // NOI18N
@@ -972,34 +692,34 @@ public class ShowSeats extends javax.swing.JFrame {
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addContainerGap(1005, Short.MAX_VALUE)
-                        .addComponent(backButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MainPanelLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(MainPanelLayout.createSequentialGroup()
                                 .addComponent(selectedSeatsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 834, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buyTicketButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                .addComponent(payTheTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(MainPanelLayout.createSequentialGroup()
-                                        .addGap(13, 13, 13)
-                                        .addComponent(vacantImageLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(vacantImageLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(vacantImageLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel5)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                                .addComponent(posterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(13, 13, 13)
+                                .addComponent(vacantImageLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(vacantImageLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(vacantImageLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel5)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(posterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backButton)))
                 .addGap(40, 40, 40))
         );
         MainPanelLayout.setVerticalGroup(
@@ -1008,26 +728,25 @@ public class ShowSeats extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(backButton)
                 .addGap(48, 48, 48)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(vacantImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(vacantImageLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(vacantImageLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(vacantImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(vacantImageLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(vacantImageLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(seatsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(posterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(posterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(seatsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(43, 43, 43)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(selectedSeatsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buyTicketButton, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
+                    .addComponent(payTheTickets, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE))
                 .addGap(43, 43, 43))
         );
 
@@ -1045,6 +764,14 @@ public class ShowSeats extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+		ShowSeats showSeats = new ShowSeats(connection, imageIcon);
+
+		showSeats.setLocation(this.getLocation());
+		this.dispose();
+		showSeats.setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
+
     private void MainPanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainPanelMouseDragged
 		int x = evt.getXOnScreen();
 		int y = evt.getYOnScreen();
@@ -1057,324 +784,6 @@ public class ShowSeats extends javax.swing.JFrame {
 		this.yMouse = evt.getY() + 30; // 30 is for the top panel of the system.
     }//GEN-LAST:event_MainPanelMousePressed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-		ShowMovies showMovies = new ShowMovies(connection);
-
-		showMovies.setLocation(this.getLocation());
-		this.dispose();
-		showMovies.setVisible(true);
-    }//GEN-LAST:event_backButtonActionPerformed
-
-	
-    private void seat0MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat0MouseClicked
-		changeImageIcon(0);
-		updateMessage();
-    }//GEN-LAST:event_seat0MouseClicked
-	//<editor-fold defaultstate="collapsed" desc="and other 59s">
-    private void seat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat1MouseClicked
-		changeImageIcon(1);
-		updateMessage();
-    }//GEN-LAST:event_seat1MouseClicked
-
-    private void seat2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat2MouseClicked
-		changeImageIcon(2);
-		updateMessage();
-    }//GEN-LAST:event_seat2MouseClicked
-
-    private void seat3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat3MouseClicked
-		changeImageIcon(3);
-		updateMessage();
-    }//GEN-LAST:event_seat3MouseClicked
-
-    private void seat4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat4MouseClicked
-		changeImageIcon(4);
-		updateMessage();
-    }//GEN-LAST:event_seat4MouseClicked
-
-    private void seat5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat5MouseClicked
-		changeImageIcon(5);
-		updateMessage();
-    }//GEN-LAST:event_seat5MouseClicked
-
-    private void seat6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat6MouseClicked
-		changeImageIcon(6);
-		updateMessage();
-    }//GEN-LAST:event_seat6MouseClicked
-
-    private void seat7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat7MouseClicked
-		changeImageIcon(7);
-		updateMessage();
-    }//GEN-LAST:event_seat7MouseClicked
-
-    private void seat8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat8MouseClicked
-		changeImageIcon(8);
-		updateMessage();
-    }//GEN-LAST:event_seat8MouseClicked
-
-    private void seat9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat9MouseClicked
-		changeImageIcon(9);
-		updateMessage();
-    }//GEN-LAST:event_seat9MouseClicked
-
-    private void seat10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat10MouseClicked
-		changeImageIcon(10);
-		updateMessage();
-    }//GEN-LAST:event_seat10MouseClicked
-
-    private void seat11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat11MouseClicked
-		changeImageIcon(11);
-		updateMessage();
-    }//GEN-LAST:event_seat11MouseClicked
-
-    private void seat12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat12MouseClicked
-		changeImageIcon(12);
-		updateMessage();
-    }//GEN-LAST:event_seat12MouseClicked
-
-    private void seat13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat13MouseClicked
-		changeImageIcon(13);
-		updateMessage();
-    }//GEN-LAST:event_seat13MouseClicked
-
-    private void seat14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat14MouseClicked
-		changeImageIcon(14);
-		updateMessage();
-    }//GEN-LAST:event_seat14MouseClicked
-
-    private void seat15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat15MouseClicked
-		changeImageIcon(15);
-		updateMessage();
-    }//GEN-LAST:event_seat15MouseClicked
-
-    private void seat16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat16MouseClicked
-		changeImageIcon(16);
-		updateMessage();
-    }//GEN-LAST:event_seat16MouseClicked
-
-    private void seat17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat17MouseClicked
-		changeImageIcon(17);
-		updateMessage();
-    }//GEN-LAST:event_seat17MouseClicked
-
-    private void seat18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat18MouseClicked
-		changeImageIcon(18);
-		updateMessage();
-    }//GEN-LAST:event_seat18MouseClicked
-
-    private void seat19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat19MouseClicked
-		changeImageIcon(19);
-		updateMessage();
-    }//GEN-LAST:event_seat19MouseClicked
-
-    private void seat20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat20MouseClicked
-		changeImageIcon(20);
-		updateMessage();
-    }//GEN-LAST:event_seat20MouseClicked
-
-    private void seat21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat21MouseClicked
-		changeImageIcon(21);
-		updateMessage();
-    }//GEN-LAST:event_seat21MouseClicked
-
-    private void seat22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat22MouseClicked
-		changeImageIcon(22);
-		updateMessage();
-    }//GEN-LAST:event_seat22MouseClicked
-
-    private void seat23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat23MouseClicked
-		changeImageIcon(23);
-		updateMessage();
-    }//GEN-LAST:event_seat23MouseClicked
-
-    private void seat24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat24MouseClicked
-		changeImageIcon(24);
-		updateMessage();
-    }//GEN-LAST:event_seat24MouseClicked
-
-    private void seat25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat25MouseClicked
-		changeImageIcon(25);
-		updateMessage();
-    }//GEN-LAST:event_seat25MouseClicked
-
-    private void seat26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat26MouseClicked
-		changeImageIcon(26);
-		updateMessage();
-    }//GEN-LAST:event_seat26MouseClicked
-
-    private void seat27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat27MouseClicked
-		changeImageIcon(27);
-		updateMessage();
-    }//GEN-LAST:event_seat27MouseClicked
-
-    private void seat28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat28MouseClicked
-		changeImageIcon(28);
-		updateMessage();
-    }//GEN-LAST:event_seat28MouseClicked
-
-    private void seat29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat29MouseClicked
-		changeImageIcon(29);
-		updateMessage();
-    }//GEN-LAST:event_seat29MouseClicked
-	
-    private void seat30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat30MouseClicked
-		changeImageIcon(30);
-		updateMessage();
-    }//GEN-LAST:event_seat30MouseClicked
-
-    private void seat31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat31MouseClicked
-		changeImageIcon(31);
-		updateMessage();
-    }//GEN-LAST:event_seat31MouseClicked
-
-    private void seat32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat32MouseClicked
-		changeImageIcon(32);
-		updateMessage();
-    }//GEN-LAST:event_seat32MouseClicked
-
-    private void seat33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat33MouseClicked
-		changeImageIcon(33);
-		updateMessage();
-    }//GEN-LAST:event_seat33MouseClicked
-
-    private void seat34MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat34MouseClicked
-		changeImageIcon(34);
-		updateMessage();
-    }//GEN-LAST:event_seat34MouseClicked
-
-    private void seat35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat35MouseClicked
-		changeImageIcon(35);
-		updateMessage();
-    }//GEN-LAST:event_seat35MouseClicked
-
-    private void seat36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat36MouseClicked
-		changeImageIcon(36);
-		updateMessage();
-    }//GEN-LAST:event_seat36MouseClicked
-
-    private void seat37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat37MouseClicked
-		changeImageIcon(37);
-		updateMessage();
-    }//GEN-LAST:event_seat37MouseClicked
-
-    private void seat38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat38MouseClicked
-		changeImageIcon(38);
-		updateMessage();
-    }//GEN-LAST:event_seat38MouseClicked
-
-    private void seat39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat39MouseClicked
-		changeImageIcon(39);
-		updateMessage();
-    }//GEN-LAST:event_seat39MouseClicked
-
-    private void seat40MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat40MouseClicked
-		changeImageIcon(40);
-		updateMessage();
-    }//GEN-LAST:event_seat40MouseClicked
-
-    private void seat41MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat41MouseClicked
-		changeImageIcon(41);
-		updateMessage();
-    }//GEN-LAST:event_seat41MouseClicked
-
-    private void seat42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat42MouseClicked
-		changeImageIcon(42);
-		updateMessage();
-    }//GEN-LAST:event_seat42MouseClicked
-
-    private void seat43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat43MouseClicked
-		changeImageIcon(43);
-		updateMessage();
-    }//GEN-LAST:event_seat43MouseClicked
-
-    private void seat44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat44MouseClicked
-		changeImageIcon(44);
-		updateMessage();
-    }//GEN-LAST:event_seat44MouseClicked
-
-    private void seat45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat45MouseClicked
-		changeImageIcon(45);
-		updateMessage();
-    }//GEN-LAST:event_seat45MouseClicked
-
-    private void seat46MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat46MouseClicked
-		changeImageIcon(46);
-		updateMessage();
-    }//GEN-LAST:event_seat46MouseClicked
-
-    private void seat47MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat47MouseClicked
-		changeImageIcon(47);
-		updateMessage();
-    }//GEN-LAST:event_seat47MouseClicked
-
-    private void seat48MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat48MouseClicked
-		changeImageIcon(48);
-		updateMessage();
-    }//GEN-LAST:event_seat48MouseClicked
-
-    private void seat49MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat49MouseClicked
-		changeImageIcon(49);
-		updateMessage();
-    }//GEN-LAST:event_seat49MouseClicked
-
-    private void seat50MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat50MouseClicked
-		changeImageIcon(50);
-		updateMessage();
-    }//GEN-LAST:event_seat50MouseClicked
-
-    private void seat51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat51MouseClicked
-		changeImageIcon(51);
-		updateMessage();
-    }//GEN-LAST:event_seat51MouseClicked
-
-    private void seat52MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat52MouseClicked
-		changeImageIcon(52);
-		updateMessage();
-    }//GEN-LAST:event_seat52MouseClicked
-
-    private void seat53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat53MouseClicked
-		changeImageIcon(53);
-		updateMessage();
-    }//GEN-LAST:event_seat53MouseClicked
-
-    private void seat54MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat54MouseClicked
-		changeImageIcon(54);
-		updateMessage();
-    }//GEN-LAST:event_seat54MouseClicked
-
-    private void seat55MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat55MouseClicked
-		changeImageIcon(55);
-		updateMessage();
-    }//GEN-LAST:event_seat55MouseClicked
-
-    private void seat56MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat56MouseClicked
-		changeImageIcon(56);
-		updateMessage();
-    }//GEN-LAST:event_seat56MouseClicked
-
-    private void seat57MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat57MouseClicked
-		changeImageIcon(57);
-		updateMessage();
-    }//GEN-LAST:event_seat57MouseClicked
-
-    private void seat58MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat58MouseClicked
-		changeImageIcon(58);
-		updateMessage();
-    }//GEN-LAST:event_seat58MouseClicked
-
-    private void seat59MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat59MouseClicked
-		changeImageIcon(59);
-		updateMessage();
-    }//GEN-LAST:event_seat59MouseClicked
-	//</editor-fold>
-	
-    private void buyTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyTicketButtonActionPerformed
-		BuyTickets buyTickets = new BuyTickets(connection, imageIcon, selectedSeats, selectedSeatIcon, message);
-
-		buyTickets.setLocation(this.getLocation());
-		this.dispose();
-		buyTickets.setVisible(true);
-    }//GEN-LAST:event_buyTicketButtonActionPerformed
-
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 		try {
@@ -1385,25 +794,19 @@ public class ShowSeats extends javax.swing.JFrame {
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(ShowSeats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(BuyTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(ShowSeats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(BuyTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(ShowSeats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(BuyTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(ShowSeats.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(BuyTickets.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		//</editor-fold>
 
 		/*java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new ShowTickets().setVisible(true);
-			}
-		//</editor-fold>
-
-		/*java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new ShowTickets().setVisible(true);
+				new BuyTickets().setVisible(true);
 			}
 		});*/
 	}
@@ -1411,7 +814,6 @@ public class ShowSeats extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private javax.swing.JButton backButton;
-    private javax.swing.JButton buyTicketButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1419,7 +821,11 @@ public class ShowSeats extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1427,8 +833,12 @@ public class ShowSeats extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel posterLabel;
+    private javax.swing.JButton payTheTickets;
     private javax.swing.JPanel posterPanel;
+    private javax.swing.JTextField searchArea;
+    private javax.swing.JTextField searchArea4;
+    private javax.swing.JTextField searchArea5;
+    private javax.swing.JTextField searchArea6;
     private javax.swing.JLabel seat0;
     private javax.swing.JLabel seat1;
     private javax.swing.JLabel seat10;

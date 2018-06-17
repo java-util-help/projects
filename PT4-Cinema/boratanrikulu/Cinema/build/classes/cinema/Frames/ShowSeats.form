@@ -1149,7 +1149,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Monospaced" size="16" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="But Ticket"/>
+            <Property name="text" type="java.lang.String" value="Buy Ticket"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buyTicketButtonActionPerformed"/>
