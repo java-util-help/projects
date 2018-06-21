@@ -89,7 +89,7 @@ public class BuyTickets extends javax.swing.JFrame {
 	public void buyTickets(java.awt.event.ActionEvent evt) {
 		int flag = 0;
 		for(int seatNumber : selectedSeats) {
-			String query = "insert into sold_tickets(movieID, customerID, seatNumber) values(?, ?, ?)" ;
+			String query = "INSERT INTO sold_tickets(movieID, customerID, seatNumber) VALUES(?, ?, ?)" ;
 
 			try {
 				preparedStatement = connection.prepareStatement(query);

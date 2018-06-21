@@ -29,7 +29,7 @@ public class SignUp extends javax.swing.JFrame {
 	}
 	
 	private void signUp(Customer customer, java.awt.event.ActionEvent evt) {
-		String query = "insert into customers (name, surname, email, password, birthdate) values (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO customers (name, surname, email, password, birthdate) VALUES (?, ?, ?, ?, ?)";
 		
 		try {
 			preparedStatement = connection.prepareStatement(query);

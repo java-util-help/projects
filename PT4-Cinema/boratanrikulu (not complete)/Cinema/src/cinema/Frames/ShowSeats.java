@@ -78,7 +78,7 @@ public class ShowSeats extends javax.swing.JFrame {
 	}
 	
 	public void getTakenSeats() {
-		String query = "select * from sold_tickets where movieID  = ?";
+		String query = "SELECT * FROM sold_tickets WHERE movieID  = ?";
 		
 		try {
 			preparedStatement = connection.prepareStatement(query);

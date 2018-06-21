@@ -11,10 +11,4 @@ Not: The Project is not completed yet.
 <p align="center"> 
 <img src="img/3.png">
 </p>  
-<p align="center"> 
-<img src="img/4.png">
-</p>  
-<p align="center"> 
-<img src="img/5.png">
-</p>  
 

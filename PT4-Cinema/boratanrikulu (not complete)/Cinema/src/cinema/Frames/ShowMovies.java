@@ -48,7 +48,7 @@ public class ShowMovies extends javax.swing.JFrame {
 	}
 	
 	private void getAllMovies() {		
-		String query = "SELECT * from movies";
+		String query = "SELECT * FROM movies";
 		
 		try {
 			preparedStatement = connection.prepareStatement(query);
@@ -58,10 +58,10 @@ public class ShowMovies extends javax.swing.JFrame {
 			if(!movies.isEmpty()) {
 				movies.clear(); // clears all movies from the arraylist to make a new start.
 			}
+			System.out.println("test");
 			while(resultSet.next()) {
-				Movie movie = new Movie(resultSet.getInt("id"), resultSet.getString("title"),
-						resultSet.getString("genre"), resultSet.getDouble("rate"), resultSet.getString("date"),
-						resultSet.getString("time"), resultSet.getString("urlPoster"));
+				Movie movie = new Movie(resultSet.getInt("id"), resultSet.getString("title"), resultSet.getString("genre"), resultSet.getString("duration"), resultSet.getDouble("rating"), 
+						resultSet.getString("director"), resultSet.getString("actors"), resultSet.getString("date"), resultSet.getString("time"), resultSet.getString("urlPoster"), resultSet.getString("summary"));
 				movies.add(movie);
 			}
 		} catch (SQLException ex) {
@@ -72,16 +72,18 @@ public class ShowMovies extends javax.swing.JFrame {
 	private void showTheMovies(ArrayList<Movie> movies) {
 		defaultMovieTable.setRowCount(0);		
 		for(Movie movie : movies) {
-			Object[] willAdd = {movie.getID(), movie.getTitle(), 
-					movie.getGenre(), movie.getRate(),
-					movie.getDate(), movie.getTime()};
-			defaultMovieTable.addRow(willAdd); // adds all movies to the model
+			if(movie.getTime().equals("10:00:00")) {
+				Object[] willAdd = {movie.getID(), movie.getTitle(), 
+						movie.getGenre(), movie.getRating(),
+						movie.getDirector()};
+				defaultMovieTable.addRow(willAdd); // adds all movies to the model
+			}
 		}
 	}
 	
-	private void showThePoster(int id) {
+	private void showThePoster(int movieID) {
 		for(Movie movie : movies) {
-			if(movie.getID() == id) {
+			if(movie.getID() == movieID) {
 				try {
 					URL url = new URL(movie.getUrlPoster());
 					BufferedImage img = ImageIO.read(url);
@@ -108,6 +110,19 @@ public class ShowMovies extends javax.swing.JFrame {
 		}
 		showTheMovies(searchedMovies);
 	}
+	
+	private void setTheInfos(int movieID) {
+		for(Movie movie : movies) {
+			if(movie.getID() == movieID) {
+				titleLabel.setText(movie.getTitle() + " by " + movie.getDirector());
+				actorsLabel.setText("Actors : " + movie.getActors());
+				ratingLabel.setText(String.valueOf(movie.getRating()));
+				durationLabel.setText(movie.getDuration());
+				summaryArea.setText("SUMMARY:\n\n"+ movie.getSummary());
+			}
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -121,6 +136,16 @@ public class ShowMovies extends javax.swing.JFrame {
         showSeatsButton = new javax.swing.JButton();
         posterPanel = new javax.swing.JPanel();
         posterLabel = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        ratingLabel = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
+        actorsLabel = new javax.swing.JLabel();
+        durationLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        summaryArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cinema - java.util.help");
@@ -145,18 +170,31 @@ public class ShowMovies extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
         movieTable.setBackground(new java.awt.Color(47, 52, 63));
+        movieTable.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         movieTable.setForeground(new java.awt.Color(231, 232, 235));
         movieTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Title", "Gendre", "Rate", "Date", "Time"
+                "ID", "Title", "Gendre", "Rating", "Director"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -173,9 +211,10 @@ public class ShowMovies extends javax.swing.JFrame {
             movieTable.getColumnModel().getColumn(0).setMinWidth(0);
             movieTable.getColumnModel().getColumn(0).setPreferredWidth(0);
             movieTable.getColumnModel().getColumn(0).setMaxWidth(0);
+            movieTable.getColumnModel().getColumn(3).setMaxWidth(50);
         }
 
-        jLabel2.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(122, 24, 26));
         jLabel2.setText("SEARCH   :");
 
@@ -214,27 +253,89 @@ public class ShowMovies extends javax.swing.JFrame {
             .addComponent(posterLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jComboBox1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018-07-21", "2018-07-22", "2018-07-23", "2018-07-24" }));
+
+        jComboBox2.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00", "13:00", "16:00", "21:00" }));
+
+        jLabel3.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel3.setText("TIME");
+
+        jLabel4.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(122, 24, 26));
+        jLabel4.setText("DATE");
+
+        ratingLabel.setFont(new java.awt.Font("Monospaced", 1, 28)); // NOI18N
+        ratingLabel.setForeground(new java.awt.Color(122, 24, 26));
+        ratingLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ratingLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        titleLabel.setFont(new java.awt.Font("Monospaced", 1, 16)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(122, 24, 26));
+
+        actorsLabel.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        actorsLabel.setForeground(new java.awt.Color(122, 24, 26));
+
+        durationLabel.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        durationLabel.setForeground(new java.awt.Color(122, 24, 26));
+        durationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        durationLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        summaryArea.setBackground(new java.awt.Color(231, 232, 235));
+        summaryArea.setColumns(20);
+        summaryArea.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        summaryArea.setForeground(new java.awt.Color(122, 24, 26));
+        summaryArea.setLineWrap(true);
+        summaryArea.setRows(5);
+        summaryArea.setWrapStyleWord(true);
+        summaryArea.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPane2.setViewportView(summaryArea);
+
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(40, 40, 40)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(MainPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(26, 26, 26)
-                                .addComponent(searchArea))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                        .addComponent(posterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(signOutButton)
-                            .addComponent(showSeatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 11, Short.MAX_VALUE))
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                                    .addComponent(actorsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(durationLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ratingLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addGap(45, 45, 45)
+                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(posterPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(signOutButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(showSeatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
         MainPanelLayout.setVerticalGroup(
@@ -245,14 +346,36 @@ public class ShowMovies extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(posterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(0, 10, Short.MAX_VALUE)
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)))
+                            .addComponent(showSeatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(MainPanelLayout.createSequentialGroup()
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(MainPanelLayout.createSequentialGroup()
+                                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(searchArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ratingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(actorsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(durationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(posterPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(showSeatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(43, 43, 43))
         );
 
@@ -266,7 +389,7 @@ public class ShowMovies extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         pack();
@@ -296,6 +419,7 @@ public class ShowMovies extends javax.swing.JFrame {
 		movieID = (int) movieTable.getValueAt(movieTable.getSelectedRow(), 0);
 		
 		showThePoster(movieID);
+		setTheInfos(movieID);
     }//GEN-LAST:event_movieTableMouseClicked
 
     private void searchAreaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchAreaKeyReleased
@@ -347,13 +471,23 @@ public class ShowMovies extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JLabel actorsLabel;
+    private javax.swing.JLabel durationLabel;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable movieTable;
     private javax.swing.JLabel posterLabel;
     private javax.swing.JPanel posterPanel;
+    private javax.swing.JLabel ratingLabel;
     private javax.swing.JTextField searchArea;
     private javax.swing.JButton showSeatsButton;
     private javax.swing.JButton signOutButton;
+    private javax.swing.JTextArea summaryArea;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
