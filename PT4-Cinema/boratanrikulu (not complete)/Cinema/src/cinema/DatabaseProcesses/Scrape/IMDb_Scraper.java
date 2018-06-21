@@ -7,6 +7,8 @@ package cinema.DatabaseProcesses.Scrape;
 
 import cinema.Objects.Movie;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,11 +31,13 @@ public class IMDb_Scraper {
 	private String date;
 	private String urlPoster;
 	private String summary;
+	private String[] fourDays;
 	
 	public IMDb_Scraper() {
 		try {
 			document = Jsoup.connect("https://www.imdb.com/movies-in-theaters/").get();	
 			this.movies = new ArrayList<Movie>();
+			setFourDays();
 			scrape();
 		} catch (IOException ex) {
 			Logger.getLogger(IMDb_Scraper.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,18 +66,20 @@ public class IMDb_Scraper {
 			}
 		}
 
-		for (Element row : rows) { // scrapes informations, creates movie objects, add the objects to an array list
-			setTitle(row);
-			setGenre(row);
-			setDuration(row);
-			setRating(row);
-			setDirector(row);
-			setActors(row);
-			setDate(); // will be edited later
-			setUrlPoster(row);
-			setSummary(row);
-			
-			setMovie();
+		for(String date : fourDays) {
+			for (Element row : rows) { // scrapes informations, creates movie objects, add the objects to an array list
+				setTitle(row);
+				setGenre(row);
+				setDuration(row);
+				setRating(row);
+				setDirector(row);
+				setActors(row);
+				setDate(date);
+				setUrlPoster(row);
+				setSummary(row);
+
+				setMovie();
+			}
 		}
 	}
 
@@ -120,13 +126,31 @@ public class IMDb_Scraper {
 		urlPoster = row.select("img.poster.shadowed").attr("src");
 	}
 	
-	// will be edited later
-	private void setDate() {
-		date = "2018-06-21";
+	private void setDate(String date) {
+		this.date = date.format(date);
 	}
 	
 	private void setSummary(Element row) {
 		summary = row.select("div.outline").text();
+	}
+	
+	private void setFourDays() {
+		fourDays = new String[4];
+		
+		DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate localDate = LocalDate.now();
+		
+		localDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth());
+		fourDays[0] = date.format(localDate);
+		
+		localDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth()+1);
+		fourDays[1] = date.format(localDate);
+		
+		localDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth()+1);
+		fourDays[2] = date.format(localDate);
+		
+		localDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth()+1);
+		fourDays[3] = date.format(localDate);
 	}
 	
 	public void clearMovies() {

@@ -1,6 +1,7 @@
 ### Usage Example
 
-Not: The Project is not completed yet.
+Note: This Project is not completed yet.
+Note2: All movies is scraped from IMDb.
 
 <p align="center"> 
 <img src="img/1.png">

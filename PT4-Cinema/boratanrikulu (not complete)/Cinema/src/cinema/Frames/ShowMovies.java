@@ -15,7 +15,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -44,11 +48,12 @@ public class ShowMovies extends javax.swing.JFrame {
 		this.movies = new ArrayList<Movie>();
 		
 		getAllMovies();
-		showTheMovies(this.movies);
+		setDays();
+		showTheMovies(this.movies, dateComboBox.getSelectedItem().toString(), timeComboBox.getSelectedItem().toString());
 	}
 	
 	private void getAllMovies() {		
-		String query = "SELECT * FROM movies";
+		String query = "SELECT * FROM movies ORDER BY id DESC LIMIT 160";
 		
 		try {
 			preparedStatement = connection.prepareStatement(query);
@@ -58,21 +63,28 @@ public class ShowMovies extends javax.swing.JFrame {
 			if(!movies.isEmpty()) {
 				movies.clear(); // clears all movies from the arraylist to make a new start.
 			}
-			System.out.println("test");
 			while(resultSet.next()) {
 				Movie movie = new Movie(resultSet.getInt("id"), resultSet.getString("title"), resultSet.getString("genre"), resultSet.getString("duration"), resultSet.getDouble("rating"), 
 						resultSet.getString("director"), resultSet.getString("actors"), resultSet.getString("date"), resultSet.getString("time"), resultSet.getString("urlPoster"), resultSet.getString("summary"));
 				movies.add(movie);
 			}
+			Collections.sort(movies, new Comparator<Movie>() { // sorts by id
+				@Override
+				public int compare(Movie movie1, Movie movie2){
+					if(movie1.getID() < movie2.getID()) return -1;
+					if(movie1.getID() > movie2.getID()) return 1;
+					return 0;
+				}
+			});
 		} catch (SQLException ex) {
 			Logger.getLogger(ShowMovies.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	} 
 	
-	private void showTheMovies(ArrayList<Movie> movies) {
+	private void showTheMovies(ArrayList<Movie> movies, String date, String time) {
 		defaultMovieTable.setRowCount(0);		
 		for(Movie movie : movies) {
-			if(movie.getTime().equals("10:00:00")) {
+			if(movie.getDate().equals(date) && movie.getTime().equals(time)) {
 				Object[] willAdd = {movie.getID(), movie.getTitle(), 
 						movie.getGenre(), movie.getRating(),
 						movie.getDirector()};
@@ -108,7 +120,7 @@ public class ShowMovies extends javax.swing.JFrame {
 				searchedMovies.add(movie);
 			}
 		}
-		showTheMovies(searchedMovies);
+		showTheMovies(searchedMovies, dateComboBox.getSelectedItem().toString(), timeComboBox.getSelectedItem().toString());
 	}
 	
 	private void setTheInfos(int movieID) {
@@ -121,6 +133,23 @@ public class ShowMovies extends javax.swing.JFrame {
 				summaryArea.setText("SUMMARY:\n\n"+ movie.getSummary());
 			}
 		}
+	}
+	
+	public void setDays() {
+		DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate localDate = LocalDate.now();
+		
+		localDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth());
+		dateComboBox.addItem(date.format(localDate));
+		
+		localDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth()+1);
+		dateComboBox.addItem(date.format(localDate));
+		
+		localDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth()+1);
+		dateComboBox.addItem(date.format(localDate));
+		
+		localDate = LocalDate.of(localDate.getYear(), localDate.getMonth(), localDate.getDayOfMonth()+1);
+		dateComboBox.addItem(date.format(localDate));
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -136,8 +165,8 @@ public class ShowMovies extends javax.swing.JFrame {
         showSeatsButton = new javax.swing.JButton();
         posterPanel = new javax.swing.JPanel();
         posterLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        dateComboBox = new javax.swing.JComboBox<>();
+        timeComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         ratingLabel = new javax.swing.JLabel();
@@ -253,11 +282,20 @@ public class ShowMovies extends javax.swing.JFrame {
             .addComponent(posterLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jComboBox1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2018-07-21", "2018-07-22", "2018-07-23", "2018-07-24" }));
+        dateComboBox.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        dateComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateComboBoxActionPerformed(evt);
+            }
+        });
 
-        jComboBox2.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00", "13:00", "16:00", "21:00" }));
+        timeComboBox.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        timeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00", "13:00", "16:00", "21:00" }));
+        timeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(122, 24, 26));
@@ -332,8 +370,8 @@ public class ShowMovies extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(dateComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(timeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(showSeatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
@@ -351,11 +389,11 @@ public class ShowMovies extends javax.swing.JFrame {
                         .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(MainPanelLayout.createSequentialGroup()
                                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
                                 .addGap(0, 10, Short.MAX_VALUE)
                                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(timeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)))
                             .addComponent(showSeatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(MainPanelLayout.createSequentialGroup()
@@ -374,8 +412,7 @@ public class ShowMovies extends javax.swing.JFrame {
                             .addComponent(actorsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(durationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(43, 43, 43))
         );
 
@@ -442,6 +479,14 @@ public class ShowMovies extends javax.swing.JFrame {
 		}
     }//GEN-LAST:event_showSeatsButtonActionPerformed
 
+    private void dateComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateComboBoxActionPerformed
+		showTheMovies(this.movies, dateComboBox.getSelectedItem().toString(), timeComboBox.getSelectedItem().toString());
+    }//GEN-LAST:event_dateComboBoxActionPerformed
+
+    private void timeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeComboBoxActionPerformed
+		showTheMovies(this.movies, dateComboBox.getSelectedItem().toString(), timeComboBox.getSelectedItem().toString());
+    }//GEN-LAST:event_timeComboBoxActionPerformed
+
 	public static void main(String args[]) {
 		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 		try {
@@ -472,9 +517,8 @@ public class ShowMovies extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel actorsLabel;
+    private javax.swing.JComboBox<String> dateComboBox;
     private javax.swing.JLabel durationLabel;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -488,6 +532,7 @@ public class ShowMovies extends javax.swing.JFrame {
     private javax.swing.JButton showSeatsButton;
     private javax.swing.JButton signOutButton;
     private javax.swing.JTextArea summaryArea;
+    private javax.swing.JComboBox<String> timeComboBox;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
