@@ -1,11 +1,12 @@
 ## Aktif Proje
 
-- Proje 4 : [Cinema](PT4-Cinema)
+- NULL
 
 ## Tamamlanan Projeler
 
-- Proje 3 : [Login Page](PT3-LoginPage)
-- Proje 2 : [Bookstore](PT2-Bookstore)
+- Proje 4 : [Cinema](PT4-Cinema)  
+- Proje 3 : [Login Page](PT3-LoginPage)  
+- Proje 2 : [Bookstore](PT2-Bookstore)  
 - Proje 1 : [Hotel](PT1-Hotel)  
 
 ## Projelerin Amacı
